@@ -1,0 +1,27 @@
+{
+  "name": "electronapp",
+  "version": "1.0.0",
+  "description": "ma première application avec electron.js desktop description",
+  "main": "index.js",
+  "scripts": {
+    "test": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tengentepi/electronApp.git"
+  },
+  "keywords": [
+    "electron.js",
+    "application",
+    "desktop"
+  ],
+  "author": "pcSande2",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tengentepi/electronApp/issues"
+  },
+  "homepage": "https://github.com/tengentepi/electronApp#readme",
+  "devDependencies": {
+    "electron": "^8.0.1"
+  }
+}

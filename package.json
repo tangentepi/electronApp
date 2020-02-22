@@ -2,7 +2,7 @@
   "name": "electronapp",
   "version": "1.0.0",
   "description": "ma première application avec electron.js desktop description",
-  "main": "index.js",
+  "main": "main.js",
   "scripts": {
     "test": "electron ."
   },
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/tengentepi/electronApp#readme",
   "devDependencies": {
-    "electron": "^8.0.1"
+    "electron": "^8.0.1",
+    "electron-packager": "^14.2.1"
   }
 }

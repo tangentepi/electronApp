@@ -1,0 +1,32 @@
+{
+  "name": "test-api-backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/register": "^7.4.4",
+    "nodemon": "^1.19.1",
+    "python": "0.0.4"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-hateoas-links": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.7.12",
+    "mongoose-unique-validator": "^2.0.3",
+    "morgan": "^1.9.1",
+    "node-pre-gyp": "^0.14.0",
+    "p-limit": "^2.2.1"
+  }
+}

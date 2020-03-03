@@ -1,0 +1,171 @@
+openapi: "3.0.0"
+info:
+  version: 1.0.0
+  title: une API pour utilisateur de poste de paiement
+  license:
+    name: MIT
+servers:
+  - url: http://adresse_du_serveur_http
+paths:
+  /users:
+    get:
+      summary: listage de tous les users
+      operationId: listusers
+      tags:
+        - users
+      parameters:
+        - name: limit
+          in: query
+          description: Combien de users retourner en meme temps
+          required: false
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: Un tableau paginé sur les users
+          headers:
+            x-next:
+              description: un lien vers la page suivante de la réponse
+              schema:
+                type: string
+          content:
+            application/json:    
+              schema:
+                $ref: "#/components/schemas/Pets"
+        default:
+          description: Erreur inattendue
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error" 
+
+    post:
+      tags:
+      - "users"
+      summary: "Création d'un user"
+      description: "Cette action ne peut être effectuée que par un user connecté"
+      operationId: "creationUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        default:
+          description: "successful operation"
+
+  /users/login:
+    get:
+      tags:
+      - "users"
+      summary: "Connexion au systeme"
+      description: ""
+      operationId: "loginUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - name: "code"
+        in: "query"
+        description: "Le username de l'utilisateur"
+        required: true
+        type: "string"
+      - name: "mot de passe"
+        in: "query"
+        description: "Mot de passe pour se connecter"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "loggin success"
+          schema:
+            type: "string"
+          headers:
+            X-Rate-Limit:
+              type: "integer"
+              format: "int32"
+              description: "calls per hour allowed by the user"
+            X-Expires-After:
+              type: "string"
+              format: "date-time"
+              description: "date en UTC d'expiration de la session"
+        400:
+          description: "Invalid username/password supplied"
+  /users/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Déconnecte la session utilisateur actuellement connectée"
+      description: ""
+      operationId: "logoutUser"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters: [gxgfdxdfx]
+      responses:
+        default:
+          description: "successful operation"
+
+  /users/{userId}:
+    get:
+      summary: Information sur un user en fonction de son Id
+      operationId: retournerUserParId
+      tags:
+        - user
+      parameters:
+        - name: userId
+          in: path
+
+          required: true
+          description: "L'Id du user à retrouver"
+          schema:
+            type: string
+      responses:
+        '200':
+          description: "Réponse attendue à une demande valide"
+
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Pets"
+        default:
+          description: erreur inattendue
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+
+components:
+  schemas:
+    user:
+      required:
+        - id
+        - name
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        tag:
+          type: string
+    users:
+      type: array
+      items:
+        $ref: "#/components/schemas/Pet"
+    Error:
+      required:
+        - code
+        - message
+      properties:
+        code:
+          type: integer
+          format: int32
+        message:
+          type: string

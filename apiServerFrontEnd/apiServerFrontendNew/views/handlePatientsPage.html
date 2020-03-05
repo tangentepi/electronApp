@@ -30,18 +30,20 @@
                         <div class="row rowForm">
                             <form action="">
                                 <div class="row">
-                                    <div class="form-group patientHandling col-6 col-sm-6 col-md-6">
-                                        <label for="findPatient">Numéro du Patient</label>
+                                    <div class="form-group patientHandling col-8 col-sm-8 col-md-8">
+                                        <label for="findPatient" class="patientNumberLabel">Numéro du Patient</label>
                                         <input type="text" class="form-control" required>
                                     </div>
-                                    <div class="form-group col-6 col-sm-6 col-md-6">
-                                        <button class="form-control btn-default findButton"><img src="../img/icones/find.png" alt="find_icon" class="icon">Rechercher</button>
+                                    <div class="form-group col-4 col-sm-4 col-md-4">
+                                        <input type="submit" class="form-control btn-default findButton" value="Rechercher">
+                                        <!-- <button class="form-control btn-default findButton"><img src="../img/icones/find.png" alt="find_icon" class="icon" style="float: left;"><h6 class="findButtonName">Rechercher</h6></button> -->
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="row">
-                            <a href="./savePatientPage.html"><button class="btn-default form-control"><img src="../img/icones/add.png" alt="add_icon" class="img-responsive icon">NOUVEAU PATIENT</button></a>
+                            <a href="./savePatientPage.html"><input type="submit" class="form-control btn-default addButton" value="NOUVEAU PATIENT"></a>
+                            <!-- <a href="./savePatientPage.html"></a><button class="btn-default form-control addButton"> <img src="../img/icones/add.png" alt="add_icon" class="icon img-responsive" style="float: left;"><h6 class="addButtonName" >NOUVEAU PATIENT</h6 ></button></a> -->
                         </div>
                     </div>
                     <div class="col-2 col-sm-2 col-md-2"></div>

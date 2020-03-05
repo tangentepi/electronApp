@@ -15,10 +15,36 @@ background-size: 100%;
 .rowForm{
     padding-top: 200px;
 }
+.patientNumberLabel{
+    color: #FFF;
+    font-size: 20px;
+    text-align: center;
+}
+.patientNumberLabel:hover{
+    color: #ffff00;
+
+}
 .findButton{
-    margin-top: 25px;
+    margin-top: 33px;
+    background-image: url("../../img/icones/find.png")!important;
+    background-repeat: no-repeat!important;
+    background-size: 18%;
 }
 
+.findButtonName{    
+    margin-bottom: 2px;
+}
+.addButton{
+font-size: 15px!important;
+background-image: url("../../img/icones/add.png")!important;
+background-repeat: no-repeat!important;
+background-size: 5%!important;
+}
+.addButtonName{
+    float: bottom;
+    margin-bottom: 1px;
+    font-size: 15px;
+}
 .icon{
     width: 25px;
     height: 25px;

@@ -1,0 +1,29 @@
+body{
+    font-family: 'Questrial';
+    position: relative;
+}
+#p0, #p1{
+    height: 749px;
+}
+#p0{background-color: #0F0; padding: 55px 10px 0 0 ;
+background-image: url("../../img/medecine/medecine1.jpg");
+background-repeat: no-repeat;
+background-size: 100%;
+}
+#p1{background-color: #F00;}
+
+.rowForm{
+    padding-top: 200px;
+}
+.findButton{
+    margin-top: 25px;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+}
+li a{
+    color: #FF0;
+    font-weight: bold;
+}

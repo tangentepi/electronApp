@@ -1,0 +1,18 @@
+body{
+    font-family: 'Questrial';
+}
+.container1{
+    background-color: #000;
+    height: 20px;
+}
+.container2{
+    background-image: url("../../img/imgHopital/hopital1.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    color: #eeff00;
+    font-weight: bold;
+}
+.container label:hover {
+    text-shadow: 2px 2px 12px rgb(2, 1, 1);
+    font-size: 15px;
+}

@@ -1,0 +1,64 @@
+<!Doctype html>
+<html>
+	<head>
+			<meta charset="utf-8"/>
+			<title>Ajout d'un patient</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<link rel="stylesheet" href="../css/bootstrap.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="../css/handlingPages/styleSavePatientPage.css">
+	</head> 
+	<body>
+		<div class="container container1">
+			<div class="row"></div>
+		</div>
+		<div class="container container2">
+			<form action="">
+				<div class="form-group col-12 col-sm-6 col-md-6">
+					<label for="nameEntered">Nom</label>
+					<input class="form-control" type="text" id="nameEntered">
+					<label for="firsNameEntered">Prénoms</label>
+					<input type="text" class="form-control" id="firstNameEntered">
+					<label for="bearthDateEntered">Date de naissansse</label>
+					<input type="datetime-local" class="form-control" id="birthDateEntered">
+					<label for="pieceNumberEntered">Numéro de la pièce</label>
+					<input type="text" class="form-control" id="pieceNumberEntered">
+					<label for="typeOfPieceEntered">Type de pièce</label>
+					<input type="text" class="form-control" id="typeOfPieceEntered" list="typeOfPiece">
+						<datalist id="typeOfPiece">	
+							<option value="Attestation d'Identité">
+							<option value="Carte Nationale d'Identité">
+							<option value="Passeport">
+						</datalist><br/>
+					<label for="" class="radio-inline" > <input type="radio" name="genre" checked> Masculin </label>
+					<label for="" class="radio-inline" > <input type="radio" name="genre"> Féminin</label>
+					<label for="" class="radio-inline" > <input type="radio" name="genre"> Autres </label> <br/> <br/>
+					<label for="addressEntrered">Adresse</label>
+					<input class="form-control" type="text" id="addressEntered">
+					<label for="placeOfResidenceEntered">Lieu de résidence</label>
+					<input type="text" class="form-control" id="placeOfResidenceEntered">					
+				</div>
+				<div class="form-group col-12 col-sm-6 col-md-6">					
+					<label for="phoneNumberEntered">Téléphone</label>
+					<input type="text" class="form-control" id="phoneNumberEntered">
+					<label for="employerEntered">Employer</label>
+					<input type="text" class="form-control" id="employerEntered">
+					<label for="electricityReleaseEntered">Quittance CIE</label>
+					<input type="text" class="form-control" id="electricityReleaseEntered">
+					<label for="waterClearanceEntered">Quittance SODECI</label>
+					<input type="text" class="form-control" id="waterClearanceEntered">
+					<label for="nationalityEntered">Nationalité</label>
+					<input type="text" class="form-control" id="nationalityEntered">
+					<label for="fatherFullName">Nom du Père</label>
+					<input type="text" class="form-control" id="fatherFullName">
+					<label for="motherFullNameEntered">Nom de la Mère</label>
+					<input type="text" class="form-control" id="motherFullName"><br/><br/><br/><br/>
+					<input type="submit" class="form-control btn-success" value="ENREGISTRER">
+				</div>
+			</form>
+		</div>
+	</body>
+</html>

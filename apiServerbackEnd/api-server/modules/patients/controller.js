@@ -33,7 +33,8 @@ export const createPatient = (req, res, next) => {
     waterClearance: req.body.waterClearance,
     nationality: req.body.nationality,
     fatherFullName: req.body.fatherFullName,
-    motherFullName: req.body.motherFullName
+    motherFullName: req.body.motherFullName,
+    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
     });
   const prestation = new prestation({
     prestationDate : req.body.prestationDate

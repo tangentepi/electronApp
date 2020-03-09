@@ -5,4 +5,4 @@ const prestationSchema = mongoose.Schema({
     centerIds: [Sting]
 });
 
-export default.model('Prestation', prestationSchema);
+export default mongoose.model('Prestation', prestationSchema);

@@ -4,7 +4,7 @@ import express from 'express';
 import dbConfig from './config/db';
 import middlewares from './config/middlewares';
 import { UserRoutes } from './modules';
-import { patientRoutes } from './modules';
+import { PatientRoutes } from './modules';
 
 const app = express();
 
@@ -27,7 +27,7 @@ app.use((req, res, next) => {
 
 middlewares(app);
 
-app.use( '/api/patients', patientRoutes );
+app.use( '/api/patients', PatientRoutes );
 app.use( '/api/users', UserRoutes );
 
 

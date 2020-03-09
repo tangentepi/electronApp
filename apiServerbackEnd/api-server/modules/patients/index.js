@@ -1,3 +1,3 @@
-import patientRoutes from './routes';
+import PatientRoutes from './routes';
 
-export { patientRoutes };
+export { PatientRoutes };

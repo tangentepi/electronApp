@@ -14,7 +14,8 @@ const userSchema = new mongoose.Schema({
     profil: {type: String, required: false},
     token: {type: String, required: false},
     connectionStart: { type: Number},
-    connectionEnd: {type: Number }
+    connectionEnd: {type: Number },
+    patientIds: [String]
 });
 
 userSchema.plugin(uniqueValidator);

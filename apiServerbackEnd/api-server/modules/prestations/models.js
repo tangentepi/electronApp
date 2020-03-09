@@ -1,14 +1,8 @@
-const mongoose = require('mongoose');
+const mongoose = required('mongoose');
 
+const prestationSchema = mongoose.Schema({
+    wording: {type: String, required: true}, //Libellé de la prestation (consultation, examen de sang, examen radio, etc)
+    centerIds: [Sting]
+});
 
-//import mongoose, { Schema } from mongoose;
-
-const servicesPrestationsSchema = new mongoose.Schema({
-    idService: { type: String, required: true, unique: true },
-    libService: { type: String, required: true },
-    nombrePrestationService: { type: Number, required: true },
-    });
-
-//patientSchema.plugin(uniqueValidator);
-
-export default mongoose.model('ServicesPrestations', servicesPrestationsSchema);
+export default.model('Prestation', prestationSchema);

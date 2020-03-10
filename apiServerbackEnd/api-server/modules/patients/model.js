@@ -25,9 +25,11 @@ const patientSchema = new mongoose.Schema({
     fatherFullName: { type: String, required: true }, // Nom et prénom du Père
     motherFullName: { type: String, required: true}, // Nom et prénom de la Mère
     conventionId: {type: String, required: true},
-    registringDate: {type: Date, required: true, default: Date.now},
-    centerIds: [String],
-    userIds:  [String]  // L'identifient du médecin  
+    users: [{userIds: {type: String, required: true},  // L'identifient du médecin qui enregistre le patient 
+    registringDate: {type: Date, required: true, default: Date.now},//date d'enregistrement du patient
+    centerIds: {type: String, required: true} // Centre (lieu ou Service) d'enregistrement 
+    }]
+    
 });
 
 //patientSchema.plugin(uniqueValidator);

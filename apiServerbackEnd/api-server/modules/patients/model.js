@@ -24,10 +24,10 @@ const patientSchema = new mongoose.Schema({
     nationality: { type: String, required: true }, // Nationalité
     fatherFullName: { type: String, required: true }, // Nom et prénom du Père
     motherFullName: { type: String, required: true}, // Nom et prénom de la Mère
-    conventionId: {type: String, required: true},
-    users: [{userIds: {type: String, required: true},  // L'identifient du médecin qui enregistre le patient 
+    conventionId: {type: mongoose.Types.ObjectId, ref: 'Convention', required: true},
+    users: [{userIds: {type: mongoose.Types.ObjectId, ref:'User' , required: true},  // L'identifient du médecin qui enregistre le patient 
     registringDate: {type: Date, required: true, default: Date.now},//date d'enregistrement du patient
-    centerIds: {type: String, required: true} // Centre (lieu ou Service) d'enregistrement 
+    centerIds: {type: mongoose.Types.ObjectId, ref: 'Center', required: true} // Centre (lieu ou Service) d'enregistrement 
     }]
     
 });

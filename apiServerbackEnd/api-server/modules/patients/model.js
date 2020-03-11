@@ -24,9 +24,10 @@ const patientSchema = new mongoose.Schema({
     nationality: { type: String, required: true }, // Nationalité
     fatherFullName: { type: String, required: true }, // Nom et prénom du Père
     motherFullName: { type: String, required: true}, // Nom et prénom de la Mère
+    imageUrl: {type: String}, // l'URL de la photo du patient
     conventionId: {type: mongoose.Types.ObjectId, ref: 'Convention', required: true},
-    users: [{userIds: {type: mongoose.Types.ObjectId, ref:'User' , required: true},  // L'identifient du médecin qui enregistre le patient 
-    registringDate: {type: Date, required: true, default: Date.now},//date d'enregistrement du patient
+    registrationInfos: [{userIds: {type: mongoose.Types.ObjectId, ref:'User' , required: true},  // L'identifient du médecin qui enregistre le patient 
+    registrationDate: {type: Date, required: true, default: Date.now},//date d'enregistrement du patient
     centerIds: {type: mongoose.Types.ObjectId, ref: 'Center', required: true} // Centre (lieu ou Service) d'enregistrement 
     }]
     

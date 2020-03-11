@@ -1,3 +1,3 @@
-import prestationModel from './models';
+import prestationModel from './model';
 
 export {prestationModel} ;

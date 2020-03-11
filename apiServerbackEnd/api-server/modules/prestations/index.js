@@ -1,3 +1,6 @@
-import prestationModel from './model';
+import PrestationModel from './model';
+import PrestationRoutes from './routes';
 
-export {prestationModel} ;
+export {PrestationModel};
+export {PrestationRoutes};
+

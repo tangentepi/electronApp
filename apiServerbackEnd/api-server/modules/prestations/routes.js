@@ -6,4 +6,4 @@ const multer = require('../../middleware/multer-config');
 
 const routes = new Router();
 
-routes.
+routes.post('/', auth, Prestation.createPrestation);

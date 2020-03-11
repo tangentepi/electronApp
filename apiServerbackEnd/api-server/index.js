@@ -5,6 +5,8 @@ import dbConfig from './config/db';
 import middlewares from './config/middlewares';
 import { UserRoutes } from './modules';
 import { PatientRoutes } from './modules';
+import {CenterRoutes} from './modules';
+import {PrestationRoutes} from './modules';
 
 const app = express();
 
@@ -27,8 +29,10 @@ app.use((req, res, next) => {
 
 middlewares(app);
 
-app.use( '/api/patients', PatientRoutes );
-app.use( '/api/users', UserRoutes );
+app.use( '/api/patients' ,  PatientRoutes );
+app.use( '/api/users' ,  UserRoutes );
+app.use( '/api/centers' ,  CenterRoutes );
+app.use( '/api/prestations' ,  PrestationRoutes );
 
 
 const PORT  = 3001;

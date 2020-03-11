@@ -1,5 +1,5 @@
-import CenterModel from './model';
+// import CenterModel from './model';
 import CenterRoutes from './routes';
 
-export {CenterModel};
+// export {CenterModel};
 export {CenterRoutes};

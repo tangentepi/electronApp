@@ -25,16 +25,16 @@ export const createPrestation = (req, res, next) => {
 // Modification d'une prestation
 
 export const modifyPrestation = (req, res, next) => {
-    const prestation = new Prestation ({
-        _id: req.params.id,
-        wording: req.body.wording,
-        centerIds: req.body.centerId
-    });
-    Prestation.updateOne({_id: req.params.id}, prestation).then(
+    // const prestation = new Prestation ({
+    //     _id: req.params.id,
+    //     wording: req.body.wording,
+    //     centerIds: req.body.centerId
+    // });
+    Prestation.updateOne({_id: req.params.id}, {wording: req.body.wording, $push:{"centerIds":{$each: [req.body.centerId]}}}).then(
         () => {
             res.status(201).json({
                 message: 'Prestation updated successfully !',
-                prestation: prestation
+                // prestation: prestation
             });
         }
     ).catch(

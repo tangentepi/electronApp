@@ -2,9 +2,9 @@ import Center from './model';
 
 export const createCenter = (req, res, next) => {
     const center = new Center({
-        wording: req.body.wording,
-        patientIds: req.body.patientId,
-        prestationIds: req.body.prestationId
+        wording: req.body.wording
+        // ,[patientIds]: req.body.patientId,
+        // prestationIds: req.body.prestationId
     });
     center.save().then(
         () => {

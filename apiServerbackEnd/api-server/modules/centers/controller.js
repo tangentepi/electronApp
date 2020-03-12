@@ -9,8 +9,8 @@ export const createCenter = (req, res, next) => {
     center.save().then(
         () => {
             res.status(201).json({
-                message: 'The center has been created succsessfully !',
-                center: center
+                message: 'The center has been created succsessfully !'
+                //,center: center
                 });
         }
     ).catch(

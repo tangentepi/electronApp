@@ -7,3 +7,6 @@ const multer = require('../../middleware/multer-config');
 const routes = new Router();
 
 routes.post('/', auth, Prestation.createPrestation);
+routes.put('/:id', auth, Prestation.modifyPrestation);
+
+export default routes;

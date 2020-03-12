@@ -5,8 +5,8 @@ import dbConfig from './config/db';
 import middlewares from './config/middlewares';
 import { UserRoutes } from './modules';
 import { PatientRoutes } from './modules';
-import {CenterRoutes} from './modules';
-import {PrestationRoutes} from './modules';
+import { CenterRoutes } from './modules';
+import { PrestationRoutes } from './modules';
 
 const app = express();
 

@@ -1,5 +1,7 @@
 import Prestation from './model';
 
+// Ajout d'une prestation
+
 export const createPrestation = (req, res, next) => {
     const prestation = new Prestation({
         wording: req.body.wording,
@@ -16,6 +18,28 @@ export const createPrestation = (req, res, next) => {
             res.status(400).json({
                 error : error
             });
+        }
+    );
+};
+
+// Modification d'une prestation
+
+export const modifyPrestation = (req, res, next) => {
+    const prestation = new Prestation ({
+        _id: req.params.id,
+        wording: req.body.wording,
+        centerIds: req.body.centerId
+    });
+    Prestation.updateOne({_id: req.params.id}, prestation).then(
+        () => {
+            res.status(201).json({
+                message: 'Prestation updated successfully !',
+                prestation: prestation
+            });
+        }
+    ).catch(
+        (error) => {
+            res.status(400).json({error: error});
         }
     );
 };

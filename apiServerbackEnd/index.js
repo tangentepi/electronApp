@@ -1,3 +1,3 @@
 require("@babel/register");
 require("@babel/polyfill");
-require("./api-server/") ;
+require("./api-server/");

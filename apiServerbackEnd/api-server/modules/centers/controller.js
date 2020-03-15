@@ -31,7 +31,6 @@ export const createCenter = (req, res, next) => {
                                 () => {
                                     res.status(201).json({
                                         message: 'The center has been updated succsessfully !'
-                                        //,center: center
                                         });
                                 }
                             ).catch(

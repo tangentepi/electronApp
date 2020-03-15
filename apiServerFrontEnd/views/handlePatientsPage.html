@@ -15,33 +15,35 @@
     </head>
     <body data-spy="scroll" data-offset="20">        
         <div class="container">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="navbar-header">
-                    <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
-                </div>                
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#p0">Gestion Patients</a> </li>
-                    <li><a href="#p1">Patients réçents</a></li>
-                </ul>
-            </nav>
-            <div id="p0">
-                <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
+                    </div>                
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#p0">Gestion Patients</a> </li>
+                        <li><a href="#p1">Liste des États</a></li>
+                    </ul>
+                </nav>
+            </div> <!-- fin container nav -->
+            <div class="row">
+                <div id="p0">
                     <div class="col-2 col-sm-2 col-md-2"></div>
                     <div class="col-8 col-md-8 col-sm-8">
                         <div class="row rowForm">
-                            <form action="">
-                                <div class="row">
-                                    <div class="form-group patientHandling col-8 col-sm-8 col-md-8">
-                                        <label for="findPatient" class="patientNumberLabel">Numéro du Patient</label>
-                                        <input type="text" class="form-control" required>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="form-group patientHandling col-8 col-sm-8 col-md-8">
+                                            <label for="findPatient" class="patientNumberLabel">Numéro du Patient</label>
+                                            <input type="search" class="form-control inputs" id="findPatient" required>
+                                        </div>
+                                        <div class="form-group col-4 col-sm-4 col-md-4">
+                                            <input type="submit" class="form-control btn-default findButton" value="Rechercher">
+                                            <!-- <button class="form-control btn-default findButton"><img src="../img/icones/find.png" alt="find_icon" class="icon" style="float: left;"><h6 class="findButtonName">Rechercher</h6></button> -->
+                                        </div>
                                     </div>
-                                    <div class="form-group col-4 col-sm-4 col-md-4">
-                                        <input type="submit" class="form-control btn-default findButton" value="Rechercher">
-                                        <!-- <button class="form-control btn-default findButton"><img src="../img/icones/find.png" alt="find_icon" class="icon" style="float: left;"><h6 class="findButtonName">Rechercher</h6></button> -->
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
+                                </form>
+                        </div> <!-- fin row form -->
                         <div class="row">
                             <a href="./savePatientPage.html"><input type="submit" class="form-control btn-default addButton" value="NOUVEAU PATIENT"></a>
                             <!-- <a href="./savePatientPage.html"></a><button class="btn-default form-control addButton"> <img src="../img/icones/add.png" alt="add_icon" class="icon img-responsive" style="float: left;"><h6 class="addButtonName" >NOUVEAU PATIENT</h6 ></button></a> -->
@@ -50,7 +52,120 @@
                     <div class="col-2 col-sm-2 col-md-2"></div>
                 </div>
             </div>
-            <div id="p1" class="patientHandling"><h1>LISTE DES PATIENTS</h1> </div>
+            <div class="row">
+                <div id="p1" class="statesList">
+                        <h1>LISTE DES ÉTATS</h1>
+                        <ul>
+                            <li>
+                                <form action="">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-3 col-md-6">
+                                            <label for="state1Input1" class="statesLabelsFontSize statesLabelsFontSize statesLabelsTextAlign">Liste des patients enregistrés en/au :</label>
+                                                <input type="text" class="form-control statesInputsFontSize" id="state1Input1" list="centersList" required>
+                                                    <datalist id="centersList">
+                                                            <option value="PÉDIATRIE">
+                                                            <option value="URGENCES ET SALLE D’ACCOUCHEMENT">
+                                                            <option value="DIABÉTOLOGIE">
+                                                            <option value="ENDOSCOPIE">
+                                                            <option value="DERMATOLOGIE">
+                                                            <option value="MALADIES INFECTIEUSES ET TROPICALES (SMIT)">
+                                                            <option value="PNEUMO-PHTISIOLOGIE (PPH)">
+                                                            <option value="PSYCHIATRIE">
+                                                            <option value="CABINET DENTAIRE">
+                                                    </datalist>
+                                        </div>
+                                        <div class="co-xs-3 col-sm-3 col-md-3">
+                                            <label for="state1Input2" class="statesLabelsFontSize">Du :</label>
+                                            <input type="date" class="form-control statesInputsFontSize" id="state1Input2" required>
+                                        </div>
+                                        <div class="col-xs-3 col-sm-3 col-md-3">
+                                            <label for="state1Input3" class="statesLabelsFontSize">Au :</label>
+                                            <input type="date" class="form-control statesInputsFontSize" id="state1Input3" required>
+                                        </div>
+                                    </div>
+                                    <div class="row"> 
+                                        <div class="col-xs-9 col-sm-9 col-md-9"></div><div class="col-xs-2 col-sm-2 col-md-2"><br /><input type="submit" class="btn-defaut form-control" value="VOIR LA LISTE"><div class="col-xs-1 col-sm-1 col-md-1"></div></div>  
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-3 col-md-6">
+                                                <label for="state1Input1" class="statesLabelsFontSize statesLabelsFontSize statesLabelsTextAlign">Liste des patients ayant fait l'objet de :</label>
+                                                    <input type="text" class="form-control statesInputsFontSize" id="state1Input1" list="prestationsList" required>
+                                                        <datalist id="prestationsList">
+                                                                <option value="HOSPITALISATIONS">
+                                                                <option value="MISE EN OBSERVATION">
+                                                                <option value="CONSULTATIONS">
+                                                                <option value="PANSEMENTS">
+                                                                <option value="EXAMENS LABO">
+                                                                <option value="EXTRACTION">
+                                                                <option value="EXAMENS RADIO">
+                                                                <option value="ACCOUCHEMENTS">
+                                                        </datalist>
+                                            </div>
+                                            <div class="co-xs-3 col-sm-3 col-md-3">
+                                                <label for="state1Input2" class="statesLabelsFontSize">Du :</label>
+                                                <input type="date" class="form-control statesInputsFontSize" id="state1Input2" required>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                                <label for="state1Input3" class="statesLabelsFontSize">Au :</label>
+                                                <input type="date" class="form-control statesInputsFontSize" id="state1Input3" required>
+                                            </div>
+                                        </div>
+                                        <div class="row"> 
+                                            <div class="col-xs-9 col-sm-9 col-md-9"></div><div class="col-xs-2 col-sm-2 col-md-2"><br /><input type="submit" class="btn-defaut form-control" value="VOIR LA LISTE"><div class="col-xs-1 col-sm-1 col-md-1"></div></div>  
+                                        </div>
+                                    </div>
+                                </form>
+                            </li>
+                            <li>
+                                <form action="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <label for="priceInput" class="statesLabelsFontSize statesLabelsTextAlign">Liste des prestations coûtant plus de :</label>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                                <input type="text" class="form-control statesInputsFontSize statesLabelsTextAlign_" id="priceInput" placeholder="000 000 000" required>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                                <label for="" class="statesLabelsFontSize">(Francs CFA)</label>
+                                            </div>
+                                        </div>                                        
+                                        <div class="row"> 
+                                            <div class="col-xs-9 col-sm-9 col-md-9"></div><div class="col-xs-2 col-sm-2 col-md-2"><br /><input type="submit" class="btn-default form-control" value="VOIR LA LISTE"><div class="col-xs-1 col-sm-1 col-md-1"></div></div>  
+                                        </div>
+                                    </div>
+                                </form>                            
+                            </li>
+                            <li>
+                                <form action="">
+                                    <div class="form-group">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6">
+                                                <label for="priceInput" class="statesLabelsFontSize statesLabelsTextAlign">Liste des prestations enregistrées du :</label>
+                                            </div>                                            
+                                            <div class="col-xs-2 col-sm-2 col-md-2">
+                                                <input type="date" class="form-control statesInputsFontSize statesLabelsTextAlign_" id="priceInput" required>
+                                            </div>
+                                            <div class="col-xs-1 col-sm-1 col-md-1">
+                                                <label for="" class="statesLabelsFontSize">Au :</label>
+                                            </div>
+                                            <div class="col-xs-3 col-sm-3 col-md-3">
+                                                <input type="date" class="form-control statesInputsFontSize statesLabelsTextAlign_" id="priceInput" required>
+                                            </div>
+                                        </div>                                        
+                                        <div class="row"> 
+                                            <div class="col-xs-9 col-sm-9 col-md-9"></div><div class="col-xs-2 col-sm-2 col-md-2"><br /><input type="submit" class="btn-default form-control" value="VOIR LA LISTE"><div class="col-xs-1 col-sm-1 col-md-1"></div></div>  
+                                        </div>
+                                    </div>
+                                </form>                            </li>
+                        </ul>
+                </div>
+            </div>            
         </div>
     </body>
 </html>

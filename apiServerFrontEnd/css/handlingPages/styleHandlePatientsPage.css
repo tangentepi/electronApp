@@ -1,31 +1,89 @@
 body{
     font-family: 'Questrial';
     position: relative;
+    background-color: #000;
 }
-#p0, #p1{
+
+.state1, .state2 ,.state3 ,.state4{
+    min-height: 100px;
+}
+.statesInputsFontSize{
+    font-size: 14px!important ;
+}
+.statesLabelsTextAlign, .statesLabelsTextAlign_{
+    text-align: center;
+}
+.statesLabelsTextAlign:hover{
+    color: #ffff00;
+}
+.statesLabelsFontSize{
+    font-size: 23px;
+}
+.inputs{
+    text-align: center;
+    font-weight: bold;
+    /* font-size: 20px;
+    width:300px;
+    height: 29px;
+    border-radius: 6px;
+    color: #000; */
+}
+
+.state1{
+    background-color: rgba(255, 6, 6, 0);
+}
+.state2{
+    background-color: rgba(187, 255, 0, 0);
+}
+.state3{
+    background-color: rgba(0, 255, 255, 0.5);
+}
+.state4{
+    background-color: rgb(0, 162, 255, 0.5);
+}
+ul{
+    /* list-style: square outside url("../../ico/ul1.png"); */
+    list-style-type: none;
+}
+
+
+#p0{
+    background-color: #0F0;
+    /* padding: 55px 10px 0 0 ; */
+    background-image: url("../../img/imgHopital/hopital4.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 749px;
 }
-#p0{background-color: #0F0; padding: 55px 10px 0 0 ;
-background-image: url("../../img/medecine/medecine1.jpg");
-background-repeat: no-repeat;
-background-size: 100%;
+#p1{
+    background-image: url("../../img/imgHopital/hopital5.jpg");
+    background-size: cover;
+    background-color: #F00;
+    margin-top: -20px;
+    padding-top: 27px;
+    height: 684px;
+    color: #fff;
+    font-weight: bold;
 }
-#p1{background-color: #F00;}
+
+
 
 .rowForm{
     padding-top: 200px;
 }
 .patientNumberLabel{
     color: #FFF;
-    font-size: 20px;
+    font-size: 23px;
     text-align: center;
 }
 .patientNumberLabel:hover{
     color: #ffff00;
+    text-shadow: 40px 40px 102px #F00 !important;
+
 
 }
 .findButton{
-    margin-top: 33px;
+    margin-top: 37px;
     background-image: url("../../img/icones/find.png")!important;
     background-repeat: no-repeat!important;
     background-size: 18%;
@@ -49,7 +107,13 @@ background-size: 5%!important;
     width: 25px;
     height: 25px;
 }
+.statesList li{
+    margin: 10px 0;
+}
 li a{
     color: #FF0;
     font-weight: bold;
+}
+.container{
+    background-color: #000;
 }

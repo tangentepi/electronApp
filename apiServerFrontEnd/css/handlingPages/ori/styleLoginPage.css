@@ -1,6 +1,11 @@
 body{
     background-color: #FFF;
     font-family: 'Questrial';
+    background-image: url("../../../img/imgHopital/hopital2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 95% 5%;
+    /*<img src="../img/imgHopital/hopital2.jpg" alt="" class="img-responsive" style="height: 599px;"> */
 }
 .logo1{
     margin-left: 20px;
@@ -14,18 +19,18 @@ body{
     margin-left: 10px;
     height: 70px;
     width: 70px;
-    background-image: url("../../../img/logos_&_armoiries/logoMSHP.jpg");
+    background-image: url("../../../img/logos_&_armoiries/logoMSHP.png");
     background-repeat: no-repeat;
     background-size: 75%;
 }
-.logo3{
+/* .logo3{
     margin-top: 6px!important;
     height: 50px;
     width: 70px;
     background-image: url("../../../img/logos_&_armoiries/logoMFP.png");
     background-repeat: no-repeat;
     background-size: 100%;
-}
+} */
 .logo4{
     height: 70px;
     width: 70px;
@@ -33,9 +38,14 @@ body{
     background-repeat: no-repeat;
     background-size: 100%;
 }
-.logo1, .logo2, .logo3, .logo4{
+.logo1, .logo2, /*.logo3,*/ .logo4{
     margin: 3px 31px;
     float: left;
+
+}
+img{
+    box-shadow: -10px 0px 12px #000;
+
 }
 .row-between{
     height: 5px;
@@ -43,7 +53,7 @@ body{
 .appLogo{
     height: 600px;
     width: 450px;
-    background-color: #FFF;
+    background-color: rgba(0, 0, 0, 0);
     margin: 0 50px 0 40px;
     background-repeat: no-repeat;
     background-size: 100%;

@@ -16,17 +16,17 @@
             <div class="right">
                 <div class="row proportion1"><h1>ChuDesktop</h1></div>
                 <div class="row">
-                    <form action="./handlePatientsPage.html">
+                    <form action="#" method="POST" autocomplete="on" id="loginForm">
                         <div class="row loginTitle proportion1">LOGIN</div>
                         <div class="row proportion1 loginFrame">
                             <div class="form-group">
-                                <label class="email" for="emailEntered">email: <br/> <input type="email" id="emailEntered" class="form-control email inputs"></label>
+                                <label class="email" for="emailEntered">email: <br/> <input type="email" id="emailEntered" class="form-control email inputs" required autofocus></label>
                             </div>
                             <div class="form-group">
-                                <label for="passwordEntered" class="password ">Mot de passe: <br/><input type="password" id="passwordEntered" class="form-control password inputs"></label>
+                                <label for="passwordEntered" class="password ">Mot de passe: <br/><input type="password" id="passwordEntered" class="form-control password inputs" minlength="4" required></label>
                             </div>
                         </div>
-                        <div class="row proportion1"><button class="btn-default buttonFrame ">CONNEXION</button></div>
+                        <div class="row proportion1"><button type="submit" class="btn-default buttonFrame " id="loginButton">CONNEXION</button></div>
                     </form>
                 </div>
                 <div class="row"></div>

@@ -3,6 +3,16 @@ body{
     position: relative;
     background-color: #000;
 }
+.patientInfos{
+    margin-left: 320px;
+}
+.imgProfil{
+    /* background-image: url("../../img/userProfils/userProfil1.png");
+    background-repeat: no-repeat;
+    background-size: cover; */
+    color:#F00;
+    /* height: 5px; */
+}
 
 .state1, .state2 ,.state3 ,.state4{
     min-height: 100px;

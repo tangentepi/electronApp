@@ -1,6 +1,19 @@
 body{
     font-family: 'Questrial';
 }
+nav{
+    max-height: 100px;
+}
+#saveForm{
+    padding-top: 120px;
+}
+.patientInfos{
+    margin-left: 650px;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}
 .container1{
     background-color: #000;
     height: 20px;

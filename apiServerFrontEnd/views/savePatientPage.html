@@ -13,16 +13,20 @@
 			<link rel="stylesheet" type="text/css" href="../css/handlingPages/styleSavePatientPage.css">
 	</head> 
 	<body>
-		<div class="container container1 profilUserMenu1">
-			<div class="row profilUserMenu2">
-				<div class="col-xs-8 col-sm-8 col-md-8"></div>
-				<div class="col-xs-2 col-sm-2 col-md-2 userInfo"><h4>NOMUSER</h4><h4>PRENOMUSER</h4><h4>NUMUSER</h4></div>
-				<div class="col-xs-2 col-sm-2 col-md-2 profilUserMenu3"></div>
-			</div>
-		</div>
 		<div class="container container21 container22">
 			<div class="row">
-				<form action="">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
+                    </div>                
+                    <ul class="nav navbar-nav">
+                        <li class="patientInfos"><a href="#"><form action=""><div class="form-group"><input type="text" class="form-control" id="userId" readonly></div></form></a></li>
+                        <li><a href="#"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
+                    </ul>
+                </nav>
+            </div> <!-- fin container nav -->
+			<div class="row">
+				<form action="" id="saveForm">
 					<div class="form-group col-xs-12 col-sm-6 col-md-6">
 						<label for="nameEntered">Nom</label>
 						<input class="form-control" type="text" id="nameEntered">

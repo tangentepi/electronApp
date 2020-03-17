@@ -1,5 +1,6 @@
 window.onload = handlePatient();
 
 function handlePatient(){
-    document.getElementById("userId").value = sessionStorage.userId;
+    document.getElementById("userId").value = `${sessionStorage.userFirstName.toLowerCase()} ${sessionStorage.userName.toUpperCase()}`;
+    //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
 }

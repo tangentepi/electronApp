@@ -65,8 +65,9 @@ exports.login = (req, res, next) => {
                                         if(timeLeft<=0){//Token encore valide
                                                 res.status(200).json({
                                                 tempsRestant: timeLeft,
-                                               // user,
                                                 userId: user._id,
+                                                userName: user.name,
+                                                userFirstName: user.firstName,
                                                 token: user.token,
                                                 message: "token encore valide; pième connection !"
                                             });
@@ -79,6 +80,8 @@ exports.login = (req, res, next) => {
                                                       res.status(201).json({
                                                            // user,
                                                             userId: user._id,
+                                                            userName: user.name,
+                                                            userFirstName: user.firstName,
                                                             token: user.token,
                                                             message: 'pième connectin avec nouveau token!'
                                                       });
@@ -103,6 +106,8 @@ exports.login = (req, res, next) => {
                                           res.status(201).json({
                                          // user,
                                           userId: user._id,
+                                          userName: user.name,
+                                          userFirstName: user.firstName,
                                           token: user.token,
                                           message: 'Première connection!'
                                           });

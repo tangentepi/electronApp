@@ -3,8 +3,21 @@ body{
     position: relative;
     background-color: #000;
 }
+
+.title{
+    text-align: center;
+    font-size: 900px!important;
+    color: #FFF;
+    text-shadow: -10px 10px 12px #000;;
+}
 .patientInfos{
     margin-left: 320px;
+}
+.userInfos{
+    color: #FFF!important   ;
+    background-color: rgba(0,0,0, 0)!important;
+    border-color: rgba(0, 0, 0, 0)!important;
+    text-align: right!important;
 }
 .imgProfil{
     /* background-image: url("../../img/userProfils/userProfil1.png");
@@ -45,6 +58,7 @@ body{
 .state2{
     background-color: rgba(187, 255, 0, 0);
 }
+
 .state3{
     background-color: rgba(0, 255, 255, 0.5);
 }
@@ -76,10 +90,12 @@ ul{
     font-weight: bold;
 }
 
-
+.bottomTitle{
+    margin-bottom: 150px;
+}
 
 .rowForm{
-    padding-top: 200px;
+    padding-top: 90px;
 }
 .patientNumberLabel{
     color: #FFF;
@@ -126,4 +142,8 @@ li a{
 }
 .container{
     background-color: #000;
+}
+
+.titleLevel{
+    padding-top: 40px!important;
 }

@@ -23,24 +23,25 @@
                     <ul class="nav navbar-nav">
                         <li class="active"><a href="#p0">Gestion Patients</a> </li>
                         <li><a href="#p1">Liste des États</a></li>
-                        <li class="patientInfos"><a href="#"><form action=""><div class="form-group"><input type="text" class="form-control" id="userId" readonly></div></form></a></li>
+                        <li class="patientInfos"><a href="#"><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
                         <li><a href="#"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
                     </ul>
                 </nav>
-            </div> <!-- fin container nav -->
+            </div> <!-- fin row nav -->
             <div class="row">
                 <div id="p0">
                     <div class="col-2 col-sm-2 col-md-2"></div>
                     <div class="col-8 col-md-8 col-sm-8">
                         <div class="row rowForm">
                                 <form action="">
+                                    <div class="row title bottomTitle"><div class="col-xs-12 col-sm-12 col-md-12"><h1>ENREGISTREMENT DES PATIENTS</h1></div></div>
                                     <div class="row">
                                         <div class="form-group patientHandling col-8 col-sm-8 col-md-8">
                                             <label for="findPatient" class="patientNumberLabel">Numéro du Patient</label>
                                             <input type="search" class="form-control inputs" id="findPatient" required>
                                         </div>
                                         <div class="form-group col-4 col-sm-4 col-md-4">
-                                            <input type="submit" class="form-control btn-default findButton" value="Retrouver le patient">
+                                            <input type="submit" class="form-control btn-default findButton" value="Retrouver un patient">
                                             <!-- <button class="form-control btn-default findButton"><img src="../img/icones/find.png" alt="find_icon" class="icon" style="float: left;"><h6 class="findButtonName">Rechercher</h6></button> -->
                                         </div>
                                     </div>
@@ -56,10 +57,10 @@
             </div>
             <div class="row">
                 <div id="p1" class="statesList">
-                        <h1>LISTE DES ÉTATS</h1>
                         <ul>
                             <li>
                                 <form action="">
+                                    <div class="row title titleLevel"><div class="col-xs-12 col-sm-12 col-md-12"><h1>LISTE DES ÉTATS</h1></div></div>
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-3 col-md-6">
                                             <label for="state1Input1" class="statesLabelsFontSize statesLabelsFontSize statesLabelsTextAlign">Liste des patients enregistrés en/au :</label>

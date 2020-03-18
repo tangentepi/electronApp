@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 //const mongooseSchema = require('mongoose.Schema')
-//const uniqueValidator = require('mongoose-unique-validator');
+const uniqueValidator = require('mongoose-unique-validator');
 
 
 // ************************* hateoasLinker = require('express-hateoas-links');
@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 //import mongoose, { Schema } from mongoose;
 
 const patientSchema = new mongoose.Schema({
+    patientId: {type: String, required: true, unique: true},// Numéro unique du patient
     name: { type: String, required: true }, //Nom du patient
     firstName: { type: String, required: true }, // Prénom du patient
     birthDate: { type: Date, required: true }, // [MM/JJ/AAAA]
@@ -37,6 +38,6 @@ const patientSchema = new mongoose.Schema({
     
 });
 
-//patientSchema.plugin(uniqueValidator);
+patientSchema.plugin(uniqueValidator);
 
 export default mongoose.model('Patient', patientSchema);

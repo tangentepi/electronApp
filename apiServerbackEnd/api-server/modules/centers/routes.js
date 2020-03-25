@@ -8,6 +8,7 @@ const auth = require('../../middleware/auth');
 const routes = new Router();
 
 
-routes.post('/', /*auth,*/ Center.createCenter);
+routes.post('/', auth, Center.createCenter);
+routes.get('/', auth, Center.getAllCenter);
 
 export default routes;

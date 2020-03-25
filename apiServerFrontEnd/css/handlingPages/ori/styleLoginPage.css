@@ -34,7 +34,7 @@ body{
 .logo4{
     height: 70px;
     width: 70px;
-    background-image: url("../../../img/logos_&_armoiries/logoChuT__.jpg");
+    background-image: url("../../../img/logos_&_armoiries/logoChuT__.png");
     background-repeat: no-repeat;
     background-size: 100%;
 }
@@ -68,7 +68,8 @@ img{
     float: left;
     width: 477px;/*Max-width=477px*/
     height: 700px;
-    background-color: #093CCD	;
+    background-color: #3867d6;
+    /*#093CCD	;*/
     /* #F1948A; */
 }
 

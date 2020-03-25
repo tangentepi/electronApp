@@ -20,9 +20,11 @@
                     <div class="navbar-header">
                         <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
                     </div>                
-                    <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav">                    
                         <li class="active"><a href="#p0">Gestion Patients</a> </li>
-                        <li><a href="#p1">Liste des États</a></li>
+                        <li><a href="#p1">Liste des États</a></li>                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
                         <li class="patientInfos"><a href="#"><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
                         <li><a href="#"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
                     </ul>
@@ -48,7 +50,7 @@
                                 </form>
                         </div> <!-- fin row form -->
                         <div class="row">
-                            <a href="./savePatientPage.html"><input type="submit" class="form-control btn-default addButton" value="NOUVEAU PATIENT"></a>
+                            <a href="./savePatientsPage.html"><input type="submit" class="form-control btn-default addButton" value="NOUVEAU PATIENT"></a>
                             <!-- <a href="./savePatientPage.html"></a><button class="btn-default form-control addButton"> <img src="../img/icones/add.png" alt="add_icon" class="icon img-responsive" style="float: left;"><h6 class="addButtonName" >NOUVEAU PATIENT</h6 ></button></a> -->
                         </div>
                     </div>
@@ -59,7 +61,7 @@
                 <div id="p1" class="statesList">
                         <ul>
                             <li>
-                                <form action="">
+                                <form action="" id="stateOneForm">
                                     <div class="row title titleLevel"><div class="col-xs-12 col-sm-12 col-md-12"><h1>LISTE DES ÉTATS</h1></div></div>
                                     <div class="row">
                                         <div class="col-xs-6 col-sm-3 col-md-6">
@@ -87,7 +89,11 @@
                                         </div>
                                     </div>
                                     <div class="row"> 
-                                        <div class="col-xs-9 col-sm-9 col-md-9"></div><div class="col-xs-2 col-sm-2 col-md-2"><br /><input type="submit" class="btn-defaut form-control" value="VOIR LA LISTE"><div class="col-xs-1 col-sm-1 col-md-1"></div></div>  
+                                        <div class="col-xs-9 col-sm-9 col-md-9"></div>
+                                        <div class="col-xs-2 col-sm-2 col-md-2"><br />
+                                            <input type="submit" class="btn-defaut form-control" value="VOIR LA LISTE">
+                                            <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                                        </div>
                                     </div>
                                 </form>
                             </li>

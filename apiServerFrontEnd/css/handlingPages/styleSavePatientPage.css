@@ -1,30 +1,51 @@
 body{
-    font-family: 'Questrial';
+    font-family: 'Questrial'!important;
+    position: relative;
+}
+nav{
+    font-weight: bold;
+}
+.userInfos{
+    color: #FFF!important;
+    background-color: rgba(0,0,0, 0.8)!important;
+    border-color: rgba(0, 0, 0, 0)!important;
+    text-align: right!important;
+}
+#p0{
+    background-image: url("../../img/médecins/medecin2.jpg");
+    background-color: #290e0e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #eeff00;
+    font-weight: bold;
+}
+#p1{
+    background-image: url("../../img/médecins/medecin2.jpg");
+    background-color: #290e0e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #eeff00;
+    font-weight: bold;
 }
 nav{
     max-height: 100px;
 }
-#saveForm{
-    padding-top: 120px;
+#ButtonNext{
+margin-top: 5px;
 }
-.patientInfos{
-    margin-left: 650px;
+form label{
+    font-size: 15px;
+    color: #FFF;
 }
 .icon{
     width: 25px;
     height: 25px;
 }
-.container1{
+/* .container1{
     background-color: #000;
     height: 20px;
-}
-.container21{
-    background-image: url("../../img/medecine/medecine10.jpg");
-    background-repeat: no-repeat;
-    background-size: 100%;
-    color: #eeff00;
-    font-weight: bold;
-}
+} */
+
 
 .profilUserMenu1{
     height: 130px;

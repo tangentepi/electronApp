@@ -16,8 +16,7 @@ function frontLogin() {
           sessionStorage.setItem("userId", userIdReceived);
           sessionStorage.setItem("userName", userName);
           sessionStorage.setItem("userFirstName", userFirstName);
-          sessionStorage.setItem("token", userTokenReceived);
-          alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
+          sessionStorage.setItem("userToken", userTokenReceived);
       }
   };
   request.open("POST", "http://localhost:3001/api/users/login");

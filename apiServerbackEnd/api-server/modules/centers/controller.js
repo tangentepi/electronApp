@@ -58,3 +58,13 @@ export const createCenter = (req, res, next) => {
     // });
 //     center.save()
 };
+
+export const getAllCenter = async (req, res, next) => {
+  try{
+    return res.status(200).json({centers: await Center.find()});
+  }
+  catch(e){
+    return res.status(e.status).json({error: true, message: 'Error with Center !'});
+  }
+
+};

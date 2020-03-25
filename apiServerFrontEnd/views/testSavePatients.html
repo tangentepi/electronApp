@@ -1,0 +1,122 @@
+<!Doctype html>
+<html>
+	<head>
+			<title>Test Save Patients</title>
+						
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<link rel="stylesheet" type="text/css" href="../css/handlingPages/styleTestSavePatients.css">
+	</head> 
+	<body >
+        <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="">1</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li><a href="#p0">p0</a></li>
+                    <li><a href="#p1">p1</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#p2">p2</a></li>
+                </ul>
+        </nav>
+				<form data-spy="scroll" data-offset="20" id="savePatientForm">
+                    <div id="p0">
+                    <div class="form-group">
+                       <label for="idEntered">patientId</label>
+                       <input type="text" class="form-control" id="idEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="nameEntered">name</label>
+                       <input type="text" class="form-control" id="nameEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="firstNameEntered">firstName</label>
+                       <input type="text" class="form-control" id="firstNameEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="birthDateEntered">birthDate</label>
+                       <input type="date" class="form-control" id="birthDateEntered" placeholder="Date de naissance" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="pieceNumberEntered">pieceNumber</label>
+                       <input type="text" class="form-control" id="pieceNumberEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="typeOfPieceEntered">typeOfPiece</label>
+                       <input type="text" class="form-control" id="typeOfPieceEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="genderEntered">gender</label>
+                       <input type="text" class="form-control" id="genderEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="addressEntered">address</label>
+                       <input type="text" class="form-control" id="addressEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="placeOfResidenceEntered">placeOfResidence</label>
+                       <input type="text" class="form-control" id="placeOfResidenceEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="phoneNumberEntered">phoneNumber</label>
+                       <input type="text" class="form-control" id="phoneNumberEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="employerEntered">employer</label>
+                       <input type="text" class="form-control" id="employerEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="electricityReleaseEntered">electricityRelease</label>
+                       <input type="text" class="form-control" id="electricityReleaseEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="waterClearanceEntered">waterClearance</label>
+                       <input type="text" class="form-control" id="waterClearanceEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="nationalityEntered">nationality</label>
+                       <input type="text" class="form-control" id="nationalityEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="fatherFullNameEntered">fatherFullName</label>
+                       <input type="text" class="form-control" id="fatherFullNameEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="motherFullNameEntered">motherFullName</label>
+                       <input type="text" class="form-control" id="motherFullNameEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="conventionIdEntered">conventionId</label>
+                       <input type="text" class="form-control" id="conventionIdEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <hr /><label for="">registrationInfos</label><hr />
+                       <label for="userIdsEntered">userIds</label>
+                       <input type="text" class="form-control" id="userIdsEntered" required>
+                   </div>
+                    </div>
+                    <div id="p1">
+                   <div class="form-group">
+                       <label for="registrationDateEntered">registrationDate</label>
+                       <input type="date" class="form-control" id="registrationDateEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <label for="centerIdsEntered">centerIds</label>
+                       <input type="text" class="form-control" id="centerIdsEntered" required>
+                   </div>
+                   <div class="form-group">
+                       <input type="submit" class="form-control btn-success" value="ENREGISTRER">
+                   </div>
+                    </div>
+                </form>
+        </div>
+	</body>
+	<script src="../js/testSavePatients.js"></script>
+</html>

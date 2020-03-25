@@ -10,7 +10,8 @@ export const createPrestation = (req, res, next) => {
     prestation.save().then(
         () => {
             res.status(201).json({
-                message: 'Prestation save successfully !'
+                message: 'Prestation save successfully !',
+                prestation: prestation
             });
         }
     ).catch(

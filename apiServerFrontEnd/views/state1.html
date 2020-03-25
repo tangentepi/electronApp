@@ -1,0 +1,41 @@
+<!Doctype html>
+<html>
+    <head>
+        <title> etat1  Liste des patients enregitrés sur une période donnée</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="../css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../css/handlingPages/ori/state1.css">
+    </head>
+    <body>
+        <div class="container table-responsive">
+            <div class="row row1"></div>
+            <div class="row">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
+                    </div>              
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="patientInfos"><a href="./handlePatientsPage.html"><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
+                        <li><a href="./handlePatientsPage.html"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
+                    </ul>
+                </nav>
+            </div> <!-- fin row nav -->
+            <div class="row">
+                <table class="table table-striped" id="state0neTab">
+                    <thead>
+                        <th>NOMS</th>
+                        <th>PRÉNOMS</th>
+                        <th>DATES D'ENREGISTRAMENT</th>
+                    </thead>
+                    <tbody id="stateOneTableBody">
+                    </tbody>
+                </table>
+                <input type="button" class="btn-success " value="Ajouter une ligne" id="addRowBtn"/>
+            </div> <!-- fin row tableau -->
+        </div>
+        
+            
+    </body>
+    <script src="../js/state1.js"></script>
+</html>

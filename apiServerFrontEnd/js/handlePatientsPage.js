@@ -9,17 +9,24 @@ sessionStorage.clear();
 
 window.onload = handlePatient();
 
+function userInfos(){
+    sessionStorage.setItem("userId", userId);
+    sessionStorage.setItem("userToken", userToken);
+    sessionStorage.setItem("userName", userName);
+    sessionStorage.setItem("userFirstName", userFirstName);
+}
+
 function handlePatient(){
     if(!userId){
         alert("Vous n'êtes pas connecté !");  
         document.getElementById("userInfos").value = "TEST MODE";
-      
-        }
-        else {
-            //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
-            //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
-            document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
-            }
+        
+    }
+    else {
+        //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
+        //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
+        document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+    }
 }
 
 //État 1
@@ -30,19 +37,47 @@ function state1(){
         if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
             var response = JSON.parse(this.responseText);
             var theLength = response.patients.length;
-            alert("Liste des Patients obtenue !");
-            alert(`${theLength} Patients trouvés`);
+            //alert("Liste des Patients obtenue !");
+            //alert(`${theLength} Patients trouvés`);
+            var state1Obj = {
+                center: document.getElementById("state1Input1").value,
+                minDate: document.getElementById("state1Input2").value,
+                maxDate: document.getElementById("state1Input3").value
+            };
+            // alert(`Centre: ${state1Obj.center}`);
+            // alert(`Date min: ${state1Obj.minDate}`);
+            // alert(`Date max: ${state1Obj.maxDate}`);
+
+            //Affectation de données à sessionStorage
+            var k = 0;
             for(i=0; i<theLength; i++){
-                sessionStorage.setItem(`patientId${i}`,`${response.patients[i].patientId}`);
-                sessionStorage.setItem(`patientName${i}`,`${response.patients[i].name}`);
-                sessionStorage.setItem(`patientFirstName${i}`,`${response.patients[i].firstName}`);
                 for(j=0; j<response.patients[i].registrationInfos.length; j++){
-                    sessionStorage.setItem(`patient${i}RegistrationDate${j}`,`${response.patients[i].registrationInfos[j].registrationDate}`);
-                }
+                    if(response.patients[i].registrationInfos[j].centerIds != state1Obj.center){
+                        alert(`********* Le Patient ${response.patients[i].name} ${response.patients[i].firstName} pourrait ne pas correspondre!\nL'un de ses centres d'enregistrement est: ${response.patients[i].registrationInfos[j].centerIds} *********`)
+                    }else{
+                        sessionStorage.setItem(`patientId${i}`,`${response.patients[i].patientId}`);
+                        sessionStorage.setItem(`patientName${i}`,`${response.patients[i].name}`);
+                        sessionStorage.setItem(`patientFirstName${i}`,`${response.patients[i].firstName}`);
+                        sessionStorage.setItem(`patient${i}RegistrationDate${j}`,`${response.patients[i].registrationInfos[j].registrationDate}`);
+                        sessionStorage.setItem(`patient${i}centerId${j}`,`${response.patients[i].registrationInfos[j].centerIds}`);
+                        k=k+1;
+                    }              
+                };
+            };
+            // Affichage des données enregistrées
+            if(k==0){
+                alert("Aucun patient ne correspond à la recherche !");
+            }else if(k==1){
+                alert(`Seulement ${k} Patient correspond à la recherche !`);
+            }else{
+                alert(`${k} Patients correspondent à la recherche !`);
             }
-            for (i=0; i<theLength; i++){
-                alert(`Identifiant: ${sessionStorage.getItem(`patientId${i}`)}\nNom: ${sessionStorage.getItem(`patientName${i}`)}\nPrénom:${sessionStorage.getItem(`patientFirstName${i}`)}`);
-            }
+
+            // for (i=0; i<theLength; i++){
+            //     for(j=0; j<response.patients[i].registrationInfos.length; j++){
+            //         alert(`Identifiant: ${sessionStorage.getItem(`patientId${i}`)}\nNom: ${sessionStorage.getItem(`patientName${i}`)}\nPrénom: ${sessionStorage.getItem(`patientFirstName${i}`)}\nDates d'enregistrement: ${sessionStorage.getItem(`patient${i}RegistrationDate${j}`)}`);
+            //     };
+            // };
 
         }
     };
@@ -50,25 +85,32 @@ function state1(){
         if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
             var response = JSON.parse(this.responseText);
             var theLength = response.centers.length;
+            var state1Obj = {
+                center: document.getElementById("state1Input1").value,
+                minDate: document.getElementById("state1Input2").value,
+                maxDate: document.getElementById("state1Input3").value
+            };
             alert("Liste des centres obtnue !");
             alert(`${theLength} Centres trouvés`);
             for(i=0; i<theLength; i++){
-                sessionStorage.setItem(`centerId${i}`,`${response.centers[i]._id}`);
-                sessionStorage.setItem(`centerWording${i}`,`${response.centers[i].wording}`);
+                if(response.centers[i].wording = state1Obj.center){
+                    sessionStorage.setItem(`centerId${i}`,`${response.centers[i]._id}`);
+                    sessionStorage.setItem(`centerWording${i}`,`${response.centers[i].wording}`);
+                }
             }
-            for(i=0; i<theLength; i++){
-                alert(`Identifiant du Centre: ${sessionStorage.getItem(`centerId${i}`)}\nNomdu Centre: ${sessionStorage.getItem(`centerWording${i}`)}`);
-            }
+            // for(i=0; i<theLength; i++){
+            //     alert(`Identifiant du Centre: ${sessionStorage.getItem(`centerId${i}`)}\nNom du Centre: ${sessionStorage.getItem(`centerWording${i}`)}`);
+            // }
         }
     };
     request1.open("GET", "http://localhost:3001/api/patients");
     //request1.setRequestHeader("Authorization", "Bearer "+ sessionStorage.token);
-    request1.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTZmYzc1YzQ0YmFmOTBjYjQ2MGYwMDQiLCJpYXQiOjE1ODUxMTE1ODYsImV4cCI6MTU4NTE5Nzk4Nn0.G6IcFXyrjSImCJaNDCV7y9PbnEUJtznL13AhSOpvpxE");
+    request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 
     request2.open("GET", "http://localhost:3001/api/centers");
     //request2.setRequestHeader("Authorization", "Bearer "+ sessionStorage.token);
-    request2.setRequestHeader("Authorization", "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI1ZTZmYzc1YzQ0YmFmOTBjYjQ2MGYwMDQiLCJpYXQiOjE1ODUxMTE1ODYsImV4cCI6MTU4NTE5Nzk4Nn0.G6IcFXyrjSImCJaNDCV7y9PbnEUJtznL13AhSOpvpxE");
+    request2.setRequestHeader("Authorization", "Bearer "+userToken);
     request2.send();
 
 };
@@ -94,29 +136,47 @@ function redirection3(){};
 function state4(){};
 function redirection4(){};
 //Affichage de l'état1
-var stateForm1 = document.getElementById("stateOneForm").addEventListener("submit", function(e){
+document.getElementById("stateOneForm").addEventListener("submit", function(e){
     e.preventDefault();
     state1();
-    redirection1();
-})
+    userInfos();
+    //redirection1();
+});
 
 //Affichage de l'état2
-var stateForm2 = document.getElementById("stateTwoForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    state2();
-    redirection2();
-})
+// document.getElementById("stateTwoForm").addEventListener("submit", function(e){
+//     e.preventDefault();
+//     state2();
+//     redirection2();
+// });
 
 //Affichage de l'état3
-var stateForm3 = document.getElementById("stateThreeForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    state3();
-    redirection3();
-})
+// document.getElementById("stateThreeForm").addEventListener("submit", function(e){
+//     e.preventDefault();
+//     state3();
+//     redirection3();
+// });
 
 //Affichage de l'état4
-var stateForm4 = document.getElementById("stateFourForm").addEventListener("submit", function(e){
+// document.getElementById("stateFourForm").addEventListener("submit", function(e){
+//     e.preventDefault();
+//     state4();
+//     redirection4();
+// });
+
+//Création de Nouveau Patient
+function redirection(){
+    setTimeout( function(){
+        if(!userId){
+        alert("Erreur d'affichage ");        
+        document.location.href="./handlePatientsPage.html";
+        }
+        else {
+            document.location.href="./savePatientsPage.html";
+            }}
+    , 1000);};
+document.getElementById("newPatient").addEventListener("click", function(e){
     e.preventDefault();
-    state4();
-    redirection4();
-})
+    redirection();
+    userInfos();
+});

@@ -14,6 +14,8 @@ function savePatient(){
             //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
             //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
             document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+            document.getElementById("userIdsEntered").value = userId;
+
             }
 }
 
@@ -60,7 +62,7 @@ function frontSavePatients(){
     var token = sessionStorage.token;
     request.open("POST", "http://localhost:3001/api/patients");
     request.setRequestHeader("Content-type", "application/json");
-    request.setRequestHeader("Authorization", "Bearer"+" "+token);
+    request.setRequestHeader("Authorization", "Bearer"+" "+userToken);
     request.send(JSON.stringify(body));
 }
 

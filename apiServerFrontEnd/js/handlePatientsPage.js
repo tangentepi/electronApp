@@ -52,32 +52,33 @@ function state1(){
             var k = 0;
             for(i=0; i<theLength; i++){
                 for(j=0; j<response.patients[i].registrationInfos.length; j++){
-                    if(response.patients[i].registrationInfos[j].centerIds != state1Obj.center){
-                        alert(`********* Le Patient ${response.patients[i].name} ${response.patients[i].firstName} pourrait ne pas correspondre!\nL'un de ses centres d'enregistrement est: ${response.patients[i].registrationInfos[j].centerIds} *********`)
-                    }else{
-                        sessionStorage.setItem(`patientId${i}`,`${response.patients[i].patientId}`);
-                        sessionStorage.setItem(`patientName${i}`,`${response.patients[i].name}`);
-                        sessionStorage.setItem(`patientFirstName${i}`,`${response.patients[i].firstName}`);
-                        sessionStorage.setItem(`patient${i}RegistrationDate${j}`,`${response.patients[i].registrationInfos[j].registrationDate}`);
-                        sessionStorage.setItem(`patient${i}centerId${j}`,`${response.patients[i].registrationInfos[j].centerIds}`);
-                        k=k+1;
-                    }              
+                    if(response.patients[i].registrationInfos[j].centerIds == state1Obj.center){
+                            sessionStorage.setItem(`patientId${i}`,`${response.patients[i].patientId}`);
+                            sessionStorage.setItem(`patientName${i}`,`${response.patients[i].name}`);
+                            sessionStorage.setItem(`patientFirstName${i}`,`${response.patients[i].firstName}`);
+                            sessionStorage.setItem(`patient${i}RegistrationDate${j}`,`${response.patients[i].registrationInfos[j].registrationDate}`);
+                            sessionStorage.setItem(`patient${i}centerId${j}`,`${response.patients[i].registrationInfos[j].centerIds}`);
+                            k=k+1;
+                            // alert(`********* Le Patient ${response.patients[i].name} ${response.patients[i].firstName} pourrait ne pas correspondre!\nL'un de ses centres d'enregistrement est: ${response.patients[i].registrationInfos[j].centerIds} *********`);                        
+                    }          
                 };
             };
             // Affichage des données enregistrées
-            if(k==0){
-                alert("Aucun patient ne correspond à la recherche !");
-            }else if(k==1){
-                alert(`Seulement ${k} Patient correspond à la recherche !`);
-            }else{
-                alert(`${k} Patients correspondent à la recherche !`);
-            }
+                if(k==0){
+                    alert("Aucun patient ne correspond à la recherche !");
+                }else if(k==1){
+                    alert(`Seulement ${k} Patient correspond à la recherche !`);
+                }else{
+                    alert(`${k} Patients correspondent à la recherche !`);
+                }
 
-            // for (i=0; i<theLength; i++){
-            //     for(j=0; j<response.patients[i].registrationInfos.length; j++){
-            //         alert(`Identifiant: ${sessionStorage.getItem(`patientId${i}`)}\nNom: ${sessionStorage.getItem(`patientName${i}`)}\nPrénom: ${sessionStorage.getItem(`patientFirstName${i}`)}\nDates d'enregistrement: ${sessionStorage.getItem(`patient${i}RegistrationDate${j}`)}`);
-            //     };
-            // };
+            for (i=0; i<theLength; i++){
+                for(j=0; j<response.patients[i].registrationInfos.length; j++){
+                    if(sessionStorage.getItem(`patientId${i}`) && sessionStorage.getItem(`patientName${i}`) && sessionStorage.getItem(`patientFirstName${i}`) && sessionStorage.getItem(`patient${i}RegistrationDate${j}`)){
+                        alert(`Identifiant: ${sessionStorage.getItem(`patientId${i}`)}\nNom: ${sessionStorage.getItem(`patientName${i}`)}\nPrénom: ${sessionStorage.getItem(`patientFirstName${i}`)}\nDates d'enregistrement: ${sessionStorage.getItem(`patient${i}RegistrationDate${j}`)}`);
+                    }
+                };
+            };
 
         }
     };
@@ -91,16 +92,27 @@ function state1(){
                 maxDate: document.getElementById("state1Input3").value
             };
             alert("Liste des centres obtnue !");
-            alert(`${theLength} Centres trouvés`);
+            // alert(`${theLength} Centres trouvés`);
+            k1=0;
             for(i=0; i<theLength; i++){
-                if(response.centers[i].wording = state1Obj.center){
+                if(response.centers[i].wording == state1Obj.center){
+                    k1+=1;
                     sessionStorage.setItem(`centerId${i}`,`${response.centers[i]._id}`);
                     sessionStorage.setItem(`centerWording${i}`,`${response.centers[i].wording}`);
                 }
             }
-            // for(i=0; i<theLength; i++){
-            //     alert(`Identifiant du Centre: ${sessionStorage.getItem(`centerId${i}`)}\nNom du Centre: ${sessionStorage.getItem(`centerWording${i}`)}`);
-            // }
+                if(k1==0){
+                    alert("Aucun Centre ne correspond à la recherche !");
+                }else if(k1==1){
+                    alert(`Seulement ${k1} Centre correspond à la recherche !`);
+                }else{
+                    alert(`${k1} Centres correspondent à la recherche !`);
+                }
+            for(i=0; i<theLength; i++){
+                if(sessionStorage.getItem(`centerId${i}`) && sessionStorage.getItem(`centerWording${i}`)){
+                    alert(`Identifiant du Centre: ${sessionStorage.getItem(`centerId${i}`)}\nNom du Centre: ${sessionStorage.getItem(`centerWording${i}`)}`);
+                }
+            }
         }
     };
     request1.open("GET", "http://localhost:3001/api/patients");

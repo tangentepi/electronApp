@@ -5,6 +5,9 @@ body{
 nav{
     font-weight: bold;
 }
+#btnNext, #btnPreview{
+    margin-top: 41px;
+}
 .userInfos{
     color: #FFF!important;
     background-color: rgba(0,0,0, 0.8)!important;

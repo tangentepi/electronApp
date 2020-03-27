@@ -26,7 +26,8 @@ const patientSchema = new mongoose.Schema({
     fatherFullName: { type: String, required: true }, // Nom et prénom du Père
     motherFullName: { type: String, required: true}, // Nom et prénom de la Mère
     imageUrl: {type: String}, // l'URL de la photo du patient
-    conventionId: {type: mongoose.Types.ObjectId, ref: 'Convention'},
+    conventionId: {type: String},
+    // conventionId: {type: mongoose.Types.ObjectId, ref: 'Convention'},
     registrationInfos: [{
         userIds: {type: String}, // L'identifient du médecin qui enregistre le patient 
         registrationDate: {type: Date, default: Date.now}, // date d'enregistrement du patient

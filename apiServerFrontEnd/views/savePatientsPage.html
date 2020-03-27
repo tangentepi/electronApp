@@ -108,7 +108,7 @@
 						<div class="form-group">
 							<label for="nationalityEntered">Nationalité</label>
 							<input type="text" class="form-control" id="nationalityEntered" required>
-						</div><br />
+						</div>
 						<div class="form-group">
 							<a href="#p1"><input type="button" class="form-control btn-success" id="btnNext" value="SUIVANT"></a>
 						</div>
@@ -119,29 +119,30 @@
 					<div class="row">
 							<div class="col-xs-1 col-sm-1 col-md-1"></div>
 							<div class="col-xs-5 col-sm-5 col-md-5">
-							<div class="form-group">
-								<label for="motherFullNameEntered">Nom complet de la Mère</label>
-								<input type="text" class="form-control" id="motherFullNameEntered" required>
+								<div class="form-group">
+									<label for="motherFullNameEntered">Nom complet de la Mère</label>
+									<input type="text" class="form-control" id="motherFullNameEntered" required>
+								</div>
+								<div class="form-group">
+									<label for="conventionIdEntered">Assurance Maladie</label>
+									<input type="text" class="form-control" id="conventionIdEntered" list="conventionsList" required>
+										<datalist id="conventionsList">
+											<option value="Couverture Maladie Universelle">
+											<option value="ASCOMA">
+											<option value="CGA CÔTE D'IVOIRE">
+											<option value="AUCUNE">
+										</datalist>
+								</div>
+								<div class="form-group">
+									<label for="userIdsEntered">Numéro Médecin</label>
+									<input type="text" class="form-control" id="userIdsEntered" readonly required>
+								</div>
+								<div class="form-group">
+									<label for="registrationDateEntered">Date de l'enregistrement</label>
+									<input type="date" class="form-control" id="registrationDateEntered" required>
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="conventionIdEntered">Assurance Maladie</label>
-								<input type="text" class="form-control" id="conventionIdEntered" list="conventionsList" required>
-									<datalist id="conventionsList">
-										<option value="Couverture Maladie Universelle">
-										<option value="ASCOMA">
-										<option value="CGA CÔTE D'IVOIRE">
-										<option value="AUCUNE">
-									</datalist>
-							</div>
-							<div class="form-group">
-								<label for="userIdsEntered">Numéro Médecin</label>
-								<input type="text" class="form-control" id="userIdsEntered" readonly required>
-							</div>
-							</div>
-							<div class="col-xs-5 col-sm-5 col-md-5">						<div class="form-group">
-								<label for="registrationDateEntered">Date de l'enregistrement</label>
-								<input type="date" class="form-control" id="registrationDateEntered" required>
-							</div>
+							<div class="col-xs-5 col-sm-5 col-md-5">						
 							<div class="form-group">
 								<label for="centerIdsEntered">Centre ou Unité d'enregistrement</label>
 								<input type="text" class="form-control" id="centerIdsEntered" list="centersList" required>
@@ -158,7 +159,7 @@
 									</dataList>
 							</div><div class="form-group">
 								<label for="centerIdsEntered">Prestation subie</label>
-								<input type="text" class="form-control" id="prestationsIdsEntered" list="prestationsList" required>
+								<input type="text" class="form-control" id="prestationIdEntered" list="prestationsList" required>
 									<dataList id="prestationsList">
 										<option value="HOSPITALISATIONS">
 										<option value="MISE EN OBSERVATION">
@@ -171,14 +172,13 @@
 									</dataList>
 							</div>
 							<div class="form-group">
-								<label for="btnPreview"></label>
 								<a href="#p0"><input type="button" id="btnPreview" class="form-control btn-success" value="PRÉCÉDENT"></a>
 							</div>
 							<div class="form-group">
-								<label for="submit"></label><br /><br /><hr />
+								<label for="submit"></label><br /><br /><br /><hr />
 								<input type="submit" id="submit" class="form-control btn-success" value="ENREGISTRER LE PATIENT">
 							</div>
-							<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+							<br /><br /><br /><br /><br /><br /><br /><br /><br />
 					</div>
 					</div>
 				</div>

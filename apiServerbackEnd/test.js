@@ -1,2 +1,6 @@
-var date1 = new Date("2020-02-02T00:00:00.000Z");
-console.log(date1.getDate());
+var name = new Array();
+name.push("elemantOne");
+name.push("elemantTwo");
+name.push("elemantThree");
+console.log(name);
+console.log(name[1]);

@@ -6,4 +6,5 @@ const conventionSchema = new mongoose.Schema({
     insuredShare: {type: Number, required:true}, //Part de l'adhérent (en %)
 });
 
-export default mongoose.model('Convention', conventionSchema);
+// export default mongoose.model('Convention', conventionSchema);
+module.exports = mongoose.model('Cenvention', conventionSchema);

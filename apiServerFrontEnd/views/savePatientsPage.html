@@ -110,7 +110,7 @@
 							<input type="text" class="form-control" id="nationalityEntered" required>
 						</div><br />
 						<div class="form-group">
-							<a href="#p1"><input type="button" class="form-control btn-success" id="ButtonNext" value="SUIVANT"></a>
+							<a href="#p1"><input type="button" class="form-control btn-success" id="btnNext" value="SUIVANT"></a>
 						</div>
 						</div>
 						</div><!-- fin div row 1 -->
@@ -130,6 +130,7 @@
 										<option value="Couverture Maladie Universelle">
 										<option value="ASCOMA">
 										<option value="CGA CÔTE D'IVOIRE">
+										<option value="AUCUNE">
 									</datalist>
 							</div>
 							<div class="form-group">
@@ -155,6 +156,23 @@
 											<option value="PSYCHIATRIE">
 											<option value="CABINET DENTAIRE">
 									</dataList>
+							</div><div class="form-group">
+								<label for="centerIdsEntered">Prestation subie</label>
+								<input type="text" class="form-control" id="prestationsIdsEntered" list="prestationsList" required>
+									<dataList id="prestationsList">
+										<option value="HOSPITALISATIONS">
+										<option value="MISE EN OBSERVATION">
+										<option value="CONSULTATIONS">
+										<option value="PANSEMENTS">
+										<option value="EXAMENS LABO">
+										<option value="EXTRACTION">
+										<option value="EXAMENS RADIO">
+										<option value="ACCOUCHEMENTS">		 
+									</dataList>
+							</div>
+							<div class="form-group">
+								<label for="btnPreview"></label>
+								<a href="#p0"><input type="button" id="btnPreview" class="form-control btn-success" value="PRÉCÉDENT"></a>
 							</div>
 							<div class="form-group">
 								<label for="submit"></label><br /><br /><hr />

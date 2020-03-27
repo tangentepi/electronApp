@@ -1,6 +1,7 @@
 import { Router } from 'express'; // Un import ici
 import * as Patient from './controller';
 
+const adminAuth = require('../../middleware/auth-admin');
 const auth = require('../../middleware/auth');
 const multer = require('../../middleware/multer-config');
 

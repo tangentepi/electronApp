@@ -7,6 +7,7 @@ import { UserRoutes } from './modules';
 import { PatientRoutes } from './modules';
 import { CenterRoutes } from './modules';
 import { PrestationRoutes } from './modules';
+import { ConventionRoutes } from './modules'
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use( '/api/patients' ,  PatientRoutes );
 app.use( '/api/users' ,  UserRoutes );
 app.use( '/api/centers' ,  CenterRoutes );
 app.use( '/api/prestations' ,  PrestationRoutes );
+// app.use( '/api/conventions', ConventionRoutes );
 
 
 const PORT  = 3001;

@@ -16,8 +16,9 @@ exports.signup = (req, res, next) => {
         (hash) => {
                 const user = new User({
                 email: req.body.email,
-                /*username: req.body.username,*/
                 password: hash,
+                name: req.body.name,
+                firstName: req.body.firstName,
                 profil: req.body.profil,
                 //token: req.body.token,
                 connectionStart: 0,
@@ -72,7 +73,7 @@ exports.login = (req, res, next) => {
                                                 message: "token encore valide; pième connection !"
                                             });
                                         }else{//pième connection mais le token n'est plus valide
-                                                user.token = jwt.sign({ userId: user._id }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' });
+                                                user.token = jwt.sign({ userId: user._id, userProfil: user.profil }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' });
                                                 user.connectionStart = Number(new Date()); // Date en milliseconde depuis le 1er Janvier 1970 à Minuit(00:00:00)  midnight January 1, 1970 UTC
                                                 user.connectionEnd = user.connectionStart + 24*3600000;
                                                 User.updateOne({_id: user._id}, user).then(
@@ -100,7 +101,7 @@ exports.login = (req, res, next) => {
                                     user.connectionEnd = user.connectionStart + 24*3600000;
                                     //var currentTime = Number (new Date());
                                     //var timeLeft = currentTime - user.connectionEnd;
-                                    user.token = jwt.sign({ userId: user._id }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' });                                    
+                                    user.token = jwt.sign({ userId: user._id, userProfil: user.profil }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' });                                    
                                     User.updateOne({_id: user._id}, user).then(
                                         () => {                                           
                                           res.status(201).json({

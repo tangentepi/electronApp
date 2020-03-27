@@ -6,4 +6,5 @@ const prestationSchema = new mongoose.Schema({
     //centerIds: [{type: mongoose.Types.ObjectId, ref: 'Center'}]
 });
 
-export default mongoose.model('Prestation', prestationSchema);
+// export default mongoose.model('Prestation', prestationSchema);
+module.exports = mongoose.model('Prestation', prestationSchema);

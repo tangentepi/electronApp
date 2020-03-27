@@ -46,19 +46,19 @@ function frontSavePatients(){
             motherFullName: document.getElementById("motherFullNameEntered").value,
             //imageUrl: document.getElementById("imageUrlEntered").value,
             conventionId: document.getElementById("conventionIdEntered").value,
-            user: 
-            //sessionStorage.userId,
-            document.getElementById("userIdsEntered").value,
+            user: document.getElementById("userIdsEntered").value,
             registrationDate: document.getElementById("registrationDateEntered").value,
             //Date.now(),            
-            center: document.getElementById("centerIdsEntered").value,
+            center: document.getElementById("centerIdsEntered").value
     };
+    //requête 1: Patient
     var request = new XMLHttpRequest();
     request.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             alert("Enregistrement de Patient Réussi !");
         }
     };
+    //requête 2: Centre
     var token = sessionStorage.token;
     request.open("POST", "http://localhost:3001/api/patients");
     request.setRequestHeader("Content-type", "application/json");

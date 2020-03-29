@@ -19,8 +19,7 @@ function userInfos(){
 function handlePatient(){
     if(!userId){
         alert("Vous n'êtes pas connecté !");  
-        document.getElementById("userInfos").value = "TEST MODE";
-        
+        document.getElementById("userInfos").value = "TEST MODE";  
     }
     else {
         //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);

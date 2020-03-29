@@ -1,6 +1,6 @@
 
 function frontLogin() {
-    var body = {
+    var userBody = {
         email: document.getElementById("emailEntered").value,
         password: document.getElementById("passwordEntered").value
     };
@@ -21,7 +21,7 @@ function frontLogin() {
   };
   request.open("POST", "http://localhost:3001/api/users/login");
   request.setRequestHeader("Content-Type", "application/json");
-  request.send(JSON.stringify(body));
+  request.send(JSON.stringify(userBody));
 }
 function redirect(){
     setTimeout( function(){
@@ -48,7 +48,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 //********************************************************************** */
 
 // function frontLogin() {
-//     var body = {
+//     var userBody = {
 //         email: document.getElementById("emailEntered").value,
 //         password: document.getElementById("passwordEntered").value
 //     };
@@ -66,7 +66,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 //   };
 //   request.open("POST", "http://localhost:3001/api/users/login");
 //   request.setRequestHeader("Content-Type", "application/json");
-//   request.send(JSON.stringify(body));
+//   request.send(JSON.stringify(userBody));
 // }
 // function redirect(){
 //     setTimeout( function(){

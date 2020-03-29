@@ -17,10 +17,10 @@ function fillTable(){
             
         }
         else {
-            alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
+            // alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
             //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
             document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
-            alert(`La taille du Tableau sessionStorage vaut: ${sessionStorage.length}`);
+            // alert(`La taille du Tableau sessionStorage vaut: ${sessionStorage.length}`);
         }
         // Remplissage du tableau
         var name = new Array();

@@ -68,3 +68,16 @@ export const getAllCenter = async (req, res, next) => {
   }
 
 };
+
+export const findCenterByWording = (req, res, next) => {
+  Center.findOne({wording: req.params.wording
+  }).then((center) => {
+    res.status(200).json({centers: center});
+  }
+  ).catch((error) => {
+    res.status(404).json({
+      error: error
+    });
+  }
+  );
+};

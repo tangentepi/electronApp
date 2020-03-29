@@ -100,9 +100,9 @@ export const createPatient = (req, res, next) => {
           firstName: req.body.firstName,
           birthDate: req.body.birthDate,
           pieceNumber: req.body.pieceNumber,
+          typeOfPiece: req.body.typeOfPiece,
           gender: req.body.gender,
           address: req.body.address,
-          typeOfPiece: req.body.typeOfPiece,
           placeOfResidence: req.body.placeOfResidence,
           phoneNumber: req.body.phoneNumber,
           employer: req.body.employer,
@@ -144,6 +144,7 @@ export const createPatient = (req, res, next) => {
           waterClearance: req.body.waterClearance,
           nationality: req.body.nationality,
           fatherFullName: req.body.fatherFullName,
+          motherFullName: req.body.motherFullName,
           // conventionId: req.body.convention, // Seulement l'Admini aura le droit de modifier la convention d'un patient
           $push:{
             "registrationInfos":{$each: [{userIds: req.body.user, registrationDate: req.body.registrationDate, centerIds: req.body.center}]}

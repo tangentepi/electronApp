@@ -1,6 +1,3 @@
 var name = new Array();
-name.push("elemantOne");
-name.push("elemantTwo");
-name.push("elemantThree");
-console.log(name);
-console.log(name[1]);
+name.push("3");
+console.log(name[0]);

@@ -34,7 +34,7 @@ app.use( '/api/patients' ,  PatientRoutes );
 app.use( '/api/users' ,  UserRoutes );
 app.use( '/api/centers' ,  CenterRoutes );
 app.use( '/api/prestations' ,  PrestationRoutes );
-// app.use( '/api/conventions', ConventionRoutes );
+app.use( '/api/conventions', ConventionRoutes );
 
 
 const PORT  = 3001;

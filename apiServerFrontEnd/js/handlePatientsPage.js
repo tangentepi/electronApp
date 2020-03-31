@@ -6,7 +6,7 @@ var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 
 //Suppression des données contenues dans la variable superglobale sessionStorage
-// sessionStorage.clear();
+sessionStorage.clear();
 
 window.onload = handlePatient();
 
@@ -154,77 +154,109 @@ function redirection1(){
             //État 2 *******************************************************************************************************
             
 function state2(){
-// Obtenttion de la liste des Patients
-var state2Obj = {
-    prestation : document.getElementById("state2Input1").value,
-    minDate: document.getElementById("state2Input2").value,
-    maxDate: document.getElementById("state2Input3").value
-    };
-// Requête 1
-var request1 = new XMLHttpRequest();
-
-request1.onreadystatechange = function(){
-    if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
-    var response1 = JSON.parse(this.responseText);
-    alert("Liste des patients obtenue !");
-    var IdsPatients = new Array();
-    var Names = new Array();
-    var FirstNames = new Array(); 
-    var CentersOne = new Array();
-   
-    for (i=0; i<response1.patients.length; i++){
-        for(j=0; j<response1.patients[i].registrationInfos.length; j++){
-            if(response1.patients[i].registrationInfos[j].registrationDate >= state2Obj.minDate && response1.patients[i].registrationInfos[j].registrationDate <= state2Obj.maxDate){
-                Names.push(`${response1.patients[i].name}`);
-                FirstNames.push(`${response1.patients[i].firstName}`);
-                CentersOne.push(`${response1.patients[i].registrationInfos[j].centerIds}`);
-                IdsPatients.push(`${response1.patients[i].patientId}`);
-                // alert(`***Id Patient***\n${IdsPatients[i]}`);
+    var request1 = new XMLHttpRequest();
+    request1.onreadystatechange = function(){
+        if (this.readyState == XMLHttpRequest.DONE && this.status == 200){
+            var response1 = JSON.parse(this.responseText);
+            var request2 = new XMLHttpRequest();
+            // Traitement après la requête 1
+            request2.onreadystatechange = function(){
+                if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                    var response2 = JSON.parse(this.responseText);
+                    // Traitement après la requête 2
+                    // Traitement après les deux requêtes
+                    const prestation = document.getElementById("state2Input1").value;
+                    const min = document.getElementById("state2Input2").value;
+                    const max = document.getElementById("state2Input3").value;
+                    var patients = response1.patients;
+                    var centers = response2.centers;
+                    var idArray = new Array();
+                    var idArray1 = new Array();
+                    var idArray2 = new Array();
+                    var nameArray1 = new Array();
+                    var nameArray = new Array();
+                    var firstNameArray = new Array();
+                    var firstNameArray1 = new Array();
+                    var centerArray = new Array();
+                    var centerArray1 = new Array();
+                    var prestationArray = new Array();
+                    var prestationArray2 = new Array();
+                    var dateArray = new Array();
+                    var dateArray1 = new Array();
+                    // Traiment sur la collection Patients
+                    for(i=0; i<patients.length; i++){
+                        for(j=0; j<patients[i].registrationInfos.length; j++){
+                            if(patients[i].registrationInfos[j].registrationDate > min && patients[i].registrationInfos[j].registrationDate < max){
+                                idArray1.push(patients[i].patientId);
+                                nameArray1.push(patients[i].name);
+                                firstNameArray1.push(patients[i].firstName);
+                                centerArray1.push(patients[i].registrationInfos[j].centerIds);
+                                dateArray1.push(patients[i].registrationInfos[j].registrationDate);
+                            }
+                        }
+                    }
+                    // Traitement sur la collection Centre
+                    for(i=0; i<centers.length; i++){
+                        for(j=0; j<centers[i].prestationIds.length; j++){
+                            if(centers[i].prestationIds[j] == prestation){
+                                idArray2.push(centers[i].patientIds[j]);
+                                prestationArray2.push(centers[i].prestationIds[j]);
+                            }
+                        }
+                    }
+                    // Traiment commun aux deux collection Centre et Patients
+                    for(i=0; i<idArray2.length; i++){
+                        for(j=0; j<idArray1.length; j++){
+                            if(idArray2[i] == idArray1[j]){
+                                idArray.push(idArray1.splice(j,1));
+                                nameArray.push(nameArray1.splice(j,1));
+                                firstNameArray.push(firstNameArray1.splice(j,1));
+                                centerArray.push(centerArray1.splice(j,1));
+                                dateArray.push(dateArray1.splice(j,1));
+                                prestationArray.push(prestationArray2[i]);
+                                j-=1;
+                            }
+                        }
+                    }
+                    for(i=0; i<idArray.length; i++){
+                        sessionStorage.setItem(`patientId${i}`, idArray[i]);
+                        sessionStorage.setItem(`patientName${i}`, `${nameArray[i]}`);
+                        sessionStorage.setItem(`patientFirstName${i}`, firstNameArray[i]);
+                        sessionStorage.setItem(`centerWording${i}`, centerArray[i]);
+                        sessionStorage.setItem(`prestation${i}`, prestationArray[i]);
+                        sessionStorage.setItem(`date${i}`, dateArray[i]);
+                    }
+                    sessionStorage.setItem("dataLength",idArray.length);
+                    // var testArray = new Array();
+                    // for(i=0; i<idArray.length; i++){
+                    //     testArray[i] =  sessionStorage.getItem(`patientName${i}`)
+                    //     alert(testArray[i]);
+                    // }
+                }
             };
-        };
+            request2.open("GET", "http://localhost:3001/api/centers");
+            request2.setRequestHeader("Authorization", "Bearer "+userToken);
+            request2.send();
+        }
     };
-    // Requête 2
-    var request2 = new XMLHttpRequest();
-    request2.onreadystatechange = function(){
-        if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
-            var response2 = JSON.parse(this.responseText);
-            alert(`La liste des centres a été obtenue !\n${response2.centers}`);
-            // Enregistrement des données obtenues
-            // var IdsCenters = new Array();
-            // var Prestations = new Array();
-            // var CentersTwo = new Array();
-            
-            // for(i=0; i<response2.centers.length; i++){
-            //     for(j=0; j<response2.centers[i].prestationIds; j++){
-            //         if(response2.centers[i].prestationIds[j] == state2Obj.prestation){
-            //             Prestations.push(`${response2.centers[i].prestationIds[j]}`);
-            //             IdsCenters.push(`${response2.center[i].patientIds[j]}`);
-            //             CentersTwo.push(`${response2.center[i].wording}`);
-            //             alert(`***Id Patient Centre***${IdsCenters[i]}`);
-            //     };
-            // }
-            // };
-            
-            };
-        };
-        // Envoie de la requête 2
-        request2.open("GET", "http://localhost:3001/api/centers");
-        request2.setRequestHeader("Authorization", "Bearer "+userToken);
-        request2.send();
-
-    };
-};
-
-
     request1.open("GET", "http://localhost:3001/api/patients");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
-    
-    
 };
 
-
-function redirection2(){};
+function redirection2(){
+    setTimeout( function(){
+        if(!userId){
+        alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
+        //document.location.href ="./handlePatientsPage.html";
+        // document.getElementById("loginForm")[0].value = "";
+        // document.getElementById("loginForm")[1].value = "";
+        }
+        else {
+            document.location.href="./state2.html";
+            }}
+            , 1000);
+};
 
 //État 3 *******************************************************************************************************
 
@@ -284,7 +316,7 @@ document.getElementById("stateOneForm").addEventListener("submit", function(e){
     e.preventDefault();
     state1();
     userInfos();
-    // redirection1();
+    redirection1();
 });
 
 //Affichage de l'état2
@@ -293,7 +325,7 @@ document.getElementById("stateTwoForm").addEventListener("submit", function(e){
     e.preventDefault();
     state2();
     userInfos();
-    // redirection2();
+    redirection2();
 });
 
 //Affichage de l'état2

@@ -256,7 +256,43 @@ function redirection2(){
 
 //État 3 *******************************************************************************************************
 
-function state3(){};
+function state3(){
+    var price = document.getElementById("priceInput").value;
+    var request1 = new XMLHttpRequest();
+    request1.onreadystatechange = function(){
+        if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+            var response1 = JSON.parse(this.responseText);
+            // alert("Liste de prestations obtenue !");
+            // alert(`Le prix entré est :${document.getElementById("priceInput").value}`);
+            var prestation = new Array();
+            var center = new Array();
+            var cost = new Array();
+            for(i=0; i<response1.prestations.length; i++){
+                for(j=0; j<response1.prestations[i].centerIds.length; j++){
+                    if(response1.prestations[i].cost[j]>= price){
+                        prestation.push(response1.prestations[i].wording);
+                        center.push(response1.prestations[i].centerIds[j]);
+                        cost.push(response1.prestations[i].cost[j]);
+                    }
+                }
+            }
+            // alert(`Prestation: ${prestation}\nCentres correspondants: ${center}\nPrix correspondants: ${cost}`);
+            for(i=0; i<prestation.length; i++){
+                sessionStorage.setItem(`prestation${i}`, `${prestation[i]}`);
+                sessionStorage.setItem(`center${i}`, `${center[i]}`);
+                sessionStorage.setItem(`cost${i}`, `${cost[i]}`);
+            }
+            sessionStorage.setItem("dataLength", `${prestation.length}`);
+            // alert(sessionStorage.theLength);
+            // for(i=0; i<prestation.length; i++){
+            //     alert(`Prestation: ${sessionStorage.getItem(`prestation${i}`)}\nPrix: ${sessionStorage.getItem(`cost${i}`)}\nCentre: ${sessionStorage.getItem(`center${i}`)}`);
+            // }
+        }
+    }
+    request1.open("GET", "http://localhost:3001/api/prestations");
+    request1.setRequestHeader("Authorization", "Bearer "+userToken);
+    request1.send();
+};
 function redirection3(){
     setTimeout( function(){
         if(!userId){

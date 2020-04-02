@@ -16,7 +16,6 @@ function fillTable(){
         if(!userId){
             alert("Vous n'êtes pas connecté !");  
             document.getElementById("userInfos").value = "TEST MODE";
-            
         }
         else {
             document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;

@@ -34,7 +34,7 @@ function redirect(){
         else {
             document.location.href="./handlePatientsPage.html";
             }}
-    , 3000);
+    , 1000);
 }
 // var loginBtn = document.getElementById("loginButton");
 // loginBtn.addEventListener('click', frontLogin);

@@ -89,7 +89,7 @@ function frontSavePatients(){
     var request2 = new XMLHttpRequest();
     request2.onreadystatechange = function() {
         if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
-            alert("Enregistrement de prestation effectuée !");
+            // alert("Enregistrement de prestation effectuée !");
         }
     };
 
@@ -102,14 +102,14 @@ function frontSavePatients(){
 
 function redirect(){
     setTimeout( function(){
-        if(!sessionStorage.userId){
+        if(!userId){
         alert("Veuillez vous connecter svp");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
         }
         else {
-            document.location.href="./handlePatientsPage.html";
+            document.location.href="./savePatientsPage.html";
             };
 }, 1000);};
 
@@ -125,5 +125,5 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     // display();
     frontSavePatients();
     userInfos();
-    // redirect();
+    redirect();
 });

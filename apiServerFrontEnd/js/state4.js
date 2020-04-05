@@ -23,8 +23,9 @@ function fillTable(){
         // Remplissage du tableau
         
         for(i=0; i<dataLength; i++){
-            var date = new Date(sessionStorage.getItem(`date${i}`));
-            document.getElementById("stateFourTableBody").innerHTML +=`<tr><td>${sessionStorage.getItem(`prestation${i}`)}</td><td>${sessionStorage.getItem(`centerWording${i}`)}</td><td>${date.getDate()}/ ${date.getMonth()}/ ${date.getFullYear()}</td><td>${sessionStorage.getItem(`patientName${i}`)} ${sessionStorage.getItem(`patientFirstName${i}`)}</td></tr>`;
+            var date0 = new Date(sessionStorage.getItem(`date${i}`));
+            var date1 = date0.toLocaleDateString();
+            document.getElementById("stateFourTableBody").innerHTML +=`<tr><td>${i+1}</td><td>${sessionStorage.getItem(`prestation${i}`)}</td><td>${sessionStorage.getItem(`centerWording${i}`)}</td><td>${date1}</td><td>${sessionStorage.getItem(`patientName${i}`)} ${sessionStorage.getItem(`patientFirstName${i}`)}</td></tr>`;
         };
         //Suppression des données contenues dans la variable superglobale sessionStorage
         sessionStorage.clear();

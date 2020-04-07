@@ -1,0 +1,33 @@
+body{
+    font-family: 'Questrial';
+    position: relative;
+}
+.row1{
+    min-height: 90px;
+}
+table{
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: #000; */
+    border: 2px solid black;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}   
+/* .userInfos{
+    color: #FFF!important ;
+    background-color: rgba(0,0,0, 0)!important;
+    border-color: rgba(0, 0, 0, 0)!important;
+    text-align: right!important;
+} */
+td, th{
+    /* border-width: 1px;
+    border-style: solid;
+    border-color: #000; */
+    border: 2px solid black;
+}
+th{
+    background-color: #deb887;
+    color: #FFF;
+}

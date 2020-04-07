@@ -1,0 +1,75 @@
+body{
+    font-family: 'Questrial'!important;
+    position: relative;
+}
+nav{
+    font-weight: bold;
+}
+#btnNext, #btnPreview{
+    margin-top: 41px;
+}
+.userInfos{
+    color: #FFF!important;
+    background-color: rgba(0,0,0, 0.8)!important;
+    border-color: rgba(0, 0, 0, 0)!important;
+    text-align: right!important;
+}
+#p0{
+    background-image: url("../../img/médecins/medecin2.jpg");
+    background-color: #290e0e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #eeff00;
+    font-weight: bold;
+}
+#p1{
+    background-image: url("../../img/médecins/medecin2.jpg");
+    background-color: #290e0e;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #eeff00;
+    font-weight: bold;
+}
+nav{
+    max-height: 100px;
+}
+#ButtonNext{
+margin-top: 5px;
+}
+form label{
+    font-size: 15px;
+    color: #FFF;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}
+/* .container1{
+    background-color: #000;
+    height: 20px;
+} */
+
+
+.profilUserMenu1{
+    height: 130px;
+    background-color: #F00;
+}
+.profilUserMenu2{
+    background-color: #000000;
+    height: 130px;
+}
+.profilUserMenu3{
+        height: 130px;
+        background-image: url("../../img/userProfils/userProfil1.png");
+        background-repeat: no-repeat;
+        background-size: 95%;
+        background-color: #ff7f50;
+        background-position: center;
+}
+.userInfo{
+    background-color: #6495ed;
+}
+.container label:hover {
+    text-shadow: 2px 2px 12px rgb(2, 1, 1);
+    font-size: 15px;
+}

@@ -1,0 +1,12 @@
+body{
+    font-family: 'Questrial';
+    background-color: #FFF;
+    color: #000;
+}
+
+table{
+    border: 1px solid black;
+}
+td, th{
+    border: 1px solid black;
+}

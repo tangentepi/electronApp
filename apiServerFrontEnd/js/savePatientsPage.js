@@ -63,12 +63,41 @@ function frontSavePatients(){
             //Date.now(),            
             center: document.getElementById("centerIdsEntered").value
     };
+    // Body Centre
+    var centerBody = {
+        wording: document.getElementById("centerIdsEntered").value,
+        patientId: document.getElementById("idEntered").value,
+        prestationId: document.getElementById("prestationIdEntered").value
+    };
     
     //requête 1: Patient
     var request1 = new XMLHttpRequest();
     request1.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             alert("Enregistrement de Patient Réussi !");
+            //requête 2: Centre
+            var request2 = new XMLHttpRequest();
+            request2.onreadystatechange = function() {
+                if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
+                    alert("Enregistrement de prestation effectuée !");
+                    // Requête 3
+                    var request3 = new XMLHttpRequest();
+                    request3.onreadystatechange = function(){
+                    if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                        alert("Prestations obtenues !");
+                    }
+                    };
+                    // Envoie de la requête 3
+                    request3.open("GET", "http://localhost:3001/api/prestations");
+                    request3.setRequestHeader("Authentication", "Bearer "+userToken);
+                    request3.send();
+                }
+            };
+            // Envoie de la requête 2
+            request2.open("POST","http://localhost:3001/api/centers");
+            request2.setRequestHeader("Content-type", "application/json");
+            request2.setRequestHeader("Authorization","Bearer "+userToken);
+            request2.send(JSON.stringify(centerBody));
         }
     };
 
@@ -77,27 +106,6 @@ function frontSavePatients(){
     request1.setRequestHeader("Content-type", "application/json");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send(JSON.stringify(patientBody));
-    
-    // Body Centre
-    var centerBody = {
-        wording: document.getElementById("centerIdsEntered").value,
-        patientId: document.getElementById("idEntered").value,
-        prestationId: document.getElementById("prestationIdEntered").value
-    };
-
-    //requête 2: Centre
-    var request2 = new XMLHttpRequest();
-    request2.onreadystatechange = function() {
-        if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
-            // alert("Enregistrement de prestation effectuée !");
-        }
-    };
-
-    // Envoie de la requête 2
-    request2.open("POST","http://localhost:3001/api/centers");
-    request2.setRequestHeader("Content-type", "application/json");
-    request2.setRequestHeader("Authorization","Bearer "+userToken);
-    request2.send(JSON.stringify(centerBody));
 };
 
 function redirect(){

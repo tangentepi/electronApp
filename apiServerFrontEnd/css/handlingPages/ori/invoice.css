@@ -1,0 +1,14 @@
+body{
+    font-family: 'Questrial';
+    position: relative;
+}
+.row1{
+    min-height: 90px;
+}
+.icon{
+    width: 25px;
+    height: 25px;
+}
+tr, th{
+    text-align: right;
+}

@@ -88,8 +88,8 @@ function frontSavePatients(){
                     }
                     };
                     // Envoie de la requête 3
-                    request3.open("GET", "http://localhost:3001/api/prestations");
-                    request3.setRequestHeader("Authentication", "Bearer "+userToken);
+                    request3.open("GET","http://localhost:3001/api/prestations");
+                    request3.setRequestHeader("Authorization", "Bearer "+userToken);
                     request3.send();
                 }
             };
@@ -133,5 +133,5 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     // display();
     frontSavePatients();
     userInfos();
-    redirect();
+    // redirect();
 });

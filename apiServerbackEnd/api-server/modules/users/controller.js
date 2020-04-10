@@ -84,7 +84,7 @@ exports.login = (req, res, next) => {
                                                             userName: user.name,
                                                             userFirstName: user.firstName,
                                                             token: user.token,
-                                                            message: 'pième connectin avec nouveau token!'
+                                                            message: 'pième connection avec nouveau token!'
                                                       });
                                                     }
                                                   ).catch(

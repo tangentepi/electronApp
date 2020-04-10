@@ -2,11 +2,21 @@ body{
     font-family: 'Questrial'!important;
     position: relative;
 }
+
 nav{
     font-weight: bold;
 }
 #btnNext, #btnPreview{
     margin-top: 41px;
+}
+.inputs{
+    text-align: center;
+    font-weight: bold;
+    /* font-size: 20px;
+    width:300px;
+    height: 29px;
+    border-radius: 6px;
+    color: #000; */
 }
 .userInfos{
     color: #FFF!important;

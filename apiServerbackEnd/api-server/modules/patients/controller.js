@@ -168,14 +168,10 @@ export const createPatient = (req, res, next) => {
 
 
 export const getAllPatient = async (req, res) => {
-    try {
-      return res.status(200).json({patients: await Patient.find()});
-    }
-    catch (e) {
-        return res.status(e.status).json({ error: true, message: 'Error with patient' });
-    }
+  Convention.find().then(convention => res.status(200).json(convention)).catch(error => res.status(400).json({ error }));
 
 };
+
 
 export const getOnePatient = (req, res, next) => {
   Patient.findOne({

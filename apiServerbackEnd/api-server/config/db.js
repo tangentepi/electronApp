@@ -1,3 +1,4 @@
+import mongoose from 'mongoose';
 /* import mongoose from 'mongoose';
 //_________________THE APP__________________
 
@@ -12,9 +13,10 @@ mongoose.set('useCreateIndex', true);
 */
 
 //_________________THE APP__________________
+
+
 // CONNECXION LOCALE
 
-import mongoose from 'mongoose';
 
 
 export default () => {

@@ -7,4 +7,4 @@ const conventionSchema = new mongoose.Schema({
 });
 
 // export default mongoose.model('Convention', conventionSchema);
-module.exports = mongoose.model('Cenvention', conventionSchema);
+module.exports = mongoose.model('Convention', conventionSchema);

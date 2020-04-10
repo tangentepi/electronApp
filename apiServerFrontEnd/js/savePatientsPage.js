@@ -69,26 +69,73 @@ function frontSavePatients(){
         patientId: document.getElementById("idEntered").value,
         prestationId: document.getElementById("prestationIdEntered").value
     };
+    var centerArray = new Array();
+    var prestationArray = new Array();
+    var costArray = new Array();
+    var conventionWordingArray = new Array();
+    var conventionInsuredShareArray = new Array();
     
     //requête 1: Patient
     var request1 = new XMLHttpRequest();
     request1.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
-            alert("Enregistrement de Patient Réussi !");
+            // Vérification de la réussite de la requête
+            // alert("Enregistrement de Patient Réussi !");
             //requête 2: Centre
             var request2 = new XMLHttpRequest();
             request2.onreadystatechange = function() {
                 if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
-                    alert("Enregistrement de prestation effectuée !");
+                    // Vérification de la réussite de la requête
+                    // alert("Enregistrement de prestation effectuée !");
                     // Requête 3
                     var request3 = new XMLHttpRequest();
                     request3.onreadystatechange = function(){
                     if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
-                        alert("Prestations obtenues !");
+                        // Vérification de la réussite de la requête
+                        // alert("Prestations obtenues !");
+                        var response3 = JSON.parse(this.responseText);
+                        // Requête 4
+                        var request4 = new XMLHttpRequest();
+                        request4.onreadystatechange = function(){
+                            if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                                // Vérification de la réussite de la requête
+                                // alert("Conventions obtenues !");
+                                var response4 = JSON.parse(this.responseText);
+                                // Début traiment
+                                for(i=0; i<response3.prestations.length; i++){
+                                    if(response3.prestations[i].wording == centerBody.prestationId){
+                                        for(j=0; j<response3.prestations[i].centerIds.length; j++){
+                                                if(response3.prestations[i].centerIds[j] == centerBody.wording){
+                                                    centerArray.push(response3.prestations[i].centerIds[j]);
+                                                    prestationArray.push(response3.prestations[i].wording);
+                                                    costArray.push(response3.prestations[i].cost[j]);
+                                                }
+                                        }
+
+                                    }
+                                }
+                                // for(k=0; k<costArray.length; k++){
+                                //     alert(`Prestation: ${prestationArray[k]}\nCoût de la prestation: ${costArray[k]}\nCentre concerné: ${centerArray[k]}`);
+                                // }
+                                for(i=0; i<response4.conventions.length; i++){
+                                    if(response4.conventions[i].wording == patientBody.convention ){
+                                        conventionWordingArray.push(response4.conventions[i].wording);
+                                        conventionInsuredShareArray.push(response4.conventions[i].insuredShare);
+                                    }
+                                }
+                                for(l=0; l<conventionWordingArray.length; l++){
+                                    alert(`Assurance: ${conventionWordingArray[l]}\nRéduction: ${100-conventionInsuredShareArray[l]}%`);
+                                }
+                                
+                            }
+                        };
+                        request4.open("GET", "http://localhost:3001/api/conventions");
+                        request4.setRequestHeader("Authorization", "Bearer "+userToken);
+                        request4.send();
                     }
                     };
                     // Envoie de la requête 3
-                    request3.open("GET","http://localhost:3001/api/prestations");
+                    request3.open("GET", "http://localhost:3001/api/prestations");
                     request3.setRequestHeader("Authorization", "Bearer "+userToken);
                     request3.send();
                 }
@@ -96,7 +143,7 @@ function frontSavePatients(){
             // Envoie de la requête 2
             request2.open("POST","http://localhost:3001/api/centers");
             request2.setRequestHeader("Content-type", "application/json");
-            request2.setRequestHeader("Authorization","Bearer "+userToken);
+            request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send(JSON.stringify(centerBody));
         }
     };
@@ -121,6 +168,19 @@ function redirect(){
             };
 }, 1000);};
 
+function redirect1(){
+    setTimeout( function(){
+        if(!userId){
+        alert("Veuillez vous connecter svp");
+        document.location.href ="./loginPagePropositionParOri.html";
+        // document.getElementById("loginForm")[0].value = "";
+        // document.getElementById("loginForm")[1].value = "";
+        }
+        else {
+            document.location.href="./handlePatientsPage.html";
+            };
+}, 1000);};
+
 // function display(){
 //     prompt("Le boutton fonctionne bien !")
 // }
@@ -134,4 +194,14 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     frontSavePatients();
     userInfos();
     // redirect();
+});
+document.getElementById("userInfos").addEventListener("click", function(e) {
+    e.preventDefault();
+    userInfos();
+    redirect1();
+});
+document.getElementById("userProfilImage").addEventListener("click", function(e) {
+    e.preventDefault();
+    userInfos();
+    redirect1();
 });

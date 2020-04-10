@@ -9,7 +9,7 @@ const auth = require('../../middleware/auth');
 const routes = new Router();
 
 
-// routes.post('/',adminAuth, Convention.createConvention);
+routes.post('/',/*adminAuth,*/ Convention.createConvention);
 routes.get('/', auth, Convention.getAllConvention);
 // routes.get('/:id', auth, Convention.getOneConvention);
 // routes.put('/:id', adminAuth, Convention.modifyConvention);

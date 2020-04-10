@@ -93,7 +93,7 @@ function redirection1(){
         else {
             document.location.href="./state1.html";
             }}
-            , 5000);
+            , 1000);
         };
             
 //État 2 *******************************************************************************************************
@@ -198,7 +198,7 @@ function redirection2(){
             document.location.href="./state2.html";
             }
         }
-            , 000
+            , 1000
             );
 };
 
@@ -371,7 +371,7 @@ function redirection(){
         else {
             document.location.href="./savePatientsPage.html";
         }}
-        , 6000);};
+        , 1000);};
 
 // Création d'un nouveau Patient
 

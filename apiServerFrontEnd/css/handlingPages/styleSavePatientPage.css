@@ -7,7 +7,7 @@ nav{
     font-weight: bold;
 }
 #btnNext, #btnPreview{
-    margin-top: 41px;
+    margin-top: 52px;
 }
 .inputs{
     text-align: center;
@@ -31,6 +31,7 @@ nav{
     background-size: cover;
     color: #eeff00;
     font-weight: bold;
+    padding-top: 20px;
 }
 #p1{
     background-image: url("../../img/médecins/medecin2.jpg");
@@ -47,9 +48,10 @@ nav{
 margin-top: 5px;
 }
 form label{
-    font-size: 15px;
+    font-size: 23px;
     color: #FFF;
 }
+
 .icon{
     width: 25px;
     height: 25px;
@@ -79,7 +81,15 @@ form label{
 .userInfo{
     background-color: #6495ed;
 }
-.container label:hover {
-    text-shadow: 2px 2px 12px rgb(2, 1, 1);
-    font-size: 15px;
+/* .container label:hover {
+    /* text-shadow: 2px 2px 12px rgb(2, 1, 1);
+    font-size: 15px; */
+    /* color:#F3D617; */
+    /* #F4D03F; 
+} */
+.formLabel label:hover{
+color:#ffff00;
+/* color:#FF0000; */
+/* color:#5DADE2; */
+/* color: #F3D617; */
 }

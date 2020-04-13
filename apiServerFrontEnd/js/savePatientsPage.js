@@ -123,9 +123,25 @@ function frontSavePatients(){
                                         conventionInsuredShareArray.push(response4.conventions[i].insuredShare);
                                     }
                                 }
-                                for(l=0; l<conventionWordingArray.length; l++){
-                                    alert(`Assurance: ${conventionWordingArray[l]}\nRéduction: ${100-conventionInsuredShareArray[l]}%`);
+                                // for(l=0; l<conventionWordingArray.length; l++){
+                                //     alert(`Assurance: ${conventionWordingArray[l]}\nRéduction: ${100-conventionInsuredShareArray[l]}%`);
+                                // }
+
+                                for(i=0; i<costArray.length; i++){
+                                    // alert(`Assurance: ${conventionWordingArray[i]}\nRéduction: ${100-conventionInsuredShareArray[i]}%`);
+                                    // alert(`Prestation: ${prestationArray[i]}\nCoût de la prestation: ${costArray[i]}\nCentre concerné: ${centerArray[i]}`);
+                                    sessionStorage.setItem(`conventionWording${i}`, conventionWordingArray[i]);
+                                    sessionStorage.setItem(`reduction${i}`, 100-conventionInsuredShareArray[i]);
+                                    sessionStorage.setItem(`prestation${i}`, prestationArray[i]);
+                                    sessionStorage.setItem(`prestationCost${i}`, costArray[i]);
                                 }
+
+                                sessionStorage.setItem("center", centerBody.wording);
+                                sessionStorage.setItem("patientName", patientBody.name);
+                                sessionStorage.setItem("patientFirstName", patientBody.firstName);
+                                sessionStorage.setItem("patientAddress", patientBody.address);
+                                sessionStorage.setItem("dataLength", prestationArray.length);
+                                
                                 
                             }
                         };
@@ -164,7 +180,7 @@ function redirect(){
         // document.getElementById("loginForm")[1].value = "";
         }
         else {
-            document.location.href="./savePatientsPage.html";
+            document.location.href="./invoice.html";
             };
 }, 1000);};
 
@@ -193,7 +209,7 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     // display();
     frontSavePatients();
     userInfos();
-    // redirect();
+    redirect();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();

@@ -166,13 +166,32 @@ export const createPatient = (req, res, next) => {
 
 // ************************* hateoasLinker = require('express-hateoas-links');
 
-
 export const getAllPatient = async (req, res) => {
-  Convention.find().then(convention => res.status(200).json(convention)).catch(error => res.status(400).json({ error }));
-
+  try{
+    return res.status(200).json({patients: await Patient.find()});
+  }
+  catch(e){
+    return res.status(e.status).json({error: true, message: 'Error with Patient !'});
+  }
 };
 
-
+export const findAPatient = (req, res, next) => {
+  Patient.findOne({
+    patientId: req.params.id
+    // _id: req.params.id
+  }).then(
+    (patient) => {
+      res.status(200).json({patients: patient});
+      /*console.log(patient);*/
+    }
+  ).catch(
+    (error) => {
+      res.status(404).json({
+        error: error
+      });
+    }
+  );
+};
 export const getOnePatient = (req, res, next) => {
   Patient.findOne({
     _id: req.params.id

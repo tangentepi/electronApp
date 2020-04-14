@@ -360,6 +360,60 @@ function redirection4(){
             , 1000
             );
 };
+function frontFindAPatient(){
+    var searchCriteria = {
+        patientId : document.getElementById("findPatient").value
+    };
+    var request = new XMLHttpRequest();
+    request.onreadystatechange = function(){
+        if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+            var response = JSON.parse(this.responseText);
+            var patient = response.patients;
+            // alert(response.patients.name);
+            sessionStorage.setItem("patientId", `${patient.patientId}`);
+            sessionStorage.setItem("patientName", `${patient.name}`);
+            sessionStorage.setItem("patientFirstName", `${patient.firstName}`);
+            sessionStorage.setItem("patientBirthDate", `${patient.birthDate}`);
+            sessionStorage.setItem("patientPieceNumber", `${patient.pieceNumber}`);
+            sessionStorage.setItem("patientGender", `${patient.gender}`);
+            sessionStorage.setItem("patientAddress", `${patient.address}`);
+            sessionStorage.setItem("patientTypeOfPiece", `${patient.typeOfPiece}`);
+            sessionStorage.setItem("patientPlaceOfResidence", `${patient.placeOfResidence}`);
+            sessionStorage.setItem("patientPhoneNumber", `${patient.phoneNumber}`);
+            sessionStorage.setItem("patientEmployer", `${patient.employer}`);
+            sessionStorage.setItem("patientElectricityRelease", `${patient.electricityRelease}`);
+            sessionStorage.setItem("patientWaterClearance", `${patient.waterClearance}`);
+            sessionStorage.setItem("patientNationality", `${patient.nationality}`);
+            sessionStorage.setItem("patientFatherFullName", `${patient.fatherFullName}`);
+            sessionStorage.setItem("patientMotherFullName", `${patient.motherFullName}`);
+            sessionStorage.setItem("patientConventionId", `${patient.conventionId}`);
+
+            // alert(sessionStorage.patientId);
+            // alert(sessionStorage.patientName);
+            // alert(sessionStorage.patientFirstName);
+        }
+    };
+    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`);
+    request.setRequestHeader("Authorization", "Bearer "+userToken);
+    request.send();
+    // alert("Le bouton Fonctionne !");
+
+}
+
+function redirection5(){
+    
+    setTimeout( function(){
+        if(!userId){
+        alert("Erreur d'affichage des Informations du Patient; vous n'êtes pas connecté");
+        }else if(!sessionStorage.patientConventionId){
+        alert("Patient non trouvé !");        
+        }else{
+            document.location.href="./savePatientsPage2.html";
+            }
+        }
+            , 1000
+            );
+};
 //Création de Nouveau Patient
 
 function redirection(){
@@ -417,4 +471,10 @@ document.getElementById("stateFourForm").addEventListener("submit", function(e){
     state4();
     userInfos();
     redirection4();
+});
+document.getElementById("findForm").addEventListener("submit", function(e){
+    e.preventDefault();
+    frontFindAPatient();
+    userInfos();
+    redirection5();
 });

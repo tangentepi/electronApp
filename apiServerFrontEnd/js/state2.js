@@ -8,6 +8,7 @@ function fillTable(){
     var userToken = sessionStorage.userToken;
     var userName = sessionStorage.userName;
     var userFirstName = sessionStorage.userFirstName;
+    var userPhoneNumber = sessionStorage.userPhoneNumber;
     var dataLength = sessionStorage.dataLength;
 
         
@@ -37,6 +38,7 @@ function fillTable(){
         sessionStorage.setItem("userToken", userToken);
         sessionStorage.setItem("userName", userName);
         sessionStorage.setItem("userFirstName", userFirstName);
+        sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
 };
 
 

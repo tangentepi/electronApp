@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
     password :{ type: String, required: true },
     name: {type: String, required: true},
     firstName: {type: String, required: true},
+    phoneNumber: {type: String, required: true},
     profil: {type: String, required: true},
     token: {type: String, required: false},
     connectionStart: { type: Number},

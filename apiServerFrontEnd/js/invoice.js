@@ -3,6 +3,7 @@ var userId = sessionStorage.userId;
 var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
+var userPhoneNumber = sessionStorage.userPhoneNumber;
 var theLength = sessionStorage.dataLength;
 
 window.load = invoice();
@@ -12,6 +13,7 @@ function userInfos(){
     sessionStorage.setItem("userToken", userToken);
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
+    sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
 }
 
 function randomString(stringLength){
@@ -35,7 +37,7 @@ function invoice(){
         document.getElementById("invoiceNumber").innerHTML += invoiceNum;
         document.getElementById("centerInfos2").innerHTML += sessionStorage.center.toLowerCase();
         document.getElementById("patientInfos").innerHTML += `${sessionStorage.patientFirstName.toLowerCase()} ${sessionStorage.patientName.toUpperCase()}<br />${sessionStorage.patientAddress}`;
-        document.getElementById("userInfos2").innerHTML += `${userFirstName.toLowerCase()} ${userName.toUpperCase()}<br/ >${userId.toUpperCase()}`;    
+        document.getElementById("userInfos2").innerHTML += `${userFirstName.toLowerCase()} ${userName.toUpperCase()}<br/ >${userPhoneNumber.toUpperCase()}`;    
         for(i=0; i<theLength; i++){
             document.getElementById("number").innerHTML += `${i+1}`;
             document.getElementById("prestationWording").innerHTML += `${sessionStorage.getItem(`prestation${i}`).toLowerCase()}`;

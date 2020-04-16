@@ -3,6 +3,7 @@ var userId = sessionStorage.userId;
 var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
+var userPhoneNumber = sessionStorage.userPhoneNumber;
 // Suppression des données contenues dans la variable superglobale sessionStorage
 sessionStorage.clear();
 // Début traitement
@@ -14,10 +15,11 @@ function userInfos(){
     sessionStorage.setItem("userToken", userToken);
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
+    sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
 }
 
 function savePatientPage(){
-    if(!userId){
+    if(!userId || userId == undefined){
         alert("Vous n'êtes pas connecté !");  
         document.getElementById("userInfos").value = "TEST MODE";    
     }

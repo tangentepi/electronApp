@@ -4,6 +4,7 @@ var userId = sessionStorage.userId;
 var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
+var userPhoneNumber = sessionStorage.userPhoneNumber;
 
 //Suppression des données contenues dans la variable superglobale sessionStorage
 sessionStorage.clear();
@@ -15,6 +16,7 @@ function userInfos(){
     sessionStorage.setItem("userToken", userToken);
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
+    sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
 }
 
 function handlePatient(){

@@ -19,6 +19,7 @@ exports.signup = (req, res, next) => {
                 password: hash,
                 name: req.body.name,
                 firstName: req.body.firstName,
+                phoneNumber: req.body.phoneNumber,
                 profil: req.body.profil,
                 //token: req.body.token,
                 connectionStart: 0,
@@ -69,6 +70,7 @@ exports.login = (req, res, next) => {
                                                 userId: user._id,
                                                 userName: user.name,
                                                 userFirstName: user.firstName,
+                                                userPhoneNumber: user.phoneNumber,
                                                 token: user.token,
                                                 message: "token encore valide; pième connection !"
                                             });
@@ -83,6 +85,7 @@ exports.login = (req, res, next) => {
                                                             userId: user._id,
                                                             userName: user.name,
                                                             userFirstName: user.firstName,
+                                                            userPhoneNumber: user.phoneNumber,
                                                             token: user.token,
                                                             message: 'pième connection avec nouveau token!'
                                                       });
@@ -109,6 +112,7 @@ exports.login = (req, res, next) => {
                                           userId: user._id,
                                           userName: user.name,
                                           userFirstName: user.firstName,
+                                          userPhoneNumber: user.phoneNumber,
                                           token: user.token,
                                           message: 'Première connection!'
                                           });
@@ -145,7 +149,11 @@ exports.modifyUser =( req, res, next) => {
         const user = new User({
           _id: req.params.id,
           email: req.body.email,
-          password: req.body.password
+          password: req.body.password,
+          name: req.body.name,
+          firstName: req.body.firstName,
+          phoneNumber: req.body.phoneNumber,
+          profil: req.body.profil
         });
         User.updateOne({_id: req.params.id}, user).then(
           () => {

@@ -12,11 +12,13 @@ function frontLogin() {
           var userIdReceived = response.userId;
           var userName = response.userName;
           var userFirstName = response.userFirstName;
+          var userPhoneNumber = response.userPhoneNumber;
           sessionStorage.clear();
           sessionStorage.setItem("userId", userIdReceived);
           sessionStorage.setItem("userName", userName);
           sessionStorage.setItem("userFirstName", userFirstName);
           sessionStorage.setItem("userToken", userTokenReceived);
+          sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
       }
   };
   request.open("POST", "http://localhost:3001/api/users/login");

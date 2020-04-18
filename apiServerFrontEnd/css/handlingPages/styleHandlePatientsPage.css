@@ -103,7 +103,9 @@ ul{
     text-align: center;
 }
 .patientNumberLabel:hover{
-    color: #ffff00;
+    /* color: #ffff00; */
+    /* color: #31708f; */
+    color: #5bc0de;
     text-shadow: 40px 40px 102px #F00 !important;
 
 

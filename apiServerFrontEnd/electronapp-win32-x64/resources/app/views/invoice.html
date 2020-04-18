@@ -20,31 +20,84 @@
                     </ul>
                 </nav>
             </div> <!-- fin row nav -->
-            <div class="row row1"></div>
+            <div class="row row1">
+            </div>
+            <div class="row row2">
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 logoCHUT"></div>
+                <div class="col-xs-5 col-sm-5 col-md-5"></div>
+                <div class="col-xs-3 col-sm-3 col-md-3"><br /><br /><b>#</b><b id="invoiceNumber"></b></div>
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            </div>
+            <div class="row row3">
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 centerInfos"><br /><u>CENTRE</u><br><p id="centerInfos2"></p></div>
+                <div class="col-xs-5 col-sm-5 col-md-5"></div>
+                <div class="col-xs-3 col-sm-3 col-md-3"><u>Patient</u><br /><p id="patientInfos"></p><u>Médecin</u><br /><p id="userInfos2"></p></div>
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            </div>
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10">
                     <table class="table table-striped" id="state0neTab">
                         <thead>
-                            <th>NUMÉROS</th>
-                            <th>NOMS</th>
-                            <th>PRÉNOMS</th>
-                            <th>CENTRES</th>
-                            <th>DATES D'ENREGISTREMENT</th>
+                            <th>#</th>
+                            <th>PRESTATION</th>
+                            <th>ASSURANCE</th>
+                            <th>COÛT DE LA PRESTATION</th>
                         </thead>
-                        <tbody id="stateOneTableBody">
+                        <tbody id="invoiceTableBody1">
+                            <tr>
+                                <td id="number"></td>
+                                <td id="prestationWording"></td>
+                                <td id="conventionWording"></td>
+                                <td id="prestationPrice1"></td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
-            </div> <!-- fin row tableau -->
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+            </div> <!-- fin row tableau1 -->
             <div class="row">
-                <div class="col-xs-10 col-sm-10 col-md-10"></div>
+                <div class="col-xs-7 col-sm-7 col-md-7">
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <table class="table" id="state0neTab">
+                        <thead>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody id="invoiceTableBody2">
+                            <tr>
+                                <td><b>Sous-total</b></td>
+                                <td id="prestationPrice2"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Réduction (<b id="reduction"></b>)</b></td>
+                                <td id="prestationPrice3"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Total</b></td>
+                                <td id="prestationTotalPrice"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+            </div> <!-- fin row tableau2 -->
+            <div class="row">
+                <div class="col-xs-7 col-sm-7 col-md-7"></div>
                 <div class="form-group col-xs-2 col-sm-2 col-md-2">
                     <a href="./handlePatientsPage.html"><input type="button" class="btn-success form-control" value="OK" id="addRowBtn"/></a>
                 </div>
+                <div class="form-group col-xs-2 col-sm-2 col-md-2">
+                    <a href="./invoiceBis.html"><input type="button" class="btn-info form-control" value="IMPRIMER" id="addRowBtn"/></a>
+                </div>
             </div>  
         </div>
-        
-            
     </body>
     <script src="../js/invoice.js"></script>
 </html>

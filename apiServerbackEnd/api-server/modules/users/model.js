@@ -17,10 +17,11 @@ const userSchema = new mongoose.Schema({
     profil: {type: String, required: true},
     token: {type: String, required: false},
     connectionStart: { type: Number},
-    connectionEnd: {type: Number }
+    connectionEnd: {type: Number },
+    patientIds:[{type: String}]
 });
 
 userSchema.plugin(uniqueValidator);
 
 // export default mongoose.model('Users', userSchema);
-module.exports = mongoose.model('Users', userSchema);
+module.exports = mongoose.model('User', userSchema);

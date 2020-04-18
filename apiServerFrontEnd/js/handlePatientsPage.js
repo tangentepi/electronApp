@@ -120,8 +120,8 @@ function state2(){
                     var idArray = new Array();
                     var idArray1 = new Array();
                     var idArray2 = new Array();
-                    var nameArray1 = new Array();
                     var nameArray = new Array();
+                    var nameArray1 = new Array();
                     var firstNameArray = new Array();
                     var firstNameArray1 = new Array();
                     var centerArray = new Array();
@@ -172,6 +172,7 @@ function state2(){
                         sessionStorage.setItem(`centerWording${i}`, centerArray[i]);
                         sessionStorage.setItem(`prestation${i}`, prestationArray[i]);
                         sessionStorage.setItem(`date${i}`, dateArray[i]);
+                        // alert(`Patient Id: ${sessionStorage.getItem(`patientId${i}`)}\nPatient Name: ${sessionStorage.getItem(`patientName${i}`)}\nPatient FirstName: ${sessionStorage.getItem(`patientFirstName${i}`)}\nCenter: ${sessionStorage.getItem(`centerWording${i}`)}\nPrestation: ${sessionStorage.getItem(`prestation${i}`)}\nDate: ${sessionStorage.getItem(`date${i}`)}`);
                     }
                     sessionStorage.setItem("dataLength",idArray.length);
                     // var testArray = new Array();

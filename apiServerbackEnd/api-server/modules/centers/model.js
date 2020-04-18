@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 
 const centerSchema = new mongoose.Schema({
     wording: {type: String, required: true}, //Libellé du centre
-    patientIds: [{type: String}],
+    registrationInfos: [{
+        patientIds: {type: String},
+        registrationDate:{ type: Date}
+    }],
     prestationIds: [{type: String}]
     // patientIds: [{type: mongoose.Types.ObjectId, ref: 'Patient'}],
     // prestationIds: [{type: mongoose.Types.ObjectId, ref: 'Prestation'}]

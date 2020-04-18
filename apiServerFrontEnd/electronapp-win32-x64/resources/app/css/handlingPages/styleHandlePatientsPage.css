@@ -108,7 +108,7 @@ ul{
 
 
 }
-.findButton{
+#findButton{
     margin-top: 37px;
     background-image: url("../../img/icones/find.png")!important;
     background-repeat: no-repeat!important;

@@ -18,7 +18,7 @@ routes.get('/', auth, Patient.getAllPatient);
 routes.get('/1/:id', auth, Patient.getOnePatient);
 routes.get('/2/:id', auth, Patient.findAPatient);
 routes.put('/:id',auth, Patient.modifyPatient);
-routes.delete('/:id', auth, Patient.deletePatient);
+routes.delete('/:id', adminAuth, Patient.deletePatient);
 
 export default routes; // Un export ici, pourquoi? ==>
                        //On exporte les routes pour les rendre

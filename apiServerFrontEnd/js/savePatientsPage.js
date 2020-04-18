@@ -65,11 +65,15 @@ function frontSavePatients(){
             //Date.now(),            
             center: document.getElementById("centerIdsEntered").value
     };
-    // Body Centre
+    // Body Center
     var centerBody = {
         wording: document.getElementById("centerIdsEntered").value,
         patientId: document.getElementById("idEntered").value,
+        registrationDate: document.getElementById("registrationDateEntered").value,
         prestationId: document.getElementById("prestationIdEntered").value
+    };
+    var registredPatient = {
+        patientId: document.getElementById("idEntered").value
     };
     var centerArray = new Array();
     var prestationArray = new Array();
@@ -82,35 +86,44 @@ function frontSavePatients(){
     request1.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             // Vérification de la réussite de la requête
-            // alert("Enregistrement de Patient Réussi !");
+            alert("Enregistrement de Patient Réussi !");
             //requête 2: Centre
             var request2 = new XMLHttpRequest();
             request2.onreadystatechange = function() {
                 if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                     // Vérification de la réussite de la requête
-                    // alert("Enregistrement de prestation effectuée !");
+                    alert("Enregistrement de prestation dans le centre effectuée !");
                     // Requête 3
                     var request3 = new XMLHttpRequest();
+
                     request3.onreadystatechange = function(){
-                    if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                        if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                         // Vérification de la réussite de la requête
-                        // alert("Prestations obtenues !");
+                        alert("Enregistrement de l'identifiant du Patient dans le document user effectuée !");
                         var response3 = JSON.parse(this.responseText);
-                        // Requête 4
-                        var request4 = new XMLHttpRequest();
-                        request4.onreadystatechange = function(){
+                        alert(`${response3.messsage}`);
+                            // Requête 4
+                            var request4 = new XMLHttpRequest();
+                            request4.onreadystatechange = function(){
                             if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
+                            // Vérification de la réussite de la requête
+                            // alert("Prestations obtenues !");
+                            var response4 = JSON.parse(this.responseText);
+                            // Requête 5
+                            var request5 = new XMLHttpRequest();
+                            request5.onreadystatechange = function(){
+                                if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
                                 // Vérification de la réussite de la requête
                                 // alert("Conventions obtenues !");
-                                var response4 = JSON.parse(this.responseText);
+                                var response5 = JSON.parse(this.responseText);
                                 // Début traiment
-                                for(i=0; i<response3.prestations.length; i++){
-                                    if(response3.prestations[i].wording == centerBody.prestationId){
-                                        for(j=0; j<response3.prestations[i].centerIds.length; j++){
-                                                if(response3.prestations[i].centerIds[j] == centerBody.wording){
-                                                    centerArray.push(response3.prestations[i].centerIds[j]);
-                                                    prestationArray.push(response3.prestations[i].wording);
-                                                    costArray.push(response3.prestations[i].cost[j]);
+                                for(i=0; i<response4.prestations.length; i++){
+                                    if(response4.prestations[i].wording == centerBody.prestationId){
+                                        for(j=0; j<response4.prestations[i].centerIds.length; j++){
+                                                if(response4.prestations[i].centerIds[j] == centerBody.wording){
+                                                    centerArray.push(response4.prestations[i].centerIds[j]);
+                                                    prestationArray.push(response4.prestations[i].wording);
+                                                    costArray.push(response4.prestations[i].cost[j]);
                                                 }
                                         }
 
@@ -119,10 +132,10 @@ function frontSavePatients(){
                                 // for(k=0; k<costArray.length; k++){
                                 //     alert(`Prestation: ${prestationArray[k]}\nCoût de la prestation: ${costArray[k]}\nCentre concerné: ${centerArray[k]}`);
                                 // }
-                                for(i=0; i<response4.conventions.length; i++){
-                                    if(response4.conventions[i].wording == patientBody.convention ){
-                                        conventionWordingArray.push(response4.conventions[i].wording);
-                                        conventionInsuredShareArray.push(response4.conventions[i].insuredShare);
+                                for(i=0; i<response5.conventions.length; i++){
+                                    if(response5.conventions[i].wording == patientBody.convention ){
+                                        conventionWordingArray.push(response5.conventions[i].wording);
+                                        conventionInsuredShareArray.push(response5.conventions[i].insuredShare);
                                     }
                                 }
                                 // for(l=0; l<conventionWordingArray.length; l++){
@@ -147,15 +160,24 @@ function frontSavePatients(){
                                 
                             }
                         };
-                        request4.open("GET", "http://localhost:3001/api/conventions");
-                        request4.setRequestHeader("Authorization", "Bearer "+userToken);
-                        request4.send();
+                        // Envoie de la requête 5
+                        request5.open("GET", "http://localhost:3001/api/conventions");
+                        request5.setRequestHeader("Authorization", "Bearer "+userToken);
+                        request5.send();
                     }
                     };
+                    // Envoie de la requête 4
+                    request4.open("GET", "http://localhost:3001/api/prestations");
+                    request4.setRequestHeader("Authorization", "Bearer "+userToken);
+                    request4.send();
+                        }
+                    };
                     // Envoie de la requête 3
-                    request3.open("GET", "http://localhost:3001/api/prestations");
-                    request3.setRequestHeader("Authorization", "Bearer "+userToken);
-                    request3.send();
+
+                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`);
+                    request3.setRequestHeader("Content-type","Application/json");
+                    request3.setRequestHeader("Authorization", "Bearer "+ userToken);
+                    request3.send(JSON.stringify(registredPatient));
                 }
             };
             // Envoie de la requête 2
@@ -211,7 +233,7 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     // display();
     frontSavePatients();
     userInfos();
-    redirect();
+    // redirect();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();

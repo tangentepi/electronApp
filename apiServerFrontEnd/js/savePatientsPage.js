@@ -86,22 +86,21 @@ function frontSavePatients(){
     request1.onreadystatechange = function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             // Vérification de la réussite de la requête
-            alert("Enregistrement de Patient Réussi !");
+            // alert("Enregistrement de Patient Réussi !");
             //requête 2: Centre
             var request2 = new XMLHttpRequest();
             request2.onreadystatechange = function() {
                 if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                     // Vérification de la réussite de la requête
-                    alert("Enregistrement de prestation dans le centre effectuée !");
+                    // alert("Enregistrement de prestation dans le centre effectuée !");
                     // Requête 3
                     var request3 = new XMLHttpRequest();
 
                     request3.onreadystatechange = function(){
                         if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                         // Vérification de la réussite de la requête
-                        alert("Enregistrement de l'identifiant du Patient dans le document user effectuée !");
+                        // alert("Enregistrement de l'identifiant du Patient dans le document user effectuée !");
                         var response3 = JSON.parse(this.responseText);
-                        alert(`${response3.messsage}`);
                             // Requête 4
                             var request4 = new XMLHttpRequest();
                             request4.onreadystatechange = function(){
@@ -156,6 +155,10 @@ function frontSavePatients(){
                                 sessionStorage.setItem("patientFirstName", patientBody.firstName);
                                 sessionStorage.setItem("patientAddress", patientBody.address);
                                 sessionStorage.setItem("dataLength", prestationArray.length);
+
+                                // for(i=0; i<sessionStorage.dataLength; i++){
+                                //     alert(`Patient: ${sessionStorage.patientFirstName} ${sessionStorage.patientName} \nCentre: ${sessionStorage.center} \nAdresse: ${sessionStorage.patientAddress} \nPrestation: ${sessionStorage.getItem(`prestation${i}`)}\nPrix: ${sessionStorage.getItem(`prestationCost${i}`)}\n Assurance Maladie: ${sessionStorage.getItem(`conventionWording${i}`)} \nRéduction :${sessionStorage.getItem(`reduction${i}`)}`);
+                                // }
                                 
                                 
                             }
@@ -233,7 +236,7 @@ document.getElementById("savePatientForm").addEventListener("submit", function(e
     // display();
     frontSavePatients();
     userInfos();
-    // redirect();
+    redirect();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();

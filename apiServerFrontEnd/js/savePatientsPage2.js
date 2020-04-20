@@ -237,7 +237,7 @@ function redirect(){
         else {
             document.location.href="./invoice.html";
             };
-}, 1000);};
+}, 6000);};
 
 function redirect1(){
     setTimeout( function(){

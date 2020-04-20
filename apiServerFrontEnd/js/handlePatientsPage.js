@@ -305,6 +305,7 @@ function state4(){
                     var firstNameArray1 = new Array();
                     var centerArray = new Array();
                     var centerArray1 = new Array();
+                    var centerArray2 = new Array();
                     var prestationArray = new Array();
                     var prestationArray2 = new Array();
                     var dateArray = new Array();
@@ -321,6 +322,7 @@ function state4(){
                             }
                         }
                     }
+                    alert(centerArray1);
                     // alert("Enregistrements des Données de Patients effectué ... ...");
                     // Traitement sur la collection Centre
                     for(i=0; i<centers.length; i++){
@@ -328,10 +330,12 @@ function state4(){
                             if(centers[i].registrationInfos[j].registrationDate >= min && centers[i].registrationInfos[j].registrationDate <= max){
                                 idArray2.push(centers[i].registrationInfos[j].patientIds);
                                 prestationArray2.push(centers[i].prestationIds[j]);
+                                centerArray2.push(centers[i].wording);
                                 // Les Wording seront récupérés dans les données de Patient
                             }
                         }
                     }
+                    // alert(prestationArray2);
                     // alert("Enregistrements des Données de Centre effectué ... ...");
                     // for(i=0; i<idArray1.length; i++){
                     //     for(j=0; j<idArray2.length; j++){
@@ -354,16 +358,20 @@ function state4(){
                                 idArray.push(idArray1.splice(i,1));
                                 nameArray.push(nameArray1.splice(i,1));
                                 firstNameArray.push(firstNameArray1.splice(i,1));
-                                centerArray.push(centerArray1.splice(i,1));
+                                // centerArray.push(centerArray1.splice(i,1));
+                                centerArray.push(centerArray2.splice(j,1));
                                 dateArray.push(dateArray1.splice(i,1));
                                 prestationArray.push(prestationArray2.splice(j,1));
-                                idArray2.splice(j,1);  
+                                idArray2.splice(j,1);
                                 j-=1;
-                            }
-
-                            
+                            }                            
+                            // j-=1;
+                            // alert(`**************\nj vaut: ${j}\ni vaut: ${i}\n**************`);
                         }
+                        // i-=1;
+                        // alert(`**************\nj vaut: ${j}\ni vaut: ${i}\n**************`);
                     }
+                    alert(centerArray);
 
                     // alert("Enregistrements Précédent l'enregistrement dans la superglobale effectué ... ...");
                     for(i=0; i<idArray.length; i++){

@@ -1,0 +1,104 @@
+<!Doctype html>
+<html>
+    <head>
+        <title>Recut</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="../css/handlingPages/ori/invoiceBis.css">
+    </head>
+    <body>
+        <div class="container table-responsive">
+            <div class="row">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
+                    </div>              
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="patientInfos"><a href="./handlePatientsPage.html"><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
+                        <li><a href="./handlePatientsPage.html"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
+                    </ul>
+                </nav>
+            </div> 
+            <!-- fin row nav -->
+            <div class="row row1">
+            </div>
+            <div class="row row2">
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                <div class="col-xs-2 col-sm-2 col-md-2"><p id="dateDiv"></p><div class="logoCHUT"><img src="../img/logos_&_armoiries/logoChuT__.png" alt="logoCHUT" class="img-responsive" style="height: 100px;"></div></div>
+                <div class="col-xs-5 col-sm-5 col-md-5"></div>
+                <div class="col-xs-3 col-sm-3 col-md-3"><br /><br /><b>#</b><b id="invoiceNumber"></b></div>
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            </div>
+            <div class="row row3">
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+                <div class="col-xs-2 col-sm-2 col-md-2 centerInfos"><br /><u>CENTRE</u><br><p id="centerInfos2"></p></div>
+                <div class="col-xs-5 col-sm-5 col-md-5"></div>
+                <div class="col-xs-3 col-sm-3 col-md-3"><u>Patient</u><br /><p id="patientInfos"></p><u>Médecin</u><br /><p id="userInfos2"></p></div>
+                <div class="col-xs-1 col-sm-1 col-md-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+                <div class="col-xs-10 col-sm-10 col-md-10">
+                    <table class="table table-striped" id="state0neTab">
+                        <thead>
+                            <th>#</th>
+                            <th>PRESTATION</th>
+                            <th>ASSURANCE</th>
+                            <th>COÛT DE LA PRESTATION</th>
+                        </thead>
+                        <tbody id="invoiceTableBody1">
+                            <tr>
+                                <td id="number"></td>
+                                <td id="prestationWording"></td>
+                                <td id="conventionWording"></td>
+                                <td id="prestationPrice1"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+            </div> <!-- fin row tableau1 -->
+            <div class="row">
+                <div class="col-xs-7 col-sm-7 col-md-7">
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4">
+                    <table class="table" id="state0neTab">
+                        <thead>
+                            <th></th>
+                            <th></th>
+                        </thead>
+                        <tbody id="invoiceTableBody2">
+                            <tr>
+                                <td><b>Sous-total</b></td>
+                                <td id="prestationPrice2"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Réduction (<b id="reduction"></b>)</b></td>
+                                <td id="prestationPrice3"></td>
+                            </tr>
+                            <tr>
+                                <td><b>Total</b></td>
+                                <td id="prestationTotalPrice"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-xs-1 col-sm-1 col-md-1">
+                </div>
+            </div> <!-- fin row tableau2 -->
+            <!-- <div class="row">
+                <div class="col-xs-7 col-sm-7 col-md-7"></div>
+                <div class="form-group col-xs-2 col-sm-2 col-md-2">
+                    <a href="./handlePatientsPage.html"><input type="button" class="btn-success form-control" value="OK" id="addRowBtn"/></a>
+                </div>
+                <div class="form-group col-xs-2 col-sm-2 col-md-2">
+                    <a href="./invoiceBis.html"><input type="button" class="btn-info form-control" value="IMPRIMER" id="addRowBtn"/></a>
+                </div>
+            </div>   -->
+        </div>
+    </body>
+    <script src="../js/invoiceBis.js"></script>
+</html>

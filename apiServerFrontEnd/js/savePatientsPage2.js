@@ -5,7 +5,7 @@ var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
 // Suppression des données contenues dans la variable superglobale sessionStorage
-sessionStorage.clear();
+// sessionStorage.clear();
 // Début traitement
 
 window.onload = savePatientPage();
@@ -27,7 +27,32 @@ function savePatientPage(){
         //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
         //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
-        document.getElementById("userIdsEntered").value = userId;   
+        document.getElementById("userIdsEntered").value = userId; 
+
+        
+        // Remplissage automatique des champs relatifs aux informations du patient
+    //    var t1 = new Date();
+    //    var t2 = t1.toLocaleDateString;
+
+        document.getElementById("idEntered").value = sessionStorage.patientId;   
+        document.getElementById("nameEntered").value = sessionStorage.patientName;   
+        document.getElementById("firstNameEntered").value = sessionStorage.patientFirstName;
+        var d1 = new Date(`${sessionStorage.patientBirthDate}`);
+        document.getElementById("birthDateEntered").value = d1.toLocaleDateString();
+        document.getElementById("pieceNumberEntered").value = sessionStorage.patientPieceNumber;   
+        document.getElementById("genderEntered").value = sessionStorage.patientGender;   
+        document.getElementById("addressEntered").value = sessionStorage.patientAddress;   
+        document.getElementById("typeOfPieceEntered").value = sessionStorage.patientTypeOfPiece;   
+        document.getElementById("placeOfResidenceEntered").value = sessionStorage.patientPlaceOfResidence;   
+        document.getElementById("phoneNumberEntered").value = sessionStorage.patientPhoneNumber;   
+        document.getElementById("employerEntered").value = sessionStorage.patientEmployer;   
+        document.getElementById("electricityReleaseEntered").value = sessionStorage.patientElectricityRelease;   
+        document.getElementById("waterClearanceEntered").value = sessionStorage.patientWaterClearance;   
+        document.getElementById("nationalityEntered").value = sessionStorage.patientNationality;   
+        document.getElementById("fatherFullNameEntered").value = sessionStorage.patientFatherFullName;   
+        document.getElementById("motherFullNameEntered").value = sessionStorage.patientMotherFullName;   
+        document.getElementById("conventionIdEntered").value = sessionStorage.patientConventionId;   
+        // document.getElementById("registrationDateEntered").value = sessionStorage.;   
     }
 }
 
@@ -39,13 +64,16 @@ function savePatientPage(){
 // }
 
 function frontSavePatients(){
-    
+    // Casting the Date
+    var dte1 = document.getElementById("birthDateEntered").value;
+    var dte2 = new Date(dte1);
+
     // Body Patient
     var patientBody = {
             patientId: document.getElementById("idEntered").value,
             name: document.getElementById("nameEntered").value,
             firstName: document.getElementById("firstNameEntered").value,
-            birthDate: document.getElementById("birthDateEntered").value,
+            birthDate: dte2,
             pieceNumber: document.getElementById("pieceNumberEntered").value,
             typeOfPiece: document.getElementById("typeOfPieceEntered").value,
             gender: document.getElementById("genderEntered").value,

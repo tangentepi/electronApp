@@ -11,7 +11,7 @@ import User from './model';
 
 // fonction signup pour enregistrer un utilisateur dans la base de données
 
-exports.signup = (req, res, next) => {
+export const signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
                 const user = new User({
@@ -45,7 +45,7 @@ exports.signup = (req, res, next) => {
 
 //fonction login pour se logger après s'être enregistré
 
-exports.login = (req, res, next) => {
+export const login = (req, res, next) => {
     User.findOne({ email: req.body.email }).then(
         (user) => {
             if (!user) {
@@ -145,7 +145,7 @@ exports.login = (req, res, next) => {
 
 };
 
-exports.modifyUser =( req, res, next) => { 
+export const modifyUser1 =( req, res, next) => { 
         const user = new User({
           _id: req.params.id,
           email: req.body.email,
@@ -169,6 +169,34 @@ exports.modifyUser =( req, res, next) => {
           }
         );
       }; 
+
+
+export const modifyUser2 =( req, res, next) => { 
+  // const user = new User({
+  //   _id: req.params.id,
+  // //   email: req.body.email,
+  // //   password: req.body.password,
+  // //   name: req.body.name,
+  // //   firstName: req.body.firstName,
+  // //   phoneNumber: req.body.phoneNumber,
+  // //   profil: req.body.profil
+  // $push:{patientIds:req.body.patientId}
+  // });
+  // User.updateOne({_id: req.params.id}, {push:{patientIds: req.body.patientId}}).then(
+  User.updateOne({_id: req.params.id}, {$push:{patientIds: req.body.patientId}}).then(
+    () => {
+      res.status(201).json({
+        message: 'user updated successfully!'
+      });
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json({
+        error: error
+      });
+    }
+  );
+}; 
 
 //fonction 1
 /* export const func_1 = (req , res) => {

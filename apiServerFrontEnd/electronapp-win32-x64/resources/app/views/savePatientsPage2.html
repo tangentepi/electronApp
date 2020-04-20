@@ -1,0 +1,190 @@
+<!Doctype html>
+<html>
+	<head>
+			<title>Ajout d'un patient</title>
+						
+			<meta charset="utf-8"/>
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+			<link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+			<link rel="stylesheet" type="text/css" href="../css/handlingPages/styleSavePatientPage.css">
+	</head> 
+	<body>
+		<div class="container">
+			<div class="row">
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="navbar-header">
+                        <a href="loginPagePropositionParOri.html" class="navbar-brand"><img src="../img/icones/home2Yellow.png" alt="home_icon" class="img-responsive icon"></a>
+                    </div>                
+                    <ul class="nav navbar-nav">
+						<li class="active"><a href="#p0">Page 1</a></li>
+						<li><a href="#p1">Page 2</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href=""><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
+						<li><a href="" id="userProfilImage"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
+					</ul>
+                </nav>
+			</div> <!-- fin container nav -->
+			</div>
+			<form action="" data-spy="scroll" data-offset="50" id="savePatientForm" data-targe=".navbar" class="formLabel">
+					<div id="p0">
+						<div class="row">
+							<div class="col-xs-1 col-sm-5 col-md-1"></div>
+							<div class="col-xs-5 col-sm-5 col-md-5">
+							<br /><br /><br /><br />
+							<div class="form-group">
+								<label for="idEntered">Numéro Patient</label>
+								<input type="text" class="form-control" id="idEntered" required autofocus>
+							</div>
+							<div class="form-group">
+								<label for="nameEntered">Nom</label>
+								<input type="text" class="form-control" id="nameEntered" required>
+							</div>
+							<div class="form-group">
+								<label for="firstNameEntered">Prénom(s)</label>
+								<input type="text" class="form-control" id="firstNameEntered" required>
+							</div>
+							<div class="form-group">
+								<label for="birthDateEntered">Date de naissance</label>
+								<input type="datetime" class="form-control" id="birthDateEntered" placeholder="Date de naissance" readonly>
+							</div>
+							<div class="form-group">
+								<label for="pieceNumberEntered">Numéro de la Pièce</label>
+								<input type="text" class="form-control" id="pieceNumberEntered" >
+							</div>
+							<div class="form-group">
+								<label for="typeOfPieceEntered">Type de la pièce</label>
+								<input type="text" class="form-control" id="typeOfPieceEntered" list="typesList" >
+									<datalist id="typesList">
+										<option value="Passeport">
+										<option value="CNI">
+										<option value="Attestation d'Identité">
+										<option value="Autre...">
+									</datalist>
+							</div>
+							</div>
+							<div class="col-xs-5 col-sm-5 col-md-5">
+							<br /><br /><br /><br />
+							<div class="form-group">
+								<label for="genderEntered">Genre</label>
+								<input type="text" class="form-control" id="genderEntered" list="gendersList" >
+									<datalist id="gendersList">
+										<option value="Homme">
+										<option value="Femme">
+									</datalist>
+							</div>
+							<div class="form-group">
+								<label for="addressEntered">Adresse</label>
+								<input type="text" class="form-control" id="addressEntered" placeholder="00 BP 0000 Ville 00" >
+							</div>
+							<div class="form-group">
+								<label for="placeOfResidenceEntered">Quartier</label>
+								<input type="text" class="form-control" id="placeOfResidenceEntered" >
+							</div>
+							<div class="form-group">
+								<label for="phoneNumberEntered">Téléphone</label>
+								<input type="text" class="form-control" id="phoneNumberEntered" >
+							</div>
+							<div class="form-group">
+								<label for="employerEntered">Employeur</label>
+								<input type="text" class="form-control" id="employerEntered" >
+							</div>
+							<div class="form-group">
+								<label for="electricityReleaseEntered">Quittance CIE</label>
+								<input type="text" class="form-control" id="electricityReleaseEntered" >
+							</div>
+							<div class="form-group">
+								<a href="#p1"><input type="button" class="form-control btn-warning" id="btnNext" value="SUIVANT"></a>
+							</div>
+							</div>
+							</div><!-- fin div row 1 -->
+						</div>
+					<div id="p1"><br /><br /><br /><br /><br />
+						<div class="row">
+								<div class="col-xs-1 col-sm-1 col-md-1"></div>
+								<div class="col-xs-5 col-sm-5 col-md-5">
+									<div class="form-group">
+										<label for="fatherFullNameEntered">Nom complet du Père</label>
+										<input type="text" class="form-control" id="fatherFullNameEntered" >
+									</div>
+									<div class="form-group">
+										<label for="waterClearanceEntered">Quittance SODECI</label>
+										<input type="text" class="form-control" id="waterClearanceEntered" >
+									</div>
+									<div class="form-group">
+										<label for="nationalityEntered">Nationalité</label>
+										<input type="text" class="form-control" id="nationalityEntered" >
+									</div>
+									<div class="form-group">
+										<label for="motherFullNameEntered">Nom complet de la Mère</label>
+										<input type="text" class="form-control" id="motherFullNameEntered" >
+									</div>
+									<div class="form-group">
+										<label for="conventionIdEntered">Assurance Maladie</label>
+										<input type="text" class="form-control" id="conventionIdEntered" list="conventionsList" required>
+											<datalist id="conventionsList">
+												<option value="Couverture Maladie Universelle">
+												<option value="ASCOMA">
+												<option value="CGA CÔTE D'IVOIRE">
+												<option value="AUCUNE">
+											</datalist>
+									</div>
+								</div>
+								<div class="col-xs-5 col-sm-5 col-md-5">
+								<div class="form-group">
+									<label for="userIdsEntered">Numéro Médecin</label>
+									<input type="text" class="form-control" id="userIdsEntered" readonly required>
+								</div>
+								<div class="form-group">
+									<label for="registrationDateEntered">Date de l'enregistrement</label>
+									<input type="date" class="form-control" id="registrationDateEntered" required>
+								</div>						
+								<div class="form-group">
+									<label for="centerIdsEntered">Centre ou Unité d'enregistrement</label>
+									<input type="text" class="form-control" id="centerIdsEntered" list="centersList" required>
+										<dataList id="centersList">
+												<option value="PÉDIATRIE">
+												<option value="URGENCES ET SALLE D’ACCOUCHEMENT">
+												<option value="DIABÉTOLOGIE">
+												<option value="ENDOSCOPIE">
+												<option value="DERMATOLOGIE">
+												<option value="MALADIES INFECTIEUSES ET TROPICALES (SMIT)">
+												<option value="PNEUMO-PHTISIOLOGIE (PPH)">
+												<option value="PSYCHIATRIE">
+												<option value="CABINET DENTAIRE">
+												<option value="CHIRURGIE GÉNÉRALE, DIGESTIVE ET ENDOCRINIENNE">
+										</dataList>
+								</div><div class="form-group">
+									<label for="prestationIdEntered">Prestation subie</label>
+									<input type="text" class="form-control" id="prestationIdEntered" list="prestationsList" required>
+										<dataList id="prestationsList">
+											<option value="HOSPITALISATIONS">
+											<option value="MISE EN OBSERVATION">
+											<option value="CONSULTATIONS">
+											<option value="PANSEMENTS">
+											<option value="EXAMENS LABO">
+											<option value="EXTRACTION">
+											<option value="EXAMENS RADIO">
+											<option value="ACCOUCHEMENTS">		 
+											<option value="INTERVENTIONS">		 
+										</dataList>
+								</div>
+								<div class="form-group">
+									<a href="#p0"><input type="button" id="btnPreview" class="form-control btn-warning" value="PRÉCÉDENT"></a>
+								</div>
+								<div class="form-group">
+									<label for="submit"></label><hr />
+									<input type="submit" id="submit" class="form-control btn-success" value="ENREGISTRER LE PATIENT">
+								</div>
+								<br /><br /><br /><br /><br /><br /><br /><br /><br />
+						</div>
+						</div>
+					</div>
+			</form>	
+	</body>
+	<script src="../js/savePatientsPage2.js"></script>
+</html>

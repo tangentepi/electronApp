@@ -1355,7 +1355,7 @@ a.text-success:focus {
 }
 a.text-info:hover,
 a.text-info:focus {
-  color: #245269;
+  color: #245269; 
 }
 .text-warning {
   color: #8a6d3b;

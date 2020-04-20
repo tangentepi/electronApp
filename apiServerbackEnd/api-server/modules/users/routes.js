@@ -7,6 +7,7 @@ const routes = new Router();
 //LOGIN & SIGNUP 
 
 const auth = require('../../middleware/auth');
+const adminAuth = require('../../middleware/auth-admin');
 
 
 
@@ -14,7 +15,8 @@ const auth = require('../../middleware/auth');
 
 routes.post('/signup', User.signup);
 routes.post('/login', User.login);
-routes.put('/modify/:id', auth, User.modifyUser);
+routes.put('/modify/1/:id', adminAuth, User.modifyUser1);
+routes.put('/modify/2/:id', auth, User.modifyUser2);
 
 
 

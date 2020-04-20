@@ -8,7 +8,10 @@ export const createCenter = (req, res, next) => {
             if (!center){
                 const newCenter = new Center({
                     wording: req.body.wording,
+                    registrationInfos:{
                     patientIds: req.body.patientId,
+                    registrationDate: req.body.registrationDate
+                  },
                     prestationIds: req.body.prestationId
                 });
                 newCenter.save().then(
@@ -25,7 +28,7 @@ export const createCenter = (req, res, next) => {
             else{
                 Center.updateOne({wording: req.body.wording},{
                     $push:{
-                        "patientIds": {$each: [req.body.patientId]},
+                        "registrationInfos": {$each: [{ patientIds: req.body.patientId, registrationDate: req.body.registrationDate}]},
                         "prestationIds" : {$each: [req.body.prestationId]}
                         }}).then(
                                 () => {

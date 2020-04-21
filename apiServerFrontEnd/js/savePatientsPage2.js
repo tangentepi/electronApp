@@ -111,38 +111,38 @@ function frontSavePatients(){
     
     //requête 1: Patient
     var request1 = new XMLHttpRequest();
-    request1.onreadystatechange = function() {
+    request1.onreadystatechange =  function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             // Vérification de la réussite de la requête
             // alert("Enregistrement de Patient Réussi !");
             //requête 2: Centre
             var request2 = new XMLHttpRequest();
-            request2.onreadystatechange = function() {
+            request2.onreadystatechange =  function() {
                 if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                     // Vérification de la réussite de la requête
                     // alert("Enregistrement de prestation dans le centre effectuée !");
                     // Requête 3
                     var request3 = new XMLHttpRequest();
 
-                    request3.onreadystatechange = function(){
+                    request3.onreadystatechange =  function(){
                         if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                         // Vérification de la réussite de la requête
                         // alert("Enregistrement de l'identifiant du Patient dans le document user effectuée !");
-                        var response3 = JSON.parse(this.responseText);
+                        var response3 =  JSON.parse(this.responseText);
                             // Requête 4
                             var request4 = new XMLHttpRequest();
-                            request4.onreadystatechange = function(){
+                            request4.onreadystatechange =  function(){
                             if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
                             // Vérification de la réussite de la requête
                             // alert("Prestations obtenues !");
-                            var response4 = JSON.parse(this.responseText);
+                            var response4 =  JSON.parse(this.responseText);
                             // Requête 5
                             var request5 = new XMLHttpRequest();
-                            request5.onreadystatechange = function(){
+                            request5.onreadystatechange =  function(){
                                 if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
                                 // Vérification de la réussite de la requête
                                 // alert("Conventions obtenues !");
-                                var response5 = JSON.parse(this.responseText);
+                                var response5 =  JSON.parse(this.responseText);
                                 // Début traiment
                                 for(i=0; i<response4.prestations.length; i++){
                                     if(response4.prestations[i].wording == centerBody.prestationId){
@@ -192,27 +192,27 @@ function frontSavePatients(){
                             }
                         };
                         // Envoie de la requête 5
-                        request5.open("GET", "http://localhost:3001/api/conventions");
+                        request5.open("GET", "http://localhost:3001/api/conventions", false);
                         request5.setRequestHeader("Authorization", "Bearer "+userToken);
                         request5.send();
                     }
                     };
                     // Envoie de la requête 4
-                    request4.open("GET", "http://localhost:3001/api/prestations");
+                    request4.open("GET", "http://localhost:3001/api/prestations", false);
                     request4.setRequestHeader("Authorization", "Bearer "+userToken);
                     request4.send();
                         }
                     };
                     // Envoie de la requête 3
 
-                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`);
+                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`, false);
                     request3.setRequestHeader("Content-type","Application/json");
                     request3.setRequestHeader("Authorization", "Bearer "+ userToken);
                     request3.send(JSON.stringify(registredPatient));
                 }
             };
             // Envoie de la requête 2
-            request2.open("POST","http://localhost:3001/api/centers");
+            request2.open("POST","http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Content-type", "application/json");
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send(JSON.stringify(centerBody));
@@ -220,7 +220,7 @@ function frontSavePatients(){
     };
 
     //Envoie de la requête 1
-    request1.open("POST", "http://localhost:3001/api/patients");
+    request1.open("POST", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Content-type", "application/json");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send(JSON.stringify(patientBody));
@@ -237,7 +237,7 @@ function redirect(){
         else {
             document.location.href="./invoice.html";
             };
-}, 6000);};
+}, 1000);};
 
 function redirect1(){
     setTimeout( function(){

@@ -27,14 +27,15 @@ async function frontLogin() {
 }
 function redirect(){
     setTimeout( function(){
-        if(!sessionStorage.userId){
-        alert("Vérifiez SVP que vous avez entrer des information correctes!");
+        if(sessionStorage.userId && sessionStorage.userName && sessionStorage.userFirstName && sessionStorage.userToken && sessionStorage.userPhoneNumber){            
+            document.location.href="./handlePatientsPage.html";
+        }
+        else {
+            
+        alert("Vérifiez SVP que vous avez entré des information correctes!");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
-        }
-        else {
-            document.location.href="./handlePatientsPage.html";
             }}
     , 1000);
 }

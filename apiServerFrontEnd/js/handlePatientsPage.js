@@ -6,8 +6,7 @@ var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
 
-//Suppression des données contenues dans la variable superglobale sessionStorage
-sessionStorage.clear();
+
 
 window.onload = handlePatient();
 
@@ -69,6 +68,9 @@ function state1(){
             // for(i=0; i<patientId.length; i++){
             //     alert(`${patientId[i]}\n${patientName[i]}\n${patientFirstName[i]}\n${center[i]}\n${date[i]}`);
             // }
+
+            //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+            sessionStorage.clear();
             for(i=0; i<patientId.length; i++){
                 sessionStorage.setItem(`id${i}`, patientId[i]);
                 sessionStorage.setItem(`name${i}`, patientName[i]);
@@ -78,22 +80,21 @@ function state1(){
             }
             sessionStorage.setItem("dataLength", patientId.length);            
         }
-
     }
-    request.open("GET", "http://localhost:3001/api/patients");
+    request.open("GET", "http://localhost:3001/api/patients", false);
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
 };
 function redirection1(){
     setTimeout( function(){
-        if(!userId){
-        alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
-        //document.location.href ="./handlePatientsPage.html";
-        // document.getElementById("loginForm")[0].value = "";
-        // document.getElementById("loginForm")[1].value = "";
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
+                    document.location.href="./state1.html";
         }
-        else if (sessionStorage.dataLength != undefined){
-            document.location.href="./state1.html";
+        else {
+            alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
+            //document.location.href ="./handlePatientsPage.html";
+            // document.getElementById("loginForm")[0].value = "";
+            // document.getElementById("loginForm")[1].value = "";
             }}
             , 1000);
         };
@@ -186,7 +187,8 @@ function state2(){
                             }
                         }
                     }
-
+                    //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+                    sessionStorage.clear();
                     for(i=0; i<idArray.length; i++){
                         sessionStorage.setItem(`patientId${i}`, idArray[i]);
                         sessionStorage.setItem(`patientName${i}`, `${nameArray[i]}`);
@@ -204,23 +206,23 @@ function state2(){
                     // }
                 }
             };
-            request2.open("GET", "http://localhost:3001/api/centers");
+            request2.open("GET", "http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://localhost:3001/api/patients");
+    request1.open("GET", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
 
 function redirection2(){
     setTimeout( function(){
-        if(!userId){
-        alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
-        }
-        else if(sessionStorage.dataLength != undefined) {
+        if( sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
             document.location.href="./state2.html";
+        }
+        else {        
+            alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
             }
         }
             , 1000
@@ -251,6 +253,10 @@ function state3(){
                 }
             }
             // alert(`Prestation: ${prestation}\nCentres correspondants: ${center}\nPrix correspondants: ${cost}`);
+
+            //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+            sessionStorage.clear();
+
             for(i=0; i<prestation.length; i++){
                 sessionStorage.setItem(`prestation${i}`, `${prestation[i]}`);
                 sessionStorage.setItem(`center${i}`, `${center[i]}`);
@@ -263,17 +269,17 @@ function state3(){
             // }
         }
     }
-    request1.open("GET", "http://localhost:3001/api/prestations");
+    request1.open("GET", "http://localhost:3001/api/prestations", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
 function redirection3(){
     setTimeout( function(){
-        if(!userId){
-        alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
-        }
-        else if (sessionStorage.dataLength != undefined){
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
             document.location.href="./state3.html";
+        }
+        else {
+            alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
             }
         }
             , 1000
@@ -378,6 +384,10 @@ function state4(){
                     // alert(prestationArray);
 
                     // alert("Enregistrements Précédent l'enregistrement dans la superglobale effectué ... ...");
+
+                    //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+                    sessionStorage.clear();
+
                     for(i=0; i<idArray.length; i++){
                         sessionStorage.setItem(`patientId${i}`, idArray[i]);
                         sessionStorage.setItem(`patientName${i}`, nameArray[i]);
@@ -390,23 +400,23 @@ function state4(){
                     // alert("Enregistrements dans la superglobale effectué;\nRedirection ... ...");
                 }
             };
-            request2.open("GET", "http://localhost:3001/api/centers");
+            request2.open("GET", "http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://localhost:3001/api/patients");
+    request1.open("GET", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
 function  redirection4(){
     
     setTimeout( function(){
-        if(!userId){
-        alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
-        }
-        else if(sessionStorage.dataLength != undefined) {
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
             document.location.href="./state4.html";
+        }
+        else {
+            alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
             }
         }
             , 1000
@@ -422,6 +432,10 @@ function frontFindAPatient(){
             var response = JSON.parse(this.responseText);
             var patient = response.patients;
             // alert(response.patients.name);
+
+            //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+            sessionStorage.clear();
+
             sessionStorage.setItem("patientId", `${patient.patientId}`);
             sessionStorage.setItem("patientName", `${patient.name}`);
             sessionStorage.setItem("patientFirstName", `${patient.firstName}`);
@@ -445,7 +459,7 @@ function frontFindAPatient(){
             // alert(sessionStorage.patientFirstName);
         }
     };
-    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`);
+    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`, false);
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
     // alert("Le bouton Fonctionne !");
@@ -455,14 +469,10 @@ function frontFindAPatient(){
 function redirection5(){
     
     setTimeout( function(){
-        if(!userId){
-        alert("Erreur d'affichage des Informations du Patient; vous n'êtes pas connecté");
-        }else if(!sessionStorage.patientConventionId || sessionStorage.patientConventionId === undefined ){
-        alert("Patient non trouvé !");        
-        }else{
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.patientConventionId){
             document.location.href="./savePatientsPage2.html";
-            }
         }
+    }
             , 1000
             );
 };
@@ -470,12 +480,12 @@ function redirection5(){
 
 function redirection(){
     setTimeout( function(){
-        if(!userId){
-            alert("Erreur d'affichage ");        
-            document.location.href="./handlePatientsPage.html";
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber){
+            document.location.href="./savePatientsPage.html";
         }
         else {
-            document.location.href="./savePatientsPage.html";
+            alert("Erreur d'affichage ");        
+            document.location.href="./handlePatientsPage.html";
         }}
         , 1000);};
 
@@ -483,8 +493,8 @@ function redirection(){
 
 document.getElementById("newPatient").addEventListener("click", function(e){
     e.preventDefault();
-    redirection();
     userInfos();
+    redirection();
 });
 
 // Recherche d'un Patient

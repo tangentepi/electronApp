@@ -10,7 +10,7 @@ import mongoose from 'mongoose';
 
 //     mongoose.connect('mongodb://localhost:27017/test',{ useNewUrlParser: true, useUnifiedTopology: true }); // connexion Locale
 //     mongoose.connection
-//     .then(() => console.log('Connexion Locale à MongoDB  réussie :) !') )
+//     .then(() => console.log('Connexion Locale à MongoDB  réussie :) !'))
 //     .catch(() => console.log('Connexion Locale à MongoDB échouée :('))
 // };
 // mongoose.set('useCreateIndex', true);

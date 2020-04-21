@@ -208,22 +208,22 @@ function savePatientPage(){
     request1.send(JSON.stringify(patientBody));
 };
 
-function redirect(){
+function redirection(){
     setTimeout( function(){
-        if(!userId || !sessionStorage.dataLength){
+        if(!userId){
         alert("Veuillez vous connecter svp");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
         }
-        else {
+        else if(sessionStorage.dataLength != undefined) {
             document.location.href="./invoice.html";
             };
 }, 1000);};
 
-function redirect1(){
+function redirection1(){
     setTimeout( function(){
-        if(!userId){
+        if(!userId || userId === undefined){
         alert("Veuillez vous connecter svp");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
@@ -246,15 +246,15 @@ document.getElementById("savePatientForm").addEventListener("submit",  function(
     // display();
      frontSavePatients();
      userInfos();
-     redirect();
+     redirection();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();
     userInfos();
-    redirect1();
+    redirection1();
 });
 document.getElementById("userProfilImage").addEventListener("click", function(e) {
     e.preventDefault();
     userInfos();
-    redirect1();
+    redirection1();
 });

@@ -28,7 +28,7 @@ async function frontLogin() {
 function redirect(){
     setTimeout( function(){
         if(!sessionStorage.userId){
-        alert("Utilisateur inconu !");
+        alert("Vérifiez SVP que vous avez entrer des information correctes!");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";

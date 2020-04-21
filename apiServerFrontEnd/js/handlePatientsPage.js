@@ -80,7 +80,7 @@ function state1(){
         }
 
     }
-    request.open("GET", "http://localhost:3001/api/patients", false);
+    request.open("GET", "http://localhost:3001/api/patients");
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
 };
@@ -92,7 +92,7 @@ function redirection1(){
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
         }
-        else {
+        else if (sessionStorage.dataLength != undefined){
             document.location.href="./state1.html";
             }}
             , 1000);
@@ -204,12 +204,12 @@ function state2(){
                     // }
                 }
             };
-            request2.open("GET", "http://localhost:3001/api/centers", false);
+            request2.open("GET", "http://localhost:3001/api/centers");
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://localhost:3001/api/patients", false);
+    request1.open("GET", "http://localhost:3001/api/patients");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -219,7 +219,7 @@ function redirection2(){
         if(!userId){
         alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
         }
-        else {
+        else if(sessionStorage.dataLength != undefined) {
             document.location.href="./state2.html";
             }
         }
@@ -263,7 +263,7 @@ function state3(){
             // }
         }
     }
-    request1.open("GET", "http://localhost:3001/api/prestations", false);
+    request1.open("GET", "http://localhost:3001/api/prestations");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -272,7 +272,7 @@ function redirection3(){
         if(!userId){
         alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
         }
-        else {
+        else if (sessionStorage.dataLength != undefined){
             document.location.href="./state3.html";
             }
         }
@@ -390,12 +390,12 @@ function state4(){
                     // alert("Enregistrements dans la superglobale effectué;\nRedirection ... ...");
                 }
             };
-            request2.open("GET", "http://localhost:3001/api/centers", false);
+            request2.open("GET", "http://localhost:3001/api/centers");
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://localhost:3001/api/patients", false);
+    request1.open("GET", "http://localhost:3001/api/patients");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -405,7 +405,7 @@ function  redirection4(){
         if(!userId){
         alert("Erreur d'affichage de l'état; vous n'êtes pas connecté");
         }
-        else {
+        else if(sessionStorage.dataLength != undefined) {
             document.location.href="./state4.html";
             }
         }
@@ -445,7 +445,7 @@ function frontFindAPatient(){
             // alert(sessionStorage.patientFirstName);
         }
     };
-    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`, false);
+    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`);
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
     // alert("Le bouton Fonctionne !");
@@ -457,7 +457,7 @@ function redirection5(){
     setTimeout( function(){
         if(!userId){
         alert("Erreur d'affichage des Informations du Patient; vous n'êtes pas connecté");
-        }else if(!sessionStorage.patientConventionId){
+        }else if(!sessionStorage.patientConventionId || sessionStorage.patientConventionId === undefined ){
         alert("Patient non trouvé !");        
         }else{
             document.location.href="./savePatientsPage2.html";

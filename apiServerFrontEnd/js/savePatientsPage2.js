@@ -4,11 +4,10 @@ var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
-// Suppression des données contenues dans la variable superglobale sessionStorage
-// sessionStorage.clear();
+
 // Début traitement
 
-window.onload = savePatientPage();
+window.onload = savePatientPage2();
 
 function userInfos(){
     sessionStorage.setItem("userId", userId);
@@ -18,7 +17,7 @@ function userInfos(){
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
 }
 
-function savePatientPage(){
+function savePatientPage2(){
     if(!userId || userId == undefined){
         alert("Vous n'êtes pas connecté !");  
         document.getElementById("userInfos").value = "TEST MODE";    
@@ -64,16 +63,13 @@ function savePatientPage(){
 // }
 
 function frontSavePatients(){
-    // Casting the Date
-    var dte1 = document.getElementById("birthDateEntered").value;
-    var dte2 = new Date(dte1);
-
+    
     // Body Patient
     var patientBody = {
             patientId: document.getElementById("idEntered").value,
             name: document.getElementById("nameEntered").value,
             firstName: document.getElementById("firstNameEntered").value,
-            birthDate: dte2,
+            birthDate: document.getElementById("birthDateEntered").value,
             pieceNumber: document.getElementById("pieceNumberEntered").value,
             typeOfPiece: document.getElementById("typeOfPieceEntered").value,
             gender: document.getElementById("genderEntered").value,
@@ -169,9 +165,13 @@ function frontSavePatients(){
                                 //     alert(`Assurance: ${conventionWordingArray[l]}\nRéduction: ${100-conventionInsuredShareArray[l]}%`);
                                 // }
 
+                                //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+                                sessionStorage.clear();
+
                                 for(i=0; i<costArray.length; i++){
                                     // alert(`Assurance: ${conventionWordingArray[i]}\nRéduction: ${100-conventionInsuredShareArray[i]}%`);
                                     // alert(`Prestation: ${prestationArray[i]}\nCoût de la prestation: ${costArray[i]}\nCentre concerné: ${centerArray[i]}`);
+
                                     sessionStorage.setItem(`conventionWording${i}`, conventionWordingArray[i]);
                                     sessionStorage.setItem(`reduction${i}`, 100-conventionInsuredShareArray[i]);
                                     sessionStorage.setItem(`prestation${i}`, prestationArray[i]);
@@ -229,29 +229,25 @@ function frontSavePatients(){
 
 function redirection(){
     setTimeout( function(){
-        if(!userId){
-        alert("Veuillez vous connecter svp");
-        document.location.href ="./loginPagePropositionParOri.html";
-        // document.getElementById("loginForm")[0].value = "";
-        // document.getElementById("loginForm")[1].value = "";
-        }
-        else if(sessionStorage.dataLength != undefined) {
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
             document.location.href="./invoice.html";
-            };
-}, 1000);};
+        // document.getElementById("loginForm")[0].value = "";
+        // document.getElementById("loginForm")[1].value = "";        
+        }
+}, 1000
+);}
 
 function redirection1(){
-    setTimeout( function(){
-        if(!userId || userId === undefined){
-        alert("Veuillez vous connecter svp");
-        document.location.href ="./loginPagePropositionParOri.html";
-        // document.getElementById("loginForm")[0].value = "";
-        // document.getElementById("loginForm")[1].value = "";
-        }
-        else {
-            document.location.href="./handlePatientsPage.html";
-            };
-}, 1000);};
+        setTimeout( function(){
+            if(sessionStorage.userId && sessionStorage.userPhoneNumber){
+                document.location.href="./handlePatientsPage.html";       
+            }
+            else {
+                alert("Veuillez vous connecter svp !");
+                document.location.href ="./loginPagePropositionParOri.html";
+                };
+    }, 1000
+    );}
 
 // function display(){
 //     prompt("Le boutton fonctionne bien !")
@@ -260,12 +256,11 @@ function redirection1(){
 
 // window.onload = savePatientsPage1();
 
-document.getElementById("savePatientForm").addEventListener("submit", function(e) {
+document.getElementById("savePatientForm").addEventListener("submit",  function(e) {
     e.preventDefault();
-    // display();
-    frontSavePatients();
-    userInfos();
-    redirection();
+     frontSavePatients();
+     userInfos();
+     redirection();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();

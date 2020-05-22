@@ -4,11 +4,19 @@ var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
-// Suppression des données contenues dans la variable superglobale sessionStorage
-sessionStorage.clear();
+
 // Début traitement
 
 window.onload = savePatientPage();
+
+function randomString(stringLength){
+    var stringList = new Array("a", "b", "c", "d", "d", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w" ,"x", "y", "z", "0", "1", "2", "3", "4", "5", "6", "7", "8", "9");
+    var str = '';
+    for(i=0; i<stringLength; i++){
+        str = str + stringList[Math.floor(Math.random()*stringList.length)];
+    }
+    return str;
+}
 
 function userInfos(){
     sessionStorage.setItem("userId", userId);
@@ -21,13 +29,14 @@ function userInfos(){
 function savePatientPage(){
     if(!userId || userId == undefined){
         alert("Vous n'êtes pas connecté !");  
-        document.getElementById("userInfos").value = "TEST MODE";    
+        document.getElementById("userInfos").value = "TEST MODE"; 
     }
     else {
         //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
         //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
         document.getElementById("userIdsEntered").value = userId;   
+        document.getElementById("idEntered").value = 'P'+randomString(9).toLocaleUpperCase();
     }
 }
 
@@ -38,7 +47,7 @@ function savePatientPage(){
 //     //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
 // }
 
-function frontSavePatients(){
+ function frontSavePatients(){
     
     // Body Patient
     var patientBody = {
@@ -83,38 +92,38 @@ function frontSavePatients(){
     
     //requête 1: Patient
     var request1 = new XMLHttpRequest();
-    request1.onreadystatechange = function() {
+    request1.onreadystatechange =  function() {
         if (this.readyState == XMLHttpRequest.DONE && this.status == 201 ) {
             // Vérification de la réussite de la requête
             // alert("Enregistrement de Patient Réussi !");
             //requête 2: Centre
             var request2 = new XMLHttpRequest();
-            request2.onreadystatechange = function() {
+            request2.onreadystatechange =  function() {
                 if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                     // Vérification de la réussite de la requête
                     // alert("Enregistrement de prestation dans le centre effectuée !");
                     // Requête 3
                     var request3 = new XMLHttpRequest();
 
-                    request3.onreadystatechange = function(){
+                    request3.onreadystatechange =  function(){
                         if(this.readyState == XMLHttpRequest.DONE && this.status == 201){
                         // Vérification de la réussite de la requête
                         // alert("Enregistrement de l'identifiant du Patient dans le document user effectuée !");
-                        var response3 = JSON.parse(this.responseText);
+                        var response3 =  JSON.parse(this.responseText);
                             // Requête 4
                             var request4 = new XMLHttpRequest();
-                            request4.onreadystatechange = function(){
+                            request4.onreadystatechange =  function(){
                             if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
                             // Vérification de la réussite de la requête
                             // alert("Prestations obtenues !");
-                            var response4 = JSON.parse(this.responseText);
+                            var response4 =  JSON.parse(this.responseText);
                             // Requête 5
                             var request5 = new XMLHttpRequest();
-                            request5.onreadystatechange = function(){
+                            request5.onreadystatechange =  function(){
                                 if(this.readyState == XMLHttpRequest.DONE && this.status == 200){
                                 // Vérification de la réussite de la requête
                                 // alert("Conventions obtenues !");
-                                var response5 = JSON.parse(this.responseText);
+                                var response5 =  JSON.parse(this.responseText);
                                 // Début traiment
                                 for(i=0; i<response4.prestations.length; i++){
                                     if(response4.prestations[i].wording == centerBody.prestationId){
@@ -141,9 +150,13 @@ function frontSavePatients(){
                                 //     alert(`Assurance: ${conventionWordingArray[l]}\nRéduction: ${100-conventionInsuredShareArray[l]}%`);
                                 // }
 
+                                //Suppression des données contenues dans la variable superglobale sessionStorage avant de commencer à y enregistrer des données
+                                sessionStorage.clear();
+
                                 for(i=0; i<costArray.length; i++){
                                     // alert(`Assurance: ${conventionWordingArray[i]}\nRéduction: ${100-conventionInsuredShareArray[i]}%`);
                                     // alert(`Prestation: ${prestationArray[i]}\nCoût de la prestation: ${costArray[i]}\nCentre concerné: ${centerArray[i]}`);
+
                                     sessionStorage.setItem(`conventionWording${i}`, conventionWordingArray[i]);
                                     sessionStorage.setItem(`reduction${i}`, 100-conventionInsuredShareArray[i]);
                                     sessionStorage.setItem(`prestation${i}`, prestationArray[i]);
@@ -154,6 +167,7 @@ function frontSavePatients(){
                                 sessionStorage.setItem("patientName", patientBody.name);
                                 sessionStorage.setItem("patientFirstName", patientBody.firstName);
                                 sessionStorage.setItem("patientAddress", patientBody.address);
+                                sessionStorage.removeItem("dataLength");
                                 sessionStorage.setItem("dataLength", prestationArray.length);
 
                                 // for(i=0; i<sessionStorage.dataLength; i++){
@@ -164,27 +178,27 @@ function frontSavePatients(){
                             }
                         };
                         // Envoie de la requête 5
-                        request5.open("GET", "http://localhost:3001/api/conventions");
+                        request5.open("GET", "http://localhost:3001/api/conventions", false);
                         request5.setRequestHeader("Authorization", "Bearer "+userToken);
                         request5.send();
                     }
                     };
                     // Envoie de la requête 4
-                    request4.open("GET", "http://localhost:3001/api/prestations");
+                    request4.open("GET", "http://localhost:3001/api/prestations", false);
                     request4.setRequestHeader("Authorization", "Bearer "+userToken);
                     request4.send();
                         }
                     };
                     // Envoie de la requête 3
 
-                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`);
+                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`, false);
                     request3.setRequestHeader("Content-type","Application/json");
                     request3.setRequestHeader("Authorization", "Bearer "+ userToken);
                     request3.send(JSON.stringify(registredPatient));
                 }
             };
             // Envoie de la requête 2
-            request2.open("POST","http://localhost:3001/api/centers");
+            request2.open("POST","http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Content-type", "application/json");
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send(JSON.stringify(centerBody));
@@ -192,37 +206,33 @@ function frontSavePatients(){
     };
 
     //Envoie de la requête 1
-    request1.open("POST", "http://localhost:3001/api/patients");
+    request1.open("POST", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Content-type", "application/json");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send(JSON.stringify(patientBody));
 };
 
-function redirect(){
+function redirection(){
     setTimeout( function(){
-        if(!userId){
-        alert("Veuillez vous connecter svp");
-        document.location.href ="./loginPagePropositionParOri.html";
-        // document.getElementById("loginForm")[0].value = "";
-        // document.getElementById("loginForm")[1].value = "";
-        }
-        else {
+        if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
             document.location.href="./invoice.html";
-            };
-}, 1000);};
-
-function redirect1(){
-    setTimeout( function(){
-        if(!userId){
-        alert("Veuillez vous connecter svp");
-        document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
-        // document.getElementById("loginForm")[1].value = "";
+        // document.getElementById("loginForm")[1].value = "";        
         }
-        else {
-            document.location.href="./handlePatientsPage.html";
-            };
-}, 1000);};
+}, 1000
+);}
+
+function redirection1(){
+        setTimeout( function(){
+            if(sessionStorage.userId && sessionStorage.userPhoneNumber){
+                document.location.href="./handlePatientsPage.html";       
+            }
+            else {
+                alert("Veuillez vous connecter svp !");
+                document.location.href ="./loginPagePropositionParOri.html";
+                };
+    }, 1000
+    );}
 
 // function display(){
 //     prompt("Le boutton fonctionne bien !")
@@ -231,20 +241,19 @@ function redirect1(){
 
 // window.onload = savePatientsPage1();
 
-document.getElementById("savePatientForm").addEventListener("submit", function(e) {
+document.getElementById("savePatientForm").addEventListener("submit",  function(e) {
     e.preventDefault();
-    // display();
-    frontSavePatients();
-    userInfos();
-    redirect();
+     frontSavePatients();
+     userInfos();
+     redirection();
 });
 document.getElementById("userInfos").addEventListener("click", function(e) {
     e.preventDefault();
     userInfos();
-    redirect1();
+    redirection1();
 });
 document.getElementById("userProfilImage").addEventListener("click", function(e) {
     e.preventDefault();
     userInfos();
-    redirect1();
+    redirection1();
 });

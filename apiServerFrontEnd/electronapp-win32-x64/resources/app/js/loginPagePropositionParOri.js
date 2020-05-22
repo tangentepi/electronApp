@@ -1,13 +1,13 @@
 
-function frontLogin() {
+async function frontLogin() {
     var userBody = {
         email: document.getElementById("emailEntered").value,
         password: document.getElementById("passwordEntered").value
     };
   var request = new XMLHttpRequest();
-  request.onreadystatechange = function() {
+  request.onreadystatechange = async function() {
       if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-          var response = JSON.parse(this.responseText);
+          var response = await JSON.parse(this.responseText);
           var userTokenReceived = response.token;
           var userIdReceived = response.userId;
           var userName = response.userName;
@@ -21,20 +21,21 @@ function frontLogin() {
           sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
       }
   };
-  request.open("POST", "http://localhost:3001/api/users/login");
+  request.open("POST", "http://localhost:3001/api/users/login", false);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify(userBody));
 }
 function redirect(){
     setTimeout( function(){
-        if(!sessionStorage.userId){
-        alert("Utilisateur inconu !");
+        if(sessionStorage.userId && sessionStorage.userName && sessionStorage.userFirstName && sessionStorage.userToken && sessionStorage.userPhoneNumber){            
+            document.location.href="./handlePatientsPage.html";
+        }
+        else {
+            
+        alert("Vérifiez SVP que vous avez entré des information correctes!");
         document.location.href ="./loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
-        }
-        else {
-            document.location.href="./handlePatientsPage.html";
             }}
     , 1000);
 }
@@ -66,7 +67,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 //           alert(`User_Id: ${sessionStorage.getItem("userId")} \nUser_Token: ${sessionStorage.getItem("token")}`);
 //       }
 //   };
-//   request.open("POST", "http://localhost:3001/api/users/login");
+//   request.open("POST", "http://localhost:3001/api/users/login", false);
 //   request.setRequestHeader("Content-Type", "application/json");
 //   request.send(JSON.stringify(userBody));
 // }

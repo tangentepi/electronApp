@@ -11,6 +11,6 @@ function remplissage(){
             }
         }
     };
-    xhr.open("GET", "http://localhost:3001/api/patients");
+    xhr.open("GET", "http://192.168.0.187:3001/api/patients");
     xhr.send();
 }

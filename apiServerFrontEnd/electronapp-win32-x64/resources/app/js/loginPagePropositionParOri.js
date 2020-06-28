@@ -21,7 +21,7 @@ async function frontLogin() {
           sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
       }
   };
-  request.open("POST", "http://localhost:3001/api/users/login", false);
+  request.open("POST", "http://192.168.0.187:3001/api/users/login", false);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify(userBody));
 }
@@ -67,7 +67,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 //           alert(`User_Id: ${sessionStorage.getItem("userId")} \nUser_Token: ${sessionStorage.getItem("token")}`);
 //       }
 //   };
-//   request.open("POST", "http://localhost:3001/api/users/login", false);
+//   request.open("POST", "http://192.168.0.187:3001/api/users/login", false);
 //   request.setRequestHeader("Content-Type", "application/json");
 //   request.send(JSON.stringify(userBody));
 // }

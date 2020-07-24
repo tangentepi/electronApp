@@ -7,6 +7,7 @@ let mainWindow, mainWindow1;
 function createWindow(){
     mainWindow = new BrowserWindow({width:1000, height:750, movable: true, resizable: false, icon: './ico/add1.png'});
     mainWindow.loadURL(`file://${__dirname}./views/loginPagePropositionParOri.html`);
+    // mainWindow.loadURL('http:localhost:3000');
     mainWindow.on(`closed`, () => {
         mainWindow = null;
     });

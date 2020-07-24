@@ -1,5 +1,6 @@
 
 async function frontLogin() {
+    sessionStorage.clear();
     var userBody = {
         email: document.getElementById("emailEntered").value,
         password: document.getElementById("passwordEntered").value
@@ -13,7 +14,6 @@ async function frontLogin() {
           var userName = response.userName;
           var userFirstName = response.userFirstName;
           var userPhoneNumber = response.userPhoneNumber;
-          sessionStorage.clear();
           sessionStorage.setItem("userId", userIdReceived);
           sessionStorage.setItem("userName", userName);
           sessionStorage.setItem("userFirstName", userFirstName);
@@ -21,7 +21,7 @@ async function frontLogin() {
           sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
       }
   };
-  request.open("POST", "http://192.168.0.187:3001/api/users/login", false);
+  request.open("POST", "http://localhost:3001/api/users/login", false);
   request.setRequestHeader("Content-Type", "application/json");
   request.send(JSON.stringify(userBody));
 }
@@ -33,7 +33,7 @@ function redirect(){
         else {
             
         alert("Vérifiez SVP que vous avez entré des information correctes!");
-        document.location.href ="./loginPagePropositionParOri.html";
+        document.location.href ="./views/loginPagePropositionParOri.html";
         // document.getElementById("loginForm")[0].value = "";
         // document.getElementById("loginForm")[1].value = "";
             }}
@@ -67,7 +67,7 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
 //           alert(`User_Id: ${sessionStorage.getItem("userId")} \nUser_Token: ${sessionStorage.getItem("token")}`);
 //       }
 //   };
-//   request.open("POST", "http://192.168.0.187:3001/api/users/login", false);
+//   request.open("POST", "http://localhost:3001/api/users/login", false);
 //   request.setRequestHeader("Content-Type", "application/json");
 //   request.send(JSON.stringify(userBody));
 // }

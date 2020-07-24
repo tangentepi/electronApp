@@ -32,7 +32,7 @@ function frontSavePatients(){
         }
     };
     var token = sessionStorage.token;
-    request.open("POST", "http://192.168.0.187:3001/api/patients");
+    request.open("POST", "http://localhost:3001/api/patients");
     request.setRequestHeader("Content-type", "application/json");
     request.setRequestHeader("Authorization", "Bearer"+" "+token);
     request.send(JSON.stringify(body));

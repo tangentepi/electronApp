@@ -80,7 +80,7 @@ export const login = (req, res, next) => {
                                                 user.connectionEnd = user.connectionStart + 24*3600000;
                                                 User.updateOne({_id: user._id}, user).then(
                                                     () => {                                                       
-                                                      res.status(201).json({
+                                                      res.status(200).json({
                                                            // user,
                                                             userId: user._id,
                                                             userName: user.name,
@@ -107,7 +107,7 @@ export const login = (req, res, next) => {
                                     user.token = jwt.sign({ userId: user._id, userProfil: user.profil }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h' });                                    
                                     User.updateOne({_id: user._id}, user).then(
                                         () => {                                           
-                                          res.status(201).json({
+                                          res.status(200).json({
                                          // user,
                                           userId: user._id,
                                           userName: user.name,

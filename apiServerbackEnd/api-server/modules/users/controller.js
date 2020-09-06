@@ -12,6 +12,7 @@ import User from './model';
 // fonction signup pour enregistrer un utilisateur dans la base de données
 
 export const signup = (req, res, next) => {
+    // const userObject = JSON.parse(req.body.user);
     bcrypt.hash(req.body.password, 10).then(
         (hash) => {
                 const user = new User({
@@ -19,6 +20,7 @@ export const signup = (req, res, next) => {
                 password: hash,
                 name: req.body.name,
                 firstName: req.body.firstName,
+                image: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`,
                 phoneNumber: req.body.phoneNumber,
                 profil: req.body.profil,
                 //token: req.body.token,
@@ -71,6 +73,7 @@ export const login = (req, res, next) => {
                                                 userName: user.name,
                                                 userFirstName: user.firstName,
                                                 userPhoneNumber: user.phoneNumber,
+                                                image: user.image,
                                                 token: user.token,
                                                 message: "token encore valide; pième connection !"
                                             });
@@ -86,6 +89,7 @@ export const login = (req, res, next) => {
                                                             userName: user.name,
                                                             userFirstName: user.firstName,
                                                             userPhoneNumber: user.phoneNumber,
+                                                            image: user.image,
                                                             token: user.token,
                                                             message: 'pième connection avec nouveau token!'
                                                       });
@@ -113,6 +117,7 @@ export const login = (req, res, next) => {
                                           userName: user.name,
                                           userFirstName: user.firstName,
                                           userPhoneNumber: user.phoneNumber,
+                                          image: user.image,
                                           token: user.token,
                                           message: 'Première connection!'
                                           });
@@ -153,6 +158,7 @@ export const modifyUser1 =( req, res, next) => {
           name: req.body.name,
           firstName: req.body.firstName,
           phoneNumber: req.body.phoneNumber,
+          image: user.image,
           profil: req.body.profil
         });
         User.updateOne({_id: req.params.id}, user).then(

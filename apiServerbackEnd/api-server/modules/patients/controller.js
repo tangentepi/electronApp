@@ -89,6 +89,7 @@ exports.getOnePatient = (req, res, next) => {
 */
 //Création d'un patient - 2
 export const createPatient = (req, res, next) => {
+  // const patientObject = JSON.parse(req.body.patient);
   Patient.findOne({
     patientId: req.body.patientId
   }).then(

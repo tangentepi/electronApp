@@ -24,5 +24,8 @@
   "devDependencies": {
     "electron": "^8.0.1",
     "electron-packager": "^14.2.1"
+  },
+  "dependencies": {
+    "latest": "npm:latest@^0.2.0"
   }
 }

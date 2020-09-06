@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 
 // CONNECXION LOCALE
 
+//STANDARD
+
 export default () => {
     mongoose.promise = global.promise;
 
@@ -14,6 +16,22 @@ export default () => {
     .catch(() => console.log('Connexion Locale à MongoDB échouée :('))
 };
 mongoose.set('useCreateIndex', true);
+
+// CONNECXION LOCALE
+
+//VIA BINAMI/MNGODB
+
+// export default () => {
+//     mongoose.promise = global.promise;
+
+//     mongoose.connect('mongodb://localhost:27018,localhost:27019/test',{ useNewUrlParser: true, useUnifiedTopology: true }); // connexion Locale
+//     mongoose.connection
+//     .then(() => console.log('Connexion Locale via bitnami/MongoDB  réussie :) !'))
+//     .catch(() => console.log('Connexion Locale via bitnami/MongoDB échouée :('))
+    
+//     // .catch(() => console.log('Connexion Locale via bitnami/MongoDB échouée :('))
+// };
+// mongoose.set('useCreateIndex', true);
 
 // **********************************************************************
 

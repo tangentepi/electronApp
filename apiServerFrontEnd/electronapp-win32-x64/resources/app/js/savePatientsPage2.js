@@ -193,27 +193,27 @@ function frontSavePatients(){
                             }
                         };
                         // Envoie de la requête 5
-                        request5.open("GET", "http://192.168.0.187:3001/api/conventions", false);
+                        request5.open("GET", "http://localhost:3001/api/conventions", false);
                         request5.setRequestHeader("Authorization", "Bearer "+userToken);
                         request5.send();
                     }
                     };
                     // Envoie de la requête 4
-                    request4.open("GET", "http://192.168.0.187:3001/api/prestations", false);
+                    request4.open("GET", "http://localhost:3001/api/prestations", false);
                     request4.setRequestHeader("Authorization", "Bearer "+userToken);
                     request4.send();
                         }
                     };
                     // Envoie de la requête 3
 
-                    request3.open("PUT", `http://192.168.0.187:3001/api/users/modify/2/${userId}`, false);
+                    request3.open("PUT", `http://localhost:3001/api/users/modify/2/${userId}`, false);
                     request3.setRequestHeader("Content-type","Application/json");
                     request3.setRequestHeader("Authorization", "Bearer "+ userToken);
                     request3.send(JSON.stringify(registredPatient));
                 }
             };
             // Envoie de la requête 2
-            request2.open("POST","http://192.168.0.187:3001/api/centers", false);
+            request2.open("POST","http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Content-type", "application/json");
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send(JSON.stringify(centerBody));
@@ -221,7 +221,7 @@ function frontSavePatients(){
     };
 
     //Envoie de la requête 1
-    request1.open("POST", "http://192.168.0.187:3001/api/patients", false);
+    request1.open("POST", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Content-type", "application/json");
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send(JSON.stringify(patientBody));

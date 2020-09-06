@@ -5,6 +5,7 @@ var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
+var userPhotoUrl = sessionStorage.userPhotoUrl;
 
 
 
@@ -16,6 +17,7 @@ function userInfos(){
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+    sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
 }
 
 function handlePatient(){
@@ -25,6 +27,7 @@ function handlePatient(){
     }
     else {
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+        document.getElementById("userProfilPhoto").src = `${userPhotoUrl}`;
         //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
     }
     };

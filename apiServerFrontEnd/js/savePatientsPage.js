@@ -4,6 +4,7 @@ var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
+var userPhotoUrl = sessionStorage.userPhotoUrl;
 
 // Début traitement
 
@@ -24,6 +25,7 @@ function userInfos(){
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+    sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
 }
 
 function savePatientPage(){

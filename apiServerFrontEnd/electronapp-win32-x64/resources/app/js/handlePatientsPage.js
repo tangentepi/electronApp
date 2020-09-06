@@ -81,7 +81,7 @@ function state1(){
             sessionStorage.setItem("dataLength", patientId.length);            
         }
     }
-    request.open("GET", "http://192.168.0.187:3001/api/patients", false);
+    request.open("GET", "http://localhost:3001/api/patients", false);
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
 };
@@ -206,12 +206,12 @@ function state2(){
                     // }
                 }
             };
-            request2.open("GET", "http://192.168.0.187:3001/api/centers", false);
+            request2.open("GET", "http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://192.168.0.187:3001/api/patients", false);
+    request1.open("GET", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -269,7 +269,7 @@ function state3(){
             // }
         }
     }
-    request1.open("GET", "http://192.168.0.187:3001/api/prestations", false);
+    request1.open("GET", "http://localhost:3001/api/prestations", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -400,12 +400,12 @@ function state4(){
                     // alert("Enregistrements dans la superglobale effectué;\nRedirection ... ...");
                 }
             };
-            request2.open("GET", "http://192.168.0.187:3001/api/centers", false);
+            request2.open("GET", "http://localhost:3001/api/centers", false);
             request2.setRequestHeader("Authorization", "Bearer "+userToken);
             request2.send();
         }
     };
-    request1.open("GET", "http://192.168.0.187:3001/api/patients", false);
+    request1.open("GET", "http://localhost:3001/api/patients", false);
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send();
 };
@@ -459,7 +459,7 @@ function frontFindAPatient(){
             // alert(sessionStorage.patientFirstName);
         }
     };
-    request.open("GET", `http://192.168.0.187:3001/api/patients/2/${searchCriteria.patientId}`, false);
+    request.open("GET", `http://localhost:3001/api/patients/2/${searchCriteria.patientId}`, false);
     request.setRequestHeader("Authorization", "Bearer "+userToken);
     request.send();
     // alert("Le bouton Fonctionne !");

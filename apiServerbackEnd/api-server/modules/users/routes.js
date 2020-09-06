@@ -1,6 +1,5 @@
-import { Router } from 'express' // Un import ici
-import * as User from './controller'
-
+import { Router } from 'express'; // Un import ici
+import * as User from './controller';
 
 const routes = new Router();
 
@@ -8,16 +7,17 @@ const routes = new Router();
 
 const auth = require('../../middleware/auth');
 const adminAuth = require('../../middleware/auth-admin');
+const multer = require('../../middleware/multer-config');
 
 
 
 
 
-routes.post('/signup', User.signup);
+routes.post('/signup', multer, User.signup);
 routes.post('/login', User.login);
-routes.put('/modify/1/:id', adminAuth, User.modifyUser1);
-routes.put('/modify/2/:id', auth, User.modifyUser2);
+routes.put('/modify/1/:id', adminAuth, multer, User.modifyUser1);
+routes.put('/modify/2/:id', auth, multer, User.modifyUser2);
 
 
 
-export default routes; // Un export ici, pourquoi: c'est une sorte d'exportation des routes afin que l'on puisse les utiliser ailleurs
+export default routes; // Un export ici, pourquoi: c'est une exportation des routes afin que l'on puisse les utiliser ailleurs

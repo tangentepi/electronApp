@@ -226,7 +226,47 @@ function frontSavePatients(){
     request1.setRequestHeader("Authorization", "Bearer "+userToken);
     request1.send(JSON.stringify(patientBody));
 };
-
+function centersAndPrestationsList(){
+    var centerSelected = document.getElementById("centerIdsEntered").value;
+    prestationsList(centerSelected);
+}
+function prestationsList(center){
+    switch(center){
+        case "PÉDIATRIE":
+            document.getElementById("prestationsList").innerHTML='<option value="CONSULTATION"><option value="URGENCES"><option value="MISE EN OBSERVATION"><option value="HOSPITALISATIONS">';
+        break;
+        case "URGENCES ET SALLE D’ACCOUCHEMENT":
+            document.getElementById("prestationsList").innerHTML='<option value="ACCOUCHEMENTS"><option value="URGENCES"><option value="MISE EN OBSERVATION">';
+        break;
+        case "DIABÉTOLOGIE":
+            document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="MISE EN OBSERVATION">';
+        break;
+        case "ENDOSCOPIE":
+            document.getElementById("prestationsList").innerHTML= '<option value="EXAMENS SPÉCIAUX">';
+        break;
+        case "DERMATOLOGIE":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="MISE EN OBSERVATION"><option value="HOSPITALISATIONS"><option value="INTERVENTIONS"><option value="EXAMENS SPÉCIAUX"><option value="PANSEMENTS">';
+        break;
+        case "MALADIES INFECTIEUSES ET TROPICALES (SMIT)":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="MISE EN OBSERVATION"><option value="HOSPITALISATIONS"><option value="RÉANIMATION"><option value="EXAMENS SPÉCIAUX">';
+        break;
+        case "PNEUMO-PHTISIOLOGIE (PPH)":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="MISE EN OBSERVATION"><option value="HOSPITALISATIONS"><option value="EXAMENS SPÉCIAUX">';
+        break;
+        case "PSYCHIATRIE":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="MISE EN OBSERVATION">';
+                        //  new Option("HOSPITALISATIONS","HOSPITALISATIONS");
+        break;
+        case "CABINET DENTAIRE":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="EXTRACTION"><option value="SOINS"><option value="EXAMENS SPÉCIAUX"><option value="EXAMENS RADIO">';
+                        //  new Option("HOSPITALISATIONS","HOSPITALISATIONS");
+        break;
+        case "CHIRURGIE GÉNÉRALE, DIGESTIVE ET ENDOCRINIENNE":
+                        document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="HOSPITALISATIONS"><option value="INTERVENTIONS"><option value="AUTRES PRESTATIONS">';
+                        //  new Option("HOSPITALISATIONS","HOSPITALISATIONS");
+        break;
+    }
+ }
 function redirection(){
     setTimeout( function(){
         if(sessionStorage.userId && sessionStorage.userPhoneNumber && sessionStorage.dataLength){
@@ -271,4 +311,8 @@ document.getElementById("userProfilImage").addEventListener("click", function(e)
     e.preventDefault();
     userInfos();
     redirection1();
+});
+document.getElementById("centerIdsEntered").addEventListener("change", function(e) {
+    // e.preventDefault();
+    centersAndPrestationsList();    
 });

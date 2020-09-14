@@ -4,6 +4,7 @@ var userToken = sessionStorage.userToken;
 var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
+var userPhotoUrl = sessionStorage.userPhotoUrl;
 
 // Début traitement
 
@@ -15,6 +16,8 @@ function userInfos(){
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+    sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
+
 }
 
 function savePatientPage2(){
@@ -27,6 +30,8 @@ function savePatientPage2(){
         //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
         document.getElementById("userIdsEntered").value = userId; 
+        document.getElementById("userProfilImage").src = `${userPhotoUrl}`;
+
 
         
         // Remplissage automatique des champs relatifs aux informations du patient
@@ -69,11 +74,11 @@ function frontSavePatients(){
             patientId: document.getElementById("idEntered").value,
             name: document.getElementById("nameEntered").value,
             firstName: document.getElementById("firstNameEntered").value,
-            birthDate: document.getElementById("birthDateEntered").value,
+            // birthDate: document.getElementById("birthDateEntered").value,
             pieceNumber: document.getElementById("pieceNumberEntered").value,
-            typeOfPiece: document.getElementById("typeOfPieceEntered").value,
             gender: document.getElementById("genderEntered").value,
             address: document.getElementById("addressEntered").value,
+            typeOfPiece: document.getElementById("typeOfPieceEntered").value,
             placeOfResidence: document.getElementById("placeOfResidenceEntered").value,
             phoneNumber: document.getElementById("phoneNumberEntered").value,
             employer: document.getElementById("employerEntered").value,
@@ -82,12 +87,12 @@ function frontSavePatients(){
             nationality: document.getElementById("nationalityEntered").value,
             fatherFullName: document.getElementById("fatherFullNameEntered").value,
             motherFullName: document.getElementById("motherFullNameEntered").value,
-            convention: document.getElementById("conventionIdEntered").value,
-            //imageUrl: document.getElementById("imageUrlEntered").value,
             user: document.getElementById("userIdsEntered").value,
             registrationDate: document.getElementById("registrationDateEntered").value,
+            center: document.getElementById("centerIdsEntered").value,
+            convention: document.getElementById("conventionIdEntered").value
+            //imageUrl: document.getElementById("imageUrlEntered").value,
             //Date.now(),            
-            center: document.getElementById("centerIdsEntered").value
     };
     // Body Center
     var centerBody = {
@@ -265,7 +270,7 @@ function prestationsList(center){
                         document.getElementById("prestationsList").innerHTML= '<option value="CONSULTATIONS"><option value="HOSPITALISATIONS"><option value="INTERVENTIONS"><option value="AUTRES PRESTATIONS">';
                         //  new Option("HOSPITALISATIONS","HOSPITALISATIONS");
         break;
-    }
+    };
  }
 function redirection(){
     setTimeout( function(){

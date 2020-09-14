@@ -39,6 +39,8 @@ function savePatientPage(){
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
         document.getElementById("userIdsEntered").value = userId;   
         document.getElementById("idEntered").value = 'P'+randomString(9).toLocaleUpperCase();
+        document.getElementById("userProfilImage").src = `${userPhotoUrl}`;
+        
     }
 }
 
@@ -302,6 +304,6 @@ document.getElementById("userProfilImage").addEventListener("click", function(e)
     redirection1();
 });
 document.getElementById("centerIdsEntered").addEventListener("change", function(e) {
-    // e.preventDefault();
+    e.preventDefault();
     centersAndPrestationsList();    
 });

@@ -133,7 +133,7 @@ export const createPatient = (req, res, next) => {
           patientId: req.body.patientId,
           name: req.body.name,
           firstName: req.body.firstName,
-          birthDate: req.body.birthDate,
+          // birthDate: req.body.birthDate,
           pieceNumber: req.body.pieceNumber,
           gender: req.body.gender,
           address: req.body.address,

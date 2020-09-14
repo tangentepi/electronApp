@@ -30,7 +30,10 @@ function remplissage(){
     alert(msg0);
     };
     
-    document.getElementById("formTest").addEventListener("submit", function(e) {
+document.getElementById("formTest").addEventListener("submit", function(e) {
     remplissage();
     e.preventDefault();
   });
+document.getElementById("test").addEventListener("click", function(e) {
+   alert("label clicked!");
+});

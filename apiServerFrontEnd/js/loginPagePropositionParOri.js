@@ -60,5 +60,4 @@ document.getElementById("loginForm").addEventListener("submit", function(e) {
     redirect();
     e.preventDefault();
   });
-
 //********************************************************************** */

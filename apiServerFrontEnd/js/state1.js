@@ -10,6 +10,8 @@ function fillTable(){
     var userFirstName = sessionStorage.userFirstName;
     var userPhoneNumber = sessionStorage.userPhoneNumber;
     var dataLength =sessionStorage.dataLength;
+    var userPhotoUrl = sessionStorage.userPhotoUrl;
+
         
     //Début Traitements
         // Vérification des informations de connexion
@@ -22,6 +24,7 @@ function fillTable(){
             // alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
             //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
             document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+            document.getElementById("userProfilPhoto").src = `${userPhotoUrl}`;
             // alert(`La taille du Tableau sessionStorage vaut: ${sessionStorage.length}`);
         }
         // Remplissage du tableau
@@ -40,6 +43,7 @@ function fillTable(){
         sessionStorage.setItem("userName", userName);
         sessionStorage.setItem("userFirstName", userFirstName);
         sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+        sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
 };
 
 

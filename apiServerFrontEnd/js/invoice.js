@@ -5,6 +5,8 @@ var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
 var theLength = sessionStorage.dataLength;
+var userPhotoUrl = sessionStorage.userPhotoUrl;
+
 
 window.load = invoice();
 
@@ -14,6 +16,8 @@ function userInfos(){
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+    sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
+
 }
 
 function randomString(stringLength){
@@ -54,6 +58,8 @@ function invoice(){
         //alert(`Bienvenu Monsieur: ${sessionStorage.getItem("userFirstName")+" "+sessionStorage.getItem("userName")}`);
         //ou document.getElementById("userId").value = sessionStorage.userFirstName.toLowerCase()+" "+sessionStorage.userName.toUpperCase();
         document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+        document.getElementById("userProfilPhoto").src = `${userPhotoUrl}`;
+
 
         
     }

@@ -5,6 +5,8 @@ var userName = sessionStorage.userName;
 var userFirstName = sessionStorage.userFirstName;
 var userPhoneNumber = sessionStorage.userPhoneNumber;
 var theLength = sessionStorage.dataLength;
+var userPhotoUrl = sessionStorage.userPhotoUrl;
+
 
 window.load = invoice();
 
@@ -14,6 +16,8 @@ function userInfos(){
     sessionStorage.setItem("userName", userName);
     sessionStorage.setItem("userFirstName", userFirstName);
     sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+    sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
+
 }
 // function printInvoice(){
 //     window.print();

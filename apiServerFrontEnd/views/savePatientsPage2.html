@@ -25,7 +25,7 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href=""><form action=""><div class="form-group"><input type="text" class="form-control navbar-btn userInfos" id="userInfos" readonly></div></form></a></li>
-						<li><a href="" id="userProfilImage"><img src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
+						<li><a href=""><img id="userProfilImage" src=".././img/userProfils/userProfil1.png" class="img-circle img-responsive" style=" height: 50px;" /></a></li>
 					</ul>
                 </nav>
 			</div> <!-- fin container nav -->
@@ -161,7 +161,9 @@
 								</div><div class="form-group">
 									<label for="prestationIdEntered">Prestation subie</label>
 									<input type="text" class="form-control" id="prestationIdEntered" list="prestationsList" required>
-										<dataList id="prestationsList"></dataList>
+										<dataList id="prestationsList">
+											<!-- <option value="CHOISIR UNE PRESTATION"> -->
+										</dataList>
 								</div>
 								<div class="form-group">
 									<a href="#p0"><input type="button" id="btnPreview" class="form-control btn-warning" value="PRÉCÉDENT"></a>

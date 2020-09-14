@@ -10,6 +10,8 @@ function fillTable(){
     var userFirstName = sessionStorage.userFirstName;
     var userPhoneNumber = sessionStorage.userPhoneNumber;
     var dataLength = sessionStorage.dataLength;
+    var userPhotoUrl = sessionStorage.userPhotoUrl;
+
 
         
     //Début Traitements
@@ -20,6 +22,7 @@ function fillTable(){
         }
         else {
             document.getElementById("userInfos").value = `${userFirstName.toLowerCase()} ${userName.toUpperCase()}`;
+            document.getElementById("userProfilPhoto").src = `${userPhotoUrl}`;
         }
         // Remplissage du tableau
         
@@ -35,6 +38,8 @@ function fillTable(){
         sessionStorage.setItem("userName", userName);
         sessionStorage.setItem("userFirstName", userFirstName);
         sessionStorage.setItem("userPhoneNumber", userPhoneNumber);
+        sessionStorage.setItem("userPhotoUrl", userPhotoUrl);
+
 };
 
 

@@ -150,6 +150,8 @@ export const login = (req, res, next) => {
 
 };
 
+// Mise à jour user par un administrateur
+
 export const modifyUser1 =( req, res, next) => { 
         const user = new User({
           _id: req.params.id,
@@ -158,7 +160,7 @@ export const modifyUser1 =( req, res, next) => {
           name: req.body.name,
           firstName: req.body.firstName,
           phoneNumber: req.body.phoneNumber,
-          image: user.image,
+          image: req.body.image,
           profil: req.body.profil
         });
         User.updateOne({_id: req.params.id}, user).then(
@@ -176,6 +178,7 @@ export const modifyUser1 =( req, res, next) => {
         );
       }; 
 
+// utilisé lors de l'enregistrement d'un patient
 
 export const modifyUser2 =( req, res, next) => { 
   // const user = new User({

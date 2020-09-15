@@ -15,8 +15,8 @@ const multer = require('../../middleware/multer-config');
 
 routes.post('/signup', multer, User.signup);
 routes.post('/login', User.login);
-routes.put('/modify/1/:id', adminAuth, multer, User.modifyUser1);
-routes.put('/modify/2/:id', auth, multer, User.modifyUser2);
+routes.put('/modify/1/:id', adminAuth, multer, User.modifyUser1); // Utilisé par un user avec profil "administrateur" pour mettre à jour les informations sur les users
+routes.put('/modify/2/:id', auth, multer, User.modifyUser2); // Utilisé par un user simple avec profil "medecin", lors de l'enregistrement d'un patient
 
 
 
